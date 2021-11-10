@@ -8,6 +8,7 @@ class intro extends Component {
         <h1>path='/'</h1>
         <h3>intro</h3>
         <Link to={"/main"}>Main</Link>
+        <div className="intro_project_img">aa</div>
       </>
     );
   }

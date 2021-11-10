@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-class edit extends Component {
+class userEdit extends Component {
   render() {
     return (
       <>
-        <h1>path='/edit'</h1>
-        <h3>edit</h3>
+        <h1>path='/userEdit'</h1>
+        <h3>userEdit</h3>
         <ul>
           <li>
             <Link to={"/my_page"}>my_page</Link>
@@ -17,10 +17,10 @@ class edit extends Component {
           <li>
             <Link to={"/map"}>map</Link>
           </li>
-        </ul>{" "}
+        </ul>
       </>
     );
   }
 }
 
-export default edit;
+export default userEdit;

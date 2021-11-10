@@ -9,10 +9,13 @@ class map extends Component {
         <h3>map</h3>
         <ul>
           <li>
+            <Link to={"/my_page"}>my_page</Link>
+          </li>
+          <li>
             <Link to={"/main"}>main</Link>
           </li>
           <li>
-            <Link to={"/edit"}>edit</Link>
+            <Link to={"/userEdit"}>userEdit</Link>
           </li>
         </ul>
       </>
