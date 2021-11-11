@@ -1,28 +1,38 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import loginModal from "./Modal/loginModal";
+import LoginModal from "./Modal/login_modal";
+import SignUpModal from "./Modal/signup_modal";
 
 class intro extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isModalOpen: false,
+      isLoginModalOpen: false,
+      isSignUpModalOpen: false,
+      isIntro: true,
     };
   }
 
-  openModal = () => {
-    this.setState({ isModalOpen: true });
-    console.log("openModal");
+  openLoginModal = () => {
+    this.setState({ isLoginModalOpen: true });
   };
 
-  closeModal = () => {
-    this.setState({ isModalOpen: false });
+  closeLoginModal = () => {
+    this.setState({ isLoginModalOpen: false });
+  };
+
+  openSignUpModal = () => {
+    this.setState({ isSignUpModalOpen: true });
+    console.log("singup", this.state.isSignUpModalOpen);
+  };
+
+  closeSignUpModal = () => {
+    this.setState({ isSignUpModalOpen: false });
   };
 
   render() {
     return (
       <>
-        <Link to={"/main"}>Main</Link>
         <div className="box">
           <ul>
             <div className="intro_box">pet image</div>
@@ -32,18 +42,25 @@ class intro extends Component {
             <div className="intro_box">프로젝트 설명 문구</div>
             <div className="intro_box">
               <div className="intro_btn_box">
-                <button className="intro_btn" onClick={this.openModal}>
+                <button className="intro_btn" onClick={this.openLoginModal}>
                   Log-In
                 </button>
-                <loginModal
-                  isOpen={this.state.isModalOpen}
-                  close={this.closeModal}
-                />
-                <button className="intro_btn">회원가입</button>
+
+                <button className="intro_btn" onClick={this.openSignUpModal}>
+                  회원가입
+                </button>
               </div>
             </div>
           </ul>
         </div>
+        <LoginModal
+          isLoginOpen={this.state.isLoginModalOpen}
+          close={this.closeLoginModal}
+        />
+        <SignUpModal
+          isSignUpModalOpen={this.state.isSignUpModalOpen}
+          close={this.closeSignUpModal}
+        />
       </>
     );
   }

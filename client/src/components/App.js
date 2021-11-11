@@ -11,10 +11,17 @@ import Header from "./pages/Header/header";
 import "./css/app.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isIntro: false,
+    };
+  }
   render() {
+    let HideHeader = this.state.isIntro ? null : <Header />;
     return (
       <div className="App">
-        <Header />
+        {HideHeader}
         <Route exact path="/" component={intro} />
         <Route exact path="/main" component={main} />
         <Route exact path="/userEdit" component={userEdit} />
