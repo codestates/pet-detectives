@@ -16,7 +16,10 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

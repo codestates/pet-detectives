@@ -3,7 +3,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const app = express();
-const controllers = require("./controllers/intro");
+const usersRouter = require("./routes/user");
+const petsRouter = require("./routes/pet");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // 추가적인 보안기능! true => qs 모듈 설치 필요
@@ -17,9 +18,10 @@ app.use(
 
 app.use(cookieParser());
 app.get("/", function (req, res) {
-  res.send("<h1> server!!!</h1>");
+  res.send("<h1> 서버작동이상무!! </h1>");
 });
-app.get("/intro", controllers);
+app.use("/users", usersRouter);
+app.use("/pets", petsRouter);
 
 const PORT = process.env.PORT || 8080;
 
