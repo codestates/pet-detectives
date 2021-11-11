@@ -9,6 +9,7 @@ import found_pet from "./pages/found_pet";
 import map from "./pages/map";
 import Header from "./pages/Header/header";
 import "./css/app.css";
+import "./css/app2.css";
 
 class App extends Component {
   constructor(props) {
