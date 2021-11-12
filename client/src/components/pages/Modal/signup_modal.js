@@ -8,13 +8,16 @@ class SignUpModal extends Component {
     return (
       <>
         {isSignUpModalOpen ? (
-          <div className="modal">
+          <div className="modal" onClick={close}>
             <div onClick={close}>
               <div className="SignUpModal">
                 <span className="close" onClick={close}>
                   &times;
                 </span>
-                <div className="modalContents" onClick={isSignUpModalOpen}>
+                <div
+                  className="modalContents"
+                  onClick={() => isSignUpModalOpen}
+                >
                   <input className="singId" placeholder="아이디" />
                   <div class="signTry">
                     <span class="signTry_span">중복된 아이디 입니다.</span>
