@@ -1,27 +1,49 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./loginModal.css";
+import SignUpModal from "./signup_modal";
 
 class LoginModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSignUpModalOpen: false,
+    };
+  }
+
+  openSignUpModal = () => {
+    console.log("singup!!", this.state.isSignUpModalOpen);
+    this.setState({ isSignUpModalOpen: true });
+  };
+
+  closeSignUpModal = () => {
+    this.setState({ isSignUpModalOpen: false });
+  };
   render() {
-    const { isLoginOpen, close } = this.props;
+    let { isLoginOpen, close } = this.props;
+
     return (
       <>
         {isLoginOpen ? (
-          <div className="modal">
+          <div className="modal" onClick={close}>
             <div onClick={close}>
-              <div className="loginModal">
+              <div className="loginModal" onClick={() => isLoginOpen}>
                 <span className="close" onClick={close}>
                   &times;
                 </span>
-                <div className="modalContents" onClick={isLoginOpen}>
+                <div className="modalContents">
                   <input className="loginId" placeholder="아이디" />
                   <input className="loginPw" placeholder="비밀번호" />
                   <Link className="loginBtn" to="/main">
                     로그인
-                    {/* <button className="loginBtn"> 로그인 </button> */}
                   </Link>
                   <div className="socialBox">
+                    <button
+                      className="loginModal_signupBtn"
+                      onClick={this.openSignUpModal}
+                    >
+                      회원가입
+                    </button>
                     <div className="kakao">
                       <img
                         className="kakaoLogo"
@@ -39,9 +61,14 @@ class LoginModal extends Component {
                   </div>
                 </div>
               </div>
+              {/* <div className="signup_box">ddd</div> */}
             </div>
           </div>
         ) : null}
+        <SignUpModal
+          isSignUpModalOpen={this.state.isSignUpModalOpen}
+          close={this.closeSignUpModal}
+        />
       </>
     );
   }

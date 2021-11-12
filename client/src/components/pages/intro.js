@@ -14,7 +14,9 @@ class intro extends Component {
   }
 
   openLoginModal = () => {
+    if (this.state.isSignUpModalOpen) return;
     this.setState({ isLoginModalOpen: true });
+    console.log("login", this.state.isSignUpModalOpen);
   };
 
   closeLoginModal = () => {
