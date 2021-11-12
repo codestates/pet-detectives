@@ -12,25 +12,6 @@ class main extends Component {
         <div className="main_box">
           <SideBar />
           <div className="imsisidebar">
-            <h1>path='/main'</h1>
-            <h3>main</h3>
-            <ul>
-              <li>
-                <Link to={"/"}>intro</Link>
-              </li>
-              <li>
-                <Link to={"/my_page"}>my_page</Link>
-              </li>
-              <li>
-                <Link to={"/contents"}>contents</Link>
-              </li>
-              <li>
-                <Link to={"/found_pet"}>found_pet</Link>
-              </li>
-              <li>
-                <Link to={"/map"}>map</Link>
-              </li>
-            </ul>
           </div>
 
           <div className="main_White_Space"></div>
@@ -61,7 +42,12 @@ class main extends Component {
               </div>
             </div>
             <div className="showing_lost_pet_comment">
+<<<<<<< HEAD
               {/* 댓글창 */} comment 구현
+=======
+                {/* 댓글창 */} comment 구현
+                <input></input>
+>>>>>>> c59499a9f63b9c46e5cb928b1f55885d2a9a28e8
             </div>
             <div className="pagenation">pagenation 구현</div>
           </div>
