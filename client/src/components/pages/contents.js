@@ -63,8 +63,11 @@ class contents extends Component {
           </div>
           <div className="contents_box_low">
             <div className="contents_box_low_describe">
-              피드 내용
-              <input></input>
+              <textarea
+                placeholder="내용을 입력해주세요." 
+                rows="5"
+                cols="40"
+              />
             </div>
           </div>
         </div>
