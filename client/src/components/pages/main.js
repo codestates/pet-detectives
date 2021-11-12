@@ -1,9 +1,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import CommentModal from "./Modal/comment_modal";
 import SideBar from "../sidebar";
 import Header from "./Header/header";
 
 class main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isCommentModalOpen : false
+    }
+  }
+
+  openCommentModal = () => {
+    this.setState({ isCommentModalOpen : true });
+  };
+
+  closeCommentModal = () => {
+    this.setState({ isCommentModalOpen : false });
+  };
+
+
+
   render() {
     return (
       <>
@@ -19,7 +37,9 @@ class main extends Component {
                 <div className="showing_lost_pet_header_information">
                   {/* 이름 성별 나이 종류 */} 이름 성별 나이 종류
                 </div>
-                <div className="showing_lost_pet_header_location"></div>
+                <div className="showing_lost_pet_header_location">
+                  <Link to={"/map"}><button>실종 map</button></Link>
+                </div>
                 <div className="showing_lost_pet_header_location_info">
                   {/* 지역명, 잃어버린 날짜 */} 지역명 잃어버린 날짜 두개
                 </div>
@@ -38,11 +58,16 @@ class main extends Component {
               </div>
             </div>
             <div className="showing_lost_pet_comment">
-              <input></input>
+                {/* 댓글창 */} comment 구현
+                <button onClick={this.openCommentModal}>comment</button>
             </div>
             <div className="pagenation">pagenation 구현</div>
           </div>
         </div>
+        <CommentModal
+          isCommentModalOpen={this.state.isCommentModalOpen}
+          close={this.closeCommentModal}
+        />
       </>
     );
   }
