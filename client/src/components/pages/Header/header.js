@@ -26,10 +26,12 @@ class Header extends Component {
             <div className="connection">
               {/* 버튼모음 */}
               <div className="header_box_main">
+                <Link to={"/found_pet"}>
+                  <div className="header_box">찾은 반려동물 목록</div>
+                </Link>
                 <Link to={"/contents"}>
                   <div className="header_box">반려동물 등록</div>
                 </Link>
-
                 <Link to={"/main"}>
                   <div className="header_box">Main Page</div>
                 </Link>

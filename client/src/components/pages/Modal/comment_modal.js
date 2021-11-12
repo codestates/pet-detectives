@@ -19,7 +19,12 @@ class CommentModal extends Component {
                   </div>
                   <div className="commentModal_box_inputbar">
                       <div className="commentModal_box_comment_input">
-                        입력 내용
+                        <textarea
+                          placeholder="내용을 입력해주세요." 
+                          rows="5"
+                          cols="40"
+                        >
+                        </textarea>
                       </div>
                       <div className="commentModal_box_choicebox_push">
                         댓글 푸쉬
