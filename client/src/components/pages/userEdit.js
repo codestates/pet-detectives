@@ -1,7 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ResignModal from "./Modal/resign_modal";
 
 class userEdit extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isResignModalOpen : false
+    };
+  }
+
+  openResignModal = () => {
+    this.setState({ isResignModalOpen : true });
+  };
+
+  closeResignModal = () => {
+    this.setState({ isResignModalOpen : false });
+  };
+
+
+
   render() {
     return (
       <>
@@ -19,7 +37,7 @@ class userEdit extends Component {
                 닉네임 <input></input>
               </div>
               <div className="userEdit_box_high_middle_editbox">
-                현재 비번 <input type="password" ></input>
+                현재 비번 <input type="password"></input>
               </div>
               <div className="userEdit_box_high_middle_editbox">
                 새로운 비번 <input type="password"></input>
@@ -40,13 +58,19 @@ class userEdit extends Component {
           </div>
           <div className="userEdit_box_low">
             <div className="userEdit_box_low_resign">
-              <button>회원가입 탈퇴</button>
+              <button onClick={this.openResignModal}>
+                회원 탈퇴
+              </button>
             </div>
             <div className="userEdit_box_low_reviseButton">
               <button>회원정보 수정하기</button>
             </div>
           </div>
         </div>
+        <ResignModal 
+          isResignModalOpen={this.state.isResignModalOpen}
+          close={this.closeResignModal}
+        />
       </>
     );
   }

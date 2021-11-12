@@ -18,7 +18,7 @@ class contents extends Component {
                     <img></img>
                   </div>
                   <div className="contents_box_high_infobox_high_left_lostloca">
-                    <button>실종 map</button>
+                    <Link to={"/map"}><button>실종 map</button></Link>
                   </div>
                   <div className="contents_box_high_infobox_high_left_tagbox">
                     태그들
