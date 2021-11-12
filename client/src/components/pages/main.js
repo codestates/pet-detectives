@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import SideBar from "../sidebar";
+import Header from "./Header/header";
 
 class main extends Component {
   render() {
     return (
       <>
-        <div className="main_box">
-          <div className="imsisidebar">
-          </div>
+        <Header />
 
-          <div className="main_White_Space"></div>
+        <div className="main_box">
+          <SideBar />
 
           <div className="showing_lost_pet_box">
             {/* 완성될 사이드 바 옆의 박스 */}
@@ -34,17 +35,13 @@ class main extends Component {
                 <div className="showing_lost_pet_describe_tag">
                   {/* 지역태그 */} 지역 태그 구현
                 </div>
-              </div>            
+              </div>
             </div>
             <div className="showing_lost_pet_comment">
-                {/* 댓글창 */} comment 구현
-                <input></input>
+              <input></input>
             </div>
             <div className="pagenation">pagenation 구현</div>
           </div>
-
-          <div className="main_White_Space"></div>
-
         </div>
       </>
     );

@@ -8,6 +8,7 @@ import my_page from "./pages/my_page";
 import found_pet from "./pages/found_pet";
 import map from "./pages/map";
 import Header from "./pages/Header/header";
+import SideBar from "./sidebar";
 import "./css/app.css";
 import "./css/app2.css";
 
@@ -19,10 +20,8 @@ class App extends Component {
     };
   }
   render() {
-    let HideHeader = this.state.isIntro ? null : <Header />;
     return (
       <div className="App">
-        {HideHeader}
         <Route exact path="/" component={intro} />
         <Route exact path="/main" component={main} />
         <Route exact path="/userEdit" component={userEdit} />

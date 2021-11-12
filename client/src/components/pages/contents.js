@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Header from "./Header/header";
 
 class contents extends Component {
   render() {
     return (
       <>
+        <Header />
         <div className="contents_box">
           <div className="contents_box_high">
-            <div className="contents_box_high_space">
-            
-            </div>
+            <div className="contents_box_high_space"></div>
             <div className="contents_box_high_infobox">
               <div className="contents_box_high_infobox_high">
                 <div className="contents_box_high_infobox_high_left">
@@ -27,7 +27,7 @@ class contents extends Component {
                 </div>
                 <div className="contents_box_high_infobox_high_middle">
                   <div className="contents_box_high_infobox_high_middle_infobox">
-                    이름 
+                    이름
                     <input></input>
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
@@ -51,17 +51,12 @@ class contents extends Component {
                     <input></input>
                   </div>
                 </div>
-                <div className="contents_box_high_infobox_high_right">
-
-                </div>
+                <div className="contents_box_high_infobox_high_right"></div>
               </div>
               <div className="contents_box_high_infobox_low">
-                <div className="contents_box_high_infobox_low_space">
-                </div>
+                <div className="contents_box_high_infobox_low_space"></div>
                 <div className="contents_box_high_infobox_low_button">
-                  <button>
-                    반려동물 등록하기
-                  </button>
+                  <button>반려동물 등록하기</button>
                 </div>
               </div>
             </div>
