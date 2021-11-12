@@ -128,3 +128,22 @@
   width: 24px;
   height: 25px;
 }
+
+.loginModal_signupBtn {
+  height: 40px;
+  font-size: 22px;
+  padding: 13px 30px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  line-height: 1px;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  border-radius: 3px;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 100%;
+}
