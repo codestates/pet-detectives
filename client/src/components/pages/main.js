@@ -11,10 +11,6 @@ class main extends Component {
 
         <div className="main_box">
           <SideBar />
-          <div className="imsisidebar">
-          </div>
-
-          <div className="main_White_Space"></div>
 
           <div className="showing_lost_pet_box">
             {/* 완성될 사이드 바 옆의 박스 */}
@@ -42,17 +38,10 @@ class main extends Component {
               </div>
             </div>
             <div className="showing_lost_pet_comment">
-<<<<<<< HEAD
-              {/* 댓글창 */} comment 구현
-=======
-                {/* 댓글창 */} comment 구현
-                <input></input>
->>>>>>> c59499a9f63b9c46e5cb928b1f55885d2a9a28e8
+              <input></input>
             </div>
             <div className="pagenation">pagenation 구현</div>
           </div>
-
-          <div className="main_White_Space"></div>
         </div>
       </>
     );

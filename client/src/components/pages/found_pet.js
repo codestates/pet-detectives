@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Header from "./Header/header";
+import SideBar from "../sidebar";
 
 class found_pet extends Component {
   render() {
     return (
       <>
+        <Header />
+
         <div className="main_box">
-          <div className="imsisidebar">
-          </div>
+          <SideBar />
+          <div className="imsisidebar"></div>
           <div className="main_White_Space"></div>
 
           <div className="showing_lost_pet_box">
@@ -28,17 +32,14 @@ class found_pet extends Component {
               </div>
               <div className="showing_lost_pet_describe">
                 <div className="showing_lost_pet_describe_contents">
-                   {/* 강아지 설명 */} 피드 내용
+                  {/* 강아지 설명 */} 피드 내용
                 </div>
                 <div className="showing_lost_pet_describe_tag">
-                   {/* 지역태그 */} 태그들
+                  {/* 지역태그 */} 태그들
                 </div>
               </div>
             </div>
-            <div className="showing_lost_pet_comment">
-                {/* 댓글창 */} 댓글
-            </div>
-            
+            <div className="showing_lost_pet_comment">{/* 댓글창 */} 댓글</div>
           </div>
           <div className="infinite_scroll">
             {/* 무한 스크롤 구현 위한 공간 */}
@@ -47,9 +48,9 @@ class found_pet extends Component {
             </div>
             <div className="arrow_image_box_space"> 이미지 좋은거 찾아보기</div>
             <div className="arrow_image_box">
-              <img className="downArrow_image" src="image/downArrow.png"></img>  
-            </div>  
-          </div>    
+              <img className="downArrow_image" src="image/downArrow.png"></img>
+            </div>
+          </div>
           <div className="main_White_Space"></div>
         </div>
       </>
