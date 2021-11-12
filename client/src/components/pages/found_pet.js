@@ -7,10 +7,6 @@ class found_pet extends Component {
       <>
         <div className="main_box">
           <div className="imsisidebar">
-            <h1>path=</h1>
-            <h1>'/found_pet'</h1>
-            <h3>found_pet</h3>
-            <Link to={"/main"}>main</Link>
           </div>
           <div className="main_White_Space"></div>
 
@@ -27,15 +23,15 @@ class found_pet extends Component {
                 </div>
               </div>
               <div className="showing_lost_pet_body">
-                {/* 잃어버린 강아지 이미지 */} 이미지
+                {/* 잃어버린 강아지 이미지 */} 펫 이미지
                 <img></img>
               </div>
               <div className="showing_lost_pet_describe">
                 <div className="showing_lost_pet_describe_contents">
-                   {/* 강아지 설명 */} 강아지 설명
+                   {/* 강아지 설명 */} 피드 내용
                 </div>
                 <div className="showing_lost_pet_describe_tag">
-                   {/* 지역태그 */} 지역태그 
+                   {/* 지역태그 */} 태그들
                 </div>
               </div>
             </div>

@@ -7,9 +7,6 @@ class my_page extends Component {
       <>
         <div className="mypage_box">
           <div className="mypage_rowSpace">
-            <h1>path='/my_page'</h1>
-            <h3>my_page</h3>
-            <Link to={"/main"}>main</Link>
           </div>
           <div className="mypage_middleSpace">
             <div className="mypage_middleSpace_high">
@@ -24,7 +21,7 @@ class my_page extends Component {
                     이름
                   </div>
                   <div className="mypage_pet_lost_day">
-                    잃어버린날짜
+                    잃어버린 날짜
                   </div>
                   <div className="mypage_pet_age">
                     나이
@@ -33,7 +30,10 @@ class my_page extends Component {
                     지역명
                   </div>
                   <div className="mypage_pet_info_high_space">
-                    <button className="mypage_middleSpace_myRegisteredInfo_exit">
+                    <button 
+                    className="mypage_middleSpace_myRegisteredInfo_exit"
+                    onClick={() => {}}
+                    >
                       x
                     </button>
                   </div>
@@ -47,7 +47,7 @@ class my_page extends Component {
                   </div>
                   <div className="mypage_pet_toggle_and_revise">
                     <div>toggle</div>
-                    <button>수정하기</button>
+                    <Link to={"/contents"}><button>수정하기</button></Link>
                   </div>
                 </div>
               </div>
@@ -55,7 +55,9 @@ class my_page extends Component {
             </div>
 
             <div className="mypage_middleSpace_low">
-              <button className="userEdit_button">회원정보 수정하기</button>
+              <Link to={"/userEdit"}>
+                <button className="userEdit_button">회원정보 수정하기</button>
+              </Link>
             </div>
           </div>
           <div className="mypage_rowSpace">
