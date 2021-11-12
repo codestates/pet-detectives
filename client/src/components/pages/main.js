@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import SideBar from "../sidebar";
+import Header from "./Header/header";
 
 class main extends Component {
   render() {
     return (
       <>
+        <Header />
+
         <div className="main_box">
+          <SideBar />
           <div className="imsisidebar">
             <h1>path='/main'</h1>
             <h3>main</h3>
@@ -53,16 +58,15 @@ class main extends Component {
                 <div className="showing_lost_pet_describe_tag">
                   {/* 지역태그 */} 지역 태그 구현
                 </div>
-              </div>            
+              </div>
             </div>
             <div className="showing_lost_pet_comment">
-                {/* 댓글창 */} comment 구현
+              {/* 댓글창 */} comment 구현
             </div>
             <div className="pagenation">pagenation 구현</div>
           </div>
 
           <div className="main_White_Space"></div>
-
         </div>
       </>
     );
