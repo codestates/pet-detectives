@@ -1,0 +1,59 @@
+.comment_modalbackground {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.commentModal {
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  position: relative;
+  box-sizing: border-box;
+  margin: 150px auto;
+  padding: 20px;
+  background: #fff;
+  display: flex;
+
+}
+.commentModal_box {
+  border: solid 7px green;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+  .commentModal_box_contentsbar {
+    border: solid 7px green;
+    width: 100%;
+    height: 70%;
+  }
+  .commentModal_box_inputbar {
+    border: solid 7px green;
+    display: flex;
+    width: 100%;
+    height: 30%;
+  }
+    .commentModal_box_comment_input {
+      border: solid 7px green;
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      height: 100%;
+    }
+    .commentModal_box_choicebox_push {
+      border: solid 7px green;
+      width: 20%;
+      height: 100%;
+    }
+
+
+.close {
+  float: right;
+  font-size: 25px;
+}
+  

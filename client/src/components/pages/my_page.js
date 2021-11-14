@@ -1,13 +1,35 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Header from "./Header/header";
+import RegisteredPet from "./registeredPet/registeredPet";
 
 class my_page extends Component {
   render() {
     return (
       <>
-        <h1>path='/my_page'</h1>
-        <h3>my_page</h3>
-        <Link to={"/main"}>main</Link>
+        <Header />
+        <div className="mypage_box">
+          <div className="mypage_rowSpace"></div>
+          <div className="mypage_middleSpace">
+            <div className="mypage_middleSpace_high">
+              <h1>My Page</h1>
+            </div>
+
+            <div className="mypage_middleSpace_middle">
+              <div className="mypage_middleSpace_myRegisteredInfo_box">
+                <RegisteredPet />
+                <RegisteredPet />
+              </div>
+            </div>
+
+            <div className="mypage_middleSpace_low">
+              <Link to={"/userEdit"}>
+                <button className="userEdit_button">회원정보 수정하기</button>
+              </Link>
+            </div>
+          </div>
+          <div className="mypage_rowSpace"></div>
+        </div>
       </>
     );
   }

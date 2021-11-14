@@ -1,13 +1,25 @@
-.draw {
-  border: solid 7px green;
+/* a-style */
+
+a {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #fff;
 }
 
 .box {
-  border: solid 7px red;
+  /* border: solid 7px red; */
+  background-color: darkorange;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 .intro_box {
@@ -19,7 +31,7 @@
   justify-content: center;
   align-items: center;
 }
-body {
+.body {
   background-color: yellow;
 }
 
@@ -34,4 +46,82 @@ body {
   margin: 10px;
   width: 400px;
   height: 80px;
+}
+
+.sidebar {
+  background-color: rgb(81, 189, 60);
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* flex-direction: column; */
+}
+
+.sidebar_box {
+  border: solid 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: inline-grid; */
+  /* grid-template-rows: 50% 50%; */
+  /* grid-template-columns: 50% 50%; */
+}
+
+.sidebar_foundpet {
+  background-color: darkorange;
+  border: solid 1px red;
+  width: 200%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_box {
+  background-color: white;
+  color: black;
+  display: flex;
+  width: 200px;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  text-shadow: rgb(196, 193, 184) 1px 0 10px;
+  border-bottom: solid 3px rgb(74, 74, 194, 0);
+  transition: all 0.8s;
+}
+
+.header_box:hover {
+  border-bottom: solid 3px rgb(74, 74, 194, 0.7);
+}
+
+.header {
+  box-shadow: 0 4px 4px 0px black;
+}
+
+/* content */
+
+.petImg {
+  width: 70%;
+  height: 70%;
+}
+
+.inputbox_default {
+  margin-left: 10px;
+}
+
+#tags_inputbox {
+  margin-left: 30px;
+  width: 70%;
+}
+
+#text_inputbox {
+  width: 70%;
+  height: 100%;
+  text-align: left;
+}
+
+.contents_dropdown {
+  background-color: white;
+  border: solid 1px black;
+  width: 54%;
+  height: 40%;
 }
