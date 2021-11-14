@@ -17,7 +17,6 @@ const authRouter = require("./routes/auth");
 // const petRouter = require("./routes/pet");
 // const hashtagRouter = require("./routes/hashtag");
 // const userRouter = require("./routes/user");
-
 app.use(express.json()); //json request body 파싱하기
 app.use(express.urlencoded({ extended: false })); // qs모듈로 추가적인 보안기능 모듈로서 필요하다면 모듈 설치후 사용한다.
 app.use(cookieParser());
@@ -28,16 +27,8 @@ app.use(
     credentials:true,
   })
 );
+
 //미들웨어 구성 /user, /pet , /search , /google, 루트와 연결
-
-app.use("/auth", authRouter);
-// app.use("/", introRouter);
-// app.use("/user", userRouter);
-// app.use("/pet", petRouter);
-
-// app.use("/hashtag", hashtagRouter);
-
-
 //routes
 // app.use("/", indexRouter);
 // app.use("/intro", introRouter);
