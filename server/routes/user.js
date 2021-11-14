@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+const router = require("express").Router();
+const controller = require("../controllers/user");
+
+router.get("/userinfo", controller.userinfoController);
+router.patch("/useredit", controller.usereditController);
+router.patch("/passwordedit", controller.passwordeditController);
+router.delete("/withdrawal", controller.withdrawalController);
+router.delete("/googlewithdraw", controller.googlewithdrawController);
+
+module.exports = router;
+=======
 const express = require('express')
 const router = express.Router()
 
@@ -14,3 +26,4 @@ const router = express.Router()
 // //소셜 회원탈퇴 /user/googlewithdrawal
 
 module.exports = router
+>>>>>>> b22fe6f2dd68442a707479d3da1c5c7b010bbdf0

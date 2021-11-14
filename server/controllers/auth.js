@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+module.exports = {
+  signinController: async (req, res) => {
+    res.send("signin ok!");
+  },
+  signupController: async (req, res) => {
+    res.send("signup ok!");
+  },
+  googlesigninController: async (req, res) => {
+    res.send("googlesignin ok!");
+  },
+};
+=======
 
 
 
@@ -48,3 +61,4 @@ res.status(200).send()
 
 
 }
+>>>>>>> b22fe6f2dd68442a707479d3da1c5c7b010bbdf0
