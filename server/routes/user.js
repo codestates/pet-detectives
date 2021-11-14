@@ -1,22 +1,10 @@
-var express = require("express");
-var router = express.Router();
+const router = require("express").Router();
+const controller = require("../controllers/user");
 
-const { usersController } = require("../controllers");
-
-// * get /users/auth
-router.get("/auth", usersController.auth.get);
-// router.get("/users/auth");
-
-// * POST /users/signin
-router.get("/signin", usersController.signin.get);
-// router.get("/users/signin");
-
-// * POST /users/signout
-router.get("/signout", usersController.signout.get);
-// router.get("/users/signout");
-
-// * get /users/signup
-router.get("/signup", usersController.signup.get);
-// router.get("/users/signup");
+router.get("/userinfo", controller.userinfoController);
+router.patch("/useredit", controller.usereditController);
+router.patch("/passwordedit", controller.passwordeditController);
+router.delete("/withdrawal", controller.withdrawalController);
+router.delete("/googlewithdraw", controller.googlewithdrawController);
 
 module.exports = router;

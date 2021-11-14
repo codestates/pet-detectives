@@ -1,27 +1,25 @@
-{
-  "name": "pet-detectives-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon index.js"
+require("dotenv").config();
+
+module.exports = {
+  development: {
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
+    host: "localhost",
+    dialect: "mysql",
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.21.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "morgan": "^1.10.0",
-    "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.2.5",
-    "jsonwebtoken": "^8.5.1"
+  test: {
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
+    host: "localhost",
+    dialect: "mysql",
   },
-  "devDependencies": {
-    "nodemon": "^2.0.6"
-  }
-}
+  production: {
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
+    host: "localhost",
+    dialect: "mysql",
+  },
+};

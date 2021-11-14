@@ -1,14 +1,11 @@
-var express = require("express");
-var router = express.Router();
+const router = require("express").Router();
+const controller = require("../controllers/pet");
 
-const { petsController } = require("../controllers");
-
-// * get /pets/petinfo
-// router.get("/pets/petinfo");
-router.get("/petinfo", petsController.petinfo.get);
-
-// * POST /pets/changepet
-// router.get("/pets/changepet");
-router.get("/changepet", petsController.changepet.get);
+router.post("/petimage", controller.petimageController);
+router.post("/petregister", controller.petregisterController);
+router.get("/petinfo", controller.petinfoController);
+router.get("/petisfound", controller.petisfoundController);
+router.patch("/petedit", controller.peteditController);
+router.delete("/petdelete", controller.petdeleteController);
 
 module.exports = router;
