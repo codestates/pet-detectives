@@ -1,0 +1,87 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+
+.resignModal {
+    width: 600px;
+    height: 400px;
+    background-color: white;
+    position: relative;
+    box-sizing: border-box;
+    margin: 150px auto;
+    padding: 20px;
+    background: #fff;
+    display: flex;
+    border-radius: 5%;
+
+}
+  .resignModal_box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+    .resignModal_box_describe {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      width: 100%;
+      height: 60%;
+    }
+    .resignModal_box_choicebox {
+      display: flex;
+      width: 100%;
+      height: 40%;
+    }
+      .resignModal_box_choicebox_yes {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+        background-color:#ffffff;
+        border-radius:6px;
+        border:1px solid #dcdcdc;
+        cursor:pointer;
+        color:#666666;
+        font-family:Arial;
+        font-size:20px;
+        font-weight:bold;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #ffffff;
+      }
+      .resignModal_box_choicebox_no {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+        background-color:#ffffff;
+        border-radius:6px;
+        border:1px solid #dcdcdc;
+        cursor:pointer;
+        color:#666666;
+        font-family:Arial;
+        font-size:25px;
+        font-weight:bold;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #ffffff;
+      }
+
+.close {
+  float: right;
+  font-size: 25px;
+}
+  

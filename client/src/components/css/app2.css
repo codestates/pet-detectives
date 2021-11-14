@@ -1,0 +1,820 @@
+/* header css */
+.header {
+  display: flex;
+  justify-content: flex-start;
+}
+.logo_box {
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  flex: 1 1 auto;
+  height: 100px;
+  object-fit: cover;
+}
+
+.tag {
+  flex: 2 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tag_search {
+  border: solid 1px black;
+  width: 350px;
+  height: 35%;
+  font-size: 16px;
+  padding-left: 10px;
+  outline: none;
+  float: left;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+}
+
+.tag_button {
+  width: 50px;
+  height: 40%;
+  border: 0px;
+  background: #1b5ac2;
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+}
+
+.connection {
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.connection > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* header css */
+
+/* main css */
+
+.main_box {
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+.main_White_Space {
+  flex: 1 1 auto;
+  border: 2px solid green;
+}
+.showing_lost_pet_box {
+  flex: 4 1 auto;
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.showing_lost_pet {
+  width: 600px;
+  height: 500px;
+  background-color: #ffffff;
+}
+.showing_lost_pet_header {
+  border: 1px solid green;
+  width: 600px;
+  height: 20%;
+  display: flex;
+}
+.showing_lost_pet_header_information {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 45%;
+}
+.showing_lost_pet_header_information_row {
+  display: flex;
+  width: 100%;
+  height: 50%;
+}
+.showing_lost_pet_header_information_box_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  font-weight: bold;
+  color: #153d73;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background: #efefef;
+}
+.showing_lost_pet_header_information_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  font-weight: bold;
+  color: #153d73;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.showing_lost_pet_header_location {
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 15%;
+}
+.showing_lost_pet_header_location_btn {
+  border-radius: 40%;
+  background-color: #1e4e8e;
+  color:white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+.showing_lost_pet_header_location_info {
+  border: 1px solid green;
+  height: 100%;
+  width: 40%;
+}
+.showing_lost_pet_header_location_info_row {
+  border: 1px solid green;
+  width: 100%;
+  height: 50%;
+}
+
+.showing_lost_pet_body {
+  border: 1px solid green;
+  width: 600px;
+  height: 50%;
+}
+
+.showing_lost_pet_describe {
+  border: 1px solid green;
+  width: 600px;
+  height: 30%;
+  display: flex;
+}
+.showing_lost_pet_describe_contents {
+  border: 1px solid green;
+  width: 80%;
+  height: 100%;
+}
+.showing_lost_pet_describe_tag_box {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  height: 100%;
+}
+.showing_lost_pet_describe_tag {
+  box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+  flex-direction: column;
+  align-items: center;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+  height: 20%;
+}
+.showing_lost_pet_describe_tag:hover {
+  background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background-color: #f6f6f6;
+}
+.showing_lost_pet_describe_tag:active {
+  position: relative;
+  top: 1px;
+}
+
+.showing_lost_pet_comment {
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 50px;
+}
+
+.showing_lost_pet_comment_btn {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 100px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
+}
+.showing_lost_pet_comment_btn:hover {
+  background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background-color: #f6f6f6;
+}
+.showing_lost_pet_comment_btn:active {
+  position: relative;
+  top: 1px;
+}
+
+.pagination {
+  border: 1px solid green;
+  width: 600px;
+  height: 50px;
+}
+
+/* main css */
+
+/* found_pet */
+
+.infinite_scroll {
+  border: 1px solid green;
+  width: 60px;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.arrow_image_box {
+  border: 1px solid green;
+  width: 50px;
+  height: 50px;
+}
+.arrow_image_box_space {
+  border: 1px solid green;
+  width: 50px;
+  height: 100px;
+}
+.upArrow_image {
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+.downArrow_image {
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+
+/* found_pet  */
+
+/* mypage */
+
+.mypage_box {
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+}
+.mypage_rowSpace {
+  /* border: 1px solid red; */
+  width: 30%;
+  height: 100vh;
+}
+.mypage_middleSpace {
+  width: 90%;
+  height: 100vh;
+}
+
+.mypage_middleSpace_high {
+  /* background-color: yellow; */
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mypage_middleSpace_middle {
+  width: 100%;
+  height: 55%;
+  display: flex;
+}
+.mypage_middleSpace_myRegisteredInfo_box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.scroll_button_container {
+  width: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scroll_button {
+  bottom: 40px;
+  right: 40px;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.mypage_middleSpace_myRegisteredInfo {
+  padding: 25px;
+}
+
+.mypage_middleSpace_myRegisteredInfo:hover {
+  background-color: rgba(211, 183, 156, 0.4);
+
+  transition: 1s;
+}
+
+.mypage_lost_pet_info_high {
+  display: flex;
+  justify-content: flex-start;
+  height: 30px;
+}
+.mypage_pet_name {
+  width: 5%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 550;
+}
+.mypage_pet_name_value {
+  width: 12%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 5px;
+  border-right: solid 0.3px black;
+}
+.mypage_pet_lost_day {
+  /* background-color: yellow; */
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 550;
+  padding-left: 10px;
+}
+.mypage_pet_lost_day_value {
+  width: 19%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 5px;
+  border-right: solid 0.3px black;
+}
+.mypage_pet_age {
+  /* background-color: yellow; */
+
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 550;
+  padding-left: 10px;
+}
+.mypage_pet_age_value {
+  width: 11%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-right: solid 0.3px black;
+}
+.mypage_pet_location {
+  /* background-color: yellow; */
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 550;
+  padding-left: 10px;
+}
+.mypage_pet_location_value {
+  width: 25.25%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.mypage_middleSpace_myRegisteredInfo_exit {
+  width: 5%;
+  height: 100%;
+  border: 0px;
+  background: black;
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+}
+
+.mypage_pet_info_high_space {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.mypage_lost_pet_info_low {
+  border-bottom: solid 3px black;
+  border-top: solid 1px black;
+  padding: 5px;
+
+  display: flex;
+  justify-content: flex-start;
+  height: 80%;
+}
+.mypage_pet_image {
+  width: 20%;
+  height: 100%;
+}
+.mypage_pet_image_box {
+  margin-left: 15px;
+  width: 50%;
+  height: 100%;
+}
+.mypage_pet_describe {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.mypage_pet_describe_text {
+  height: 70%;
+}
+
+.mypage_pet_describe_tags {
+  border-top: solid 1px black;
+  height: 30%;
+  text-align: end;
+}
+.mypage_pet_toggle_and_revise {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mypage_pet_toggle_switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.mypage_pet_toggle_switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.mypage_middleSpace_low {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.userEdit_button {
+  width: 550px;
+  height: 60px;
+  border: 0px;
+  background: black;
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+  margin-bottom: 240px;
+}
+
+/* mypage */
+
+/* contents */
+.contents_box {
+  margin-top: 2%;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.contents_box_high {
+  /* border: 1px solid blue; */
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.contents_box_high_infobox {
+  /* border: 1px solid green; */
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.contents_box_high_infobox_high {
+  /* border: 1px solid green; */
+  margin: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.contents_box_high_infobox_high_left {
+  /* border: 1px solid green; */
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.contents_box_high_infobox_high_left_imgbox {
+  /* border: 1px solid green; */
+  height: 60%;
+  padding: 10px;
+}
+
+.contents_box_high_infobox_high_left_imgbox_text {
+  width: 100%;
+
+  display: flex;
+}
+
+.contents_box_high_infobox_high_left_imgbox_text_main {
+  width: 25%;
+  border-bottom: solid 1px black;
+}
+
+.contents_box_high_infobox_high_left_imgbox_text_space {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contents_box_high_infobox_high_left_imgbox_text_space_button {
+  border: 0px;
+  background: black;
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+}
+
+.contents_box_high_infobox_high_left_imgbox_img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents_box_high_infobox_high_left_imgbox_img {
+  opacity: 0.4;
+}
+
+.contents_box_high_infobox_high_left_imgbox_img_center {
+  width: 80%;
+  height: 80%;
+  border: solid 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents_box_high_infobox_high_left_lostloca {
+  border: 1px solid green;
+  height: 10%;
+  display: flex;
+  justify-content: flex-end;
+}
+.contents_box_high_infobox_high_left_tagbox {
+  /* border: 1px solid green; */
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contents_lost_map_div {
+  background-color: rgb(187, 46, 46);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents_tag {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  /* border: solid 1px red; */
+}
+.contents_box_high_infobox_high_middle {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contents_box_high_infobox_high_middle_infobox {
+  /* border: 1px solid green; */
+  height: 14%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents_box_high_infobox_low {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents_box_high_infobox_low_space {
+  border: 1px solid green;
+  width: 60%;
+}
+.contents_box_low {
+  border: 1px solid blue;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+}
+.contents_box_low_describe {
+  display: flex;
+  margin-left: 10px;
+  /* border: 1px solid green; */
+  width: 100%-10px;
+  height: 50%;
+}
+
+.contents_box_pushBtn {
+  background-color: tomato;
+  border-radius: 12px;
+  color: #ffffff;
+  border: 0;
+  width: 600px;
+  height: 120px;
+  font-size: 45px;
+  cursor: pointer;
+}
+
+/* contents */
+
+/* userEdit */
+
+.userEdit_box {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+.userEdit_box_high {
+  border: 1px solid green;
+  display: flex;
+  height: 75%;
+}
+.userEdit_box_high_space {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+.userEdit_box_high_space_space {
+  border: 1px solid green;
+  height: 26%;
+}
+.userEdit_box_high_space_buttonBox {
+  display: flex;
+  height: 16%;
+}
+.userEdit_box_high_middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 100%;
+}
+.userEdit_box_high_middle_space {
+  border: 1px solid green;
+  width: 100%;
+  height: 10%;
+}
+.userEdit_box_high_middle_editbox {
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 16%;
+}
+
+.userEdit_box_low {
+  border: 1px solid green;
+  display: flex;
+  height: 25%;
+}
+.userEdit_box_low_resign {
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.userEdit_box_low_reviseButton {
+  border: 1px solid green;
+  width: 50%;
+}
+
+.contents_text {
+  width: 25%;
+  height: 40%;
+  border: 0px;
+  background: black;
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents_input {
+  border: solid 1px black;
+  width: 50%;
+  height: 35%;
+  font-size: 16px;
+  padding-left: 10px;
+  outline: none;
+  float: left;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+}
