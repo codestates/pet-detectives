@@ -5,27 +5,7 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 
 const app = express();
-<<<<<<< HEAD
-const indexRouter = require("./routes/index");
-const introRouter = require("./routes/intro");
-const userRouter = require("./routes/user");
-const authRouter = require("./routes/auth");
-const petRouter = require("./routes/pet");
-const hashtagRouter = require("./routes/hashtag");
-const commentRouter = require("./routes/comment");
 
-//use modules
-app.use(express.json());
-app.use(express.urlencoded({ extended: false })); // 추가적인 보안기능! true => qs 모듈 설치 필요
-app.use(
-  cors({
-    origin: ["https://localhost:3000"],
-    credentials: true,
-    methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-  })
-);
-app.use(cookieParser());
-=======
 
 // require('./models')
 // const sequelize = require('./models').sequelize
@@ -56,7 +36,7 @@ app.use("/auth", authRouter);
 // app.use("/pet", petRouter);
 
 // app.use("/hashtag", hashtagRouter);
->>>>>>> b22fe6f2dd68442a707479d3da1c5c7b010bbdf0
+
 
 //routes
 app.use("/", indexRouter);
