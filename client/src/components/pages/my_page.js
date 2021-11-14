@@ -11,14 +11,14 @@ class my_page extends Component {
         <div className="mypage_box">
           <div className="mypage_rowSpace"></div>
           <div className="mypage_middleSpace">
-            <div className="mypage_middleSpace_high"></div>
+            <div className="mypage_middleSpace_high">
+              <h1>My Page</h1>
+            </div>
 
             <div className="mypage_middleSpace_middle">
               <div className="mypage_middleSpace_myRegisteredInfo_box">
-
-                <RegisteredPet/>
-                <RegisteredPet/>
-
+                <RegisteredPet />
+                <RegisteredPet />
               </div>
             </div>
 

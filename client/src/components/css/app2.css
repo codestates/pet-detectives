@@ -81,10 +81,9 @@
   justify-content: center;
 }
 .showing_lost_pet {
-
   width: 600px;
   height: 500px;
-  background-color:#FFFFFF;
+  background-color: #ffffff;
 }
 .showing_lost_pet_header {
   border: 1px solid green;
@@ -93,14 +92,12 @@
   display: flex;
 }
 .showing_lost_pet_header_information {
-
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 45%;
 }
 .showing_lost_pet_header_information_row {
-
   display: flex;
   width: 100%;
   height: 50%;
@@ -171,30 +168,29 @@
   height: 100%;
 }
 .showing_lost_pet_describe_tag {
-  box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	background-color:#ffffff;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
 }
 .showing_lost_pet_describe_tag:hover {
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	background-color:#f6f6f6;
+  background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background-color: #f6f6f6;
 }
 .showing_lost_pet_describe_tag:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
-
 
 .showing_lost_pet_comment {
   border: 1px solid green;
@@ -206,30 +202,29 @@
 }
 
 .showing_lost_pet_comment_btn {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	background-color:#ffffff;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 100px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 100px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
 }
 .showing_lost_pet_comment_btn:hover {
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	background-color:#f6f6f6;
+  background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background-color: #f6f6f6;
 }
 .showing_lost_pet_comment_btn:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
-
 
 .pagination {
   border: 1px solid green;
@@ -282,23 +277,24 @@
   height: 100vh;
 }
 .mypage_rowSpace {
-  border: 1px solid red;
-  width: 5%;
+  /* border: 1px solid red; */
+  width: 30%;
   height: 100vh;
 }
 .mypage_middleSpace {
-  border: 1px solid red;
   width: 90%;
   height: 100vh;
 }
 
 .mypage_middleSpace_high {
-  border: 1px solid blue;
+  /* background-color: yellow; */
   width: 100%;
-  height: 5%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .mypage_middleSpace_middle {
-  border: 1px solid blue;
   width: 100%;
   height: 55%;
   display: flex;
@@ -306,7 +302,7 @@
 .mypage_middleSpace_myRegisteredInfo_box {
   display: flex;
   flex-direction: column;
-  width:100%
+  width: 100%;
 }
 .scroll_button_container {
   width: 0%;
@@ -323,7 +319,13 @@
   cursor: pointer;
 }
 .mypage_middleSpace_myRegisteredInfo {
-  padding: 5px;
+  padding: 25px;
+}
+
+.mypage_middleSpace_myRegisteredInfo:hover {
+  background-color: rgba(211, 183, 156, 0.4);
+
+  transition: 1s;
 }
 
 .mypage_lost_pet_info_high {
@@ -332,50 +334,127 @@
   height: 30px;
 }
 .mypage_pet_name {
-  border: 1px solid green;
-  width: 15%;
+  width: 5%;
   height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 550;
+}
+.mypage_pet_name_value {
+  width: 12%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 5px;
+  border-right: solid 0.3px black;
 }
 .mypage_pet_lost_day {
-  border: 1px solid green;
-  width: 15%;
+  /* background-color: yellow; */
   height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 550;
+  padding-left: 10px;
+}
+.mypage_pet_lost_day_value {
+  width: 19%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 5px;
+  border-right: solid 0.3px black;
 }
 .mypage_pet_age {
-  border: 1px solid green;
-  width: 15%;
+  /* background-color: yellow; */
+
   height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 550;
+  padding-left: 10px;
+}
+.mypage_pet_age_value {
+  width: 11%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-right: solid 0.3px black;
 }
 .mypage_pet_location {
-  border: 1px solid green;
-  width: 15%;
+  /* background-color: yellow; */
   height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 550;
+  padding-left: 10px;
 }
+.mypage_pet_location_value {
+  width: 25.25%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.mypage_middleSpace_myRegisteredInfo_exit {
+  width: 5%;
+  height: 100%;
+  border: 0px;
+  background: black;
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+}
+
 .mypage_pet_info_high_space {
-  border: 1px solid green;
   width: 40%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
 }
 .mypage_lost_pet_info_low {
-  border: 1px solid green;
+  border-bottom: solid 3px black;
+  border-top: solid 1px black;
+  padding: 5px;
+
   display: flex;
   justify-content: flex-start;
-  height: 60px;
+  height: 80%;
 }
 .mypage_pet_image {
-  border: 1px solid green;
   width: 20%;
   height: 100%;
 }
-.mypage_pet_describe {
-  border: 1px solid green;
+.mypage_pet_image_box {
+  margin-left: 15px;
   width: 50%;
   height: 100%;
 }
+.mypage_pet_describe {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.mypage_pet_describe_text {
+  height: 70%;
+}
+
+.mypage_pet_describe_tags {
+  border-top: solid 1px black;
+  height: 30%;
+  text-align: end;
+}
 .mypage_pet_toggle_and_revise {
-  border: 1px solid green;
   width: 30%;
   height: 100%;
   display: flex;
@@ -384,8 +463,66 @@
   flex-direction: column;
 }
 
+.mypage_pet_toggle_switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.mypage_pet_toggle_switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 .mypage_middleSpace_low {
-  border: 1px solid blue;
   width: 100%;
   height: 40%;
   display: flex;
@@ -393,8 +530,16 @@
   justify-content: center;
 }
 .userEdit_button {
-  width: 500px;
-  height: 50px;
+  width: 550px;
+  height: 60px;
+  border: 0px;
+  background: black;
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+  margin-bottom: 240px;
 }
 
 /* mypage */
@@ -437,8 +582,57 @@
   flex-direction: column;
 }
 .contents_box_high_infobox_high_left_imgbox {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   height: 60%;
+  padding: 10px;
+}
+
+.contents_box_high_infobox_high_left_imgbox_text {
+  width: 100%;
+
+  display: flex;
+}
+
+.contents_box_high_infobox_high_left_imgbox_text_main {
+  width: 25%;
+  border-bottom: solid 1px black;
+}
+
+.contents_box_high_infobox_high_left_imgbox_text_space {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contents_box_high_infobox_high_left_imgbox_text_space_button {
+  border: 0px;
+  background: black;
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+}
+
+.contents_box_high_infobox_high_left_imgbox_img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents_box_high_infobox_high_left_imgbox_img {
+  opacity: 0.4;
+}
+
+.contents_box_high_infobox_high_left_imgbox_img_center {
+  width: 80%;
+  height: 80%;
+  border: solid 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .contents_box_high_infobox_high_left_lostloca {
   border: 1px solid green;

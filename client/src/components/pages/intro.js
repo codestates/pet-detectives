@@ -47,10 +47,6 @@ class intro extends Component {
                 <button className="intro_btn" onClick={this.openLoginModal}>
                   Log-In
                 </button>
-
-                <button className="intro_btn" onClick={this.openSignUpModal}>
-                  회원가입
-                </button>
               </div>
             </div>
           </ul>

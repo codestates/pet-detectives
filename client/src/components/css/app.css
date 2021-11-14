@@ -49,37 +49,30 @@ a:active {
 }
 
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: "100vh";
+  background-color: rgb(81, 189, 60);
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* flex-direction: column; */
 }
-.sideber_row_box {
-  display: flex;
-  width: 100%;
-  height: 90%;
-}
-.sideber_column_box {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  height: 100%;
-}
-.sidebar_district_box {
+
+.sidebar_box {
   border: solid 1px black;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 11%;
+  /* display: inline-grid; */
+  /* grid-template-rows: 50% 50%; */
+  /* grid-template-columns: 50% 50%; */
 }
 
 .sidebar_foundpet {
   background-color: darkorange;
   border: solid 1px red;
+  width: 200%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10%;
 }
 
 .header_box {
@@ -107,8 +100,8 @@ a:active {
 /* content */
 
 .petImg {
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 70%;
 }
 
 .inputbox_default {
@@ -131,13 +124,4 @@ a:active {
   border: solid 1px black;
   width: 54%;
   height: 40%;
-}
-
-.contents_dropdown_list {
-}
-
-.signup_box {
-  background-color: white;
-  display: flex;
-  justify-content: center;
 }
