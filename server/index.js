@@ -39,13 +39,13 @@ app.use("/auth", authRouter);
 
 
 //routes
-app.use("/", indexRouter);
-app.use("/intro", introRouter);
-app.use("/user", userRouter);
+// app.use("/", indexRouter);
+// app.use("/intro", introRouter);
+// app.use("/user", userRouter);
 app.use("/auth", authRouter);
-app.use("/pet", petRouter);
-app.use("/hashtag", hashtagRouter);
-app.use("/comment", commentRouter);
+// app.use("/pet", petRouter);
+// app.use("/hashtag", hashtagRouter);
+// app.use("/comment", commentRouter);
 
 //server
 const PORT = process.env.PORT || 8080;
