@@ -1,9 +1,9 @@
 const express = require('express')
+
 const router = express.Router()
 
-/* GET home page. */
-router.get('/', function (req, res) {
-    res.send('server')
-})
+// const controller = require('../controller')
 
+
+// router.get('/intro',controller.intro)
 module.exports = router
