@@ -135,6 +135,17 @@
   height: 100%;
   width: 15%;
 }
+.showing_lost_pet_header_location_btn {
+  border-radius: 40%;
+  background-color: #1e4e8e;
+  color:white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
 .showing_lost_pet_header_location_info {
   border: 1px solid green;
   height: 100%;
@@ -165,8 +176,9 @@
 }
 .showing_lost_pet_describe_tag_box {
   border: 1px solid green;
-  justify-content: center;
+  display: flex;
   flex-direction: column;
+  align-items: center;
   width: 20%;
   height: 100%;
 }
@@ -177,6 +189,8 @@
 	border-radius:6px;
 	border:1px solid #dcdcdc;
 	display:inline-block;
+  flex-direction: column;
+  align-items: center;
 	cursor:pointer;
 	color:#666666;
 	font-family:Arial;
@@ -185,6 +199,7 @@
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
+  height: 20%;
 }
 .showing_lost_pet_describe_tag:hover {
 	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);

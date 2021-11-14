@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CommentModal from "./Modal/comment_modal";
 import SideBar from "../sidebar";
 import Header from "./Header/header";
+import Tag from "./Tag/tag";
 
 class main extends Component {
   constructor(props) {
@@ -57,7 +58,12 @@ class main extends Component {
                   </div>
                 </div>
                 <div className="showing_lost_pet_header_location">
-                  <Link to={"/map"}><button>실종 map</button></Link>
+                  <Link to={"/map"}>
+                    <div
+                    className="showing_lost_pet_header_location_btn">
+                      실종 map
+                    </div>
+                  </Link>
                 </div>
                 <div className="showing_lost_pet_header_location_info">
                   <div className="showing_lost_pet_header_location_info_row">
@@ -77,9 +83,8 @@ class main extends Component {
                   {/* 강아지 설명 */} 강아지 특징 설명
                 </div>
                 <div className="showing_lost_pet_describe_tag_box">
-                  <div className="showing_lost_pet_describe_tag">
-                    태그1
-                  </div>
+                  <Tag></Tag>
+                  <Tag></Tag>
                 </div>
               </div>
             </div>

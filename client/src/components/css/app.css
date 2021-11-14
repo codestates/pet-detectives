@@ -54,6 +54,16 @@ a:active {
   width: 300px;
   height: "100vh";
 }
+.sidebar_category_box {
+  background-color: #2a3b54;;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+
+}
 .sideber_row_box {
   display: flex;
   width: 100%;
@@ -66,21 +76,26 @@ a:active {
   height: 100%;
 }
 .sidebar_district_box {
-  border: solid 1px black;
+  border: solid 0.1px black;
+  background-color: #3b567b;;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 11%;
+}
+.sidebar_district_box:hover {
+  border: solid 0.5px black;
+  background-color: #1b3960;
+  color:white;
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 11%;
 }
 
-.sidebar_foundpet {
-  background-color: darkorange;
-  border: solid 1px red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10%;
-}
 
 .header_box {
   background-color: white;
