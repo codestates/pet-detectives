@@ -4,12 +4,14 @@ import Header from "./Header/header";
 import RegisteredPet from "./registeredPet/registeredPet";
 import lostpetList from "../dummyfile/lostpetinfo";
 import { ScrollButton } from "../scroll/scroll";
+import UserEdit from "./Modal/userEdit";
 
 class my_page extends Component {
   constructor(props) {
     super(props);
     this.state = {
       lostpetList : lostpetList,
+      isUserEditModalOpen: false,
     }
   }
 //   handleButtonClick = (event) => {
@@ -28,6 +30,14 @@ deleteLostpet = (idx) => {
   // console.log('wow',idx)
   this.setState({lostpetList : lostpetListdata})
 }
+      
+  openUserEditModal = () => {
+    this.setState({ isUserEditModalOpen: true });
+  };
+
+  closeUserEditModal = () => {
+    this.setState({ isUserEditModalOpen: false });
+  };
 
   render() {
     return (
@@ -52,14 +62,20 @@ deleteLostpet = (idx) => {
             </div>
 
             <div className="mypage_middleSpace_low">
-              <Link to={"/userEdit"}>
-                <button 
-                className="userEdit_button">회원정보 수정하기</button>
-              </Link>
+              <button
+                className="userEdit_button"
+                onClick={this.openUserEditModal}
+              >
+                회원정보 수정하기
+              </button>
             </div>
           </div>
           <div className="mypage_rowSpace"></div>
         </div>
+        <UserEdit
+          isUserEditModalOpen={this.state.isUserEditModalOpen}
+          close={this.closeUserEditModal}
+        />
       </>
     );
   }

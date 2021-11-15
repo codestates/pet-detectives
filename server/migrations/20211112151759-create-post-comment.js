@@ -33,7 +33,6 @@ allowNull:false,
   },
 allowNull:false
 },
- 
       comment: {
         type: Sequelize.TEXT
       },

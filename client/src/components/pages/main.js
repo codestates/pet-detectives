@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import CommentModal from "./Modal/comment_modal";
 import MainSideBar from "./Sidebar/mainsidebar";
@@ -21,7 +22,7 @@ class main extends Component {
     console.log(this.state.currnetUrl)
   };
   closeCommentModal = () => {
-    this.setState({ isCommentModalOpen : false });
+    this.setState({ isCommentModalOpen: false });
   };
  // 모달관련
 

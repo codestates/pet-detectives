@@ -23,9 +23,8 @@ module.exports = {
           key: "id",
         },
         allowNull: false,
-  
-      },
 
+      },
       pet_name: {
         type: Sequelize.STRING
       },
@@ -45,8 +44,9 @@ module.exports = {
         type: Sequelize.DATE
       },
       is_found: {
-        type: Sequelize.BOOLEAN
-      },
+        type: Sequelize.BOOLEAN,
+        defaultValue:'false'
+            },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
