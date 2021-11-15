@@ -127,7 +127,6 @@ class contents extends Component {
                 <div className="contents_box_high_infobox_high_middle">
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">이름</span>
-<<<<<<< HEAD
                     <input
                       className="contents_input"
                       onChange={(e) => this.inputHandler(e)}
@@ -161,25 +160,6 @@ class contents extends Component {
                       value={this.state.pet_category}
                       name="pet_category"
                     />
-=======
-                    <input className="contents_input"
-                    ></input>
-                  </div>
-                  <div className="contents_box_high_infobox_high_middle_infobox">
-                    <span className="contents_text">성별</span>
-                    <input className="contents_input"
-                    ></input>
-                  </div>
-                  <div className="contents_box_high_infobox_high_middle_infobox">
-                    <span className="contents_text">나이</span>
-                    <input className="contents_input"
-                    ></input>
-                  </div>
-                  <div className="contents_box_high_infobox_high_middle_infobox">
-                    <span className="contents_text">종류</span>
-                    <input className="contents_input"
-                    ></input>
->>>>>>> c1190e01c684f562b3a01264adaf885591d9302f
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">잃어버린 위치</span>
@@ -239,31 +219,21 @@ class contents extends Component {
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">실종날짜</span>
-<<<<<<< HEAD
                     <input
                       className="contents_input"
                       onChange={(e) => this.inputHandler(e)}
                       value={this.state.pet_lost_date}
                       name="pet_lost_date"
                     />
-=======
-                    <input className="contents_input"
-                    ></input>
->>>>>>> c1190e01c684f562b3a01264adaf885591d9302f
                   </div>
                 </div>
                 <div className="contents_box_high_infobox_high_right"></div>
               </div>
               <div className="contents_box_high_infobox_low">
                 <div className="contents_box_high_infobox_low_button">
-<<<<<<< HEAD
                   <button
                     className="contents_box_pushBtn"
                     onClick={this.contentsRequestHandler}
-=======
-                  <button 
-                  className="contents_box_pushBtn"
->>>>>>> c1190e01c684f562b3a01264adaf885591d9302f
                   >
                     반려동물 등록하기
                   </button>
