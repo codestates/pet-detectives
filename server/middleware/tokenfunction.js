@@ -17,8 +17,12 @@ generateRefreshToken:(data) =>{
 
 },
 //쿠키로 보내는경우
-sendToken:(res,token) =>{
-    res.cookie('token',token,{httpOnly:true,sameSite:'none',}) //secuire 은 https이용하는경우
+sendAccessToken:(res,token) =>{
+    res.cookie('access',token,{httpOnly:true,sameSite:'none'}) //secuire 은 https이용하는경우
+
+},
+sendRefreshToken:(res,token) =>{
+    res.cookie('refresh',token,{httpOnly:true,sameSite:'none'}) //secuire 은 https이용하는경우
 
 },
 authorized :(req)=>{
