@@ -1,4 +1,3 @@
-
 const express = require('express')
 const router = express.Router()
 
@@ -15,4 +14,3 @@ const router = express.Router()
 // //소셜 회원탈퇴 /user/googlewithdrawal
 
 module.exports = router
-

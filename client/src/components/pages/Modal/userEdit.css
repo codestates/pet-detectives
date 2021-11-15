@@ -1,0 +1,133 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.userEditModal {
+  width: 480px;
+  height: 621px;
+  background-color: white;
+  position: relative;
+  box-sizing: border-box;
+  margin: 150px auto;
+  padding: 20px;
+  background: #fff;
+}
+
+.close {
+  float: right;
+  font-size: 25px;
+}
+
+.modalContents {
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  padding: 0 20px 32px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.userEditId {
+  margin-top: 80px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #e5e5e5;
+  padding: 9px 12px;
+  outline: none;
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: solid 1px black;
+}
+
+.userEditNickName {
+  margin-top: 15px;
+  border-radius: 2px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #e5e5e5;
+  padding: 9px 12px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.userEditPw {
+  margin-top: 25px;
+  border-radius: 2px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #e5e5e5;
+  padding: 9px 12px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.userEditTry {
+  margin-top: 15px;
+  /* border: solid 1px blue; */
+}
+
+.userEditTry_btn {
+  float: right;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  border-style: none;
+  height: 25px;
+}
+
+.signTry {
+  padding: 5px;
+}
+
+.userEditTry_span {
+  opacity: 0.4;
+}
+
+.userEditBtn_box {
+  display: flex;
+  align-items: center;
+}
+
+.userEditBtn {
+  margin-top: 10%;
+  width: 59%;
+  font-size: 22px;
+  padding: 13px 30px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  line-height: 1px;
+  border-radius: 3px;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.userExit {
+  margin-left: 1%;
+  margin-top: 10%;
+  /* height: %; */
+  width: 39%;
+  font-size: 15px;
+  padding: 13px 30px;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  line-height: 1px;
+  border-radius: 3px;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}

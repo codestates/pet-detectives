@@ -6,7 +6,6 @@ const express = require("express");
 
 const app = express();
 
-
 // require('./models')
 // const sequelize = require('./models').sequelize
 // sequelize.sync()
@@ -24,7 +23,7 @@ app.use(
   cors({
     origin: ["https://localhost:3000"], // 허락하고자하는 요청 주소
     methods: ["GET", "POST", "OPTIONS", "PATCH","DELETE"], // 허락하고자 하는 method
-    credentials:true,
+
   })
 );
 

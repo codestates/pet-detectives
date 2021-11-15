@@ -1,5 +1,3 @@
-
-
 const express = require('express')
 const router = express.Router()
 
@@ -14,4 +12,3 @@ const router = express.Router()
 // router.delete('petdelete')
 // //펫 삭제 /pet/petdelete
 module.exports = router
-

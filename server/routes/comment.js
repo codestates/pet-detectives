@@ -1,4 +1,3 @@
-
 const express = require('express')
 const router = express.Router()
 
@@ -11,4 +10,3 @@ const router = express.Router()
 // router.delete('commentdelete')
 //댓글 삭제 /comment/commentdelete
 module.exports = router
-
