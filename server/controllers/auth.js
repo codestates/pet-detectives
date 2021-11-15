@@ -6,7 +6,11 @@
 const express = require('express')
 const {user,post,post_comment,hashtag} = require('../models')
 const {generateAccessToken,sendToken,generateRefreshToken} = require('../middleware/tokenfunction')
-const { emit } = require('..')
+const axios = require('axios')
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
+const redirecURI = 'http://localhost:8080/auth/googlesignin/callback'
+
 
 module.exports ={
 
@@ -34,7 +38,7 @@ res.status(201).send({data:data.dataValues,message:'회원가입 완료'})
 } 
 //이미 있는경우g
 else{
- res.status(401).send({message:'이미 존재하는 이메일 입니다.'})
+ res.status(400).send({message:'이미 존재하는 이메일 입니다.'})
 }
 
    })
@@ -69,7 +73,8 @@ signinControl: (req,res) =>{
         if(!data){
             res.status(404).send({message:'존재하지 않는 회원입니다.'})
         }
-//로그인 성공시 토큰 발급 access , refresh
+//로그인 성공시 토큰 발급 access , refresh 
+
     const accessToken = generateAccessToken(data.dataValues)
     const refreshToken = generateRefreshToken(data.dataValues)
 
@@ -79,12 +84,22 @@ signinControl: (req,res) =>{
 
 
 },
-googleSigninControl:(req,res)=>{
-    const { email, username, profileImage } = req.body 
-    const googleToken = req.headers.authorization
+// googleSigninControl:(req,res)=>{
+// // console.log(req.body.authorizationCode)
+//     axios.post('https://oauth2.googleapis.com/token',
+//    {client_id:GOOGLE_CLIENT_ID,redirect_uri:'https%3A//oauth2.example.com/code',client_secret:GOOGLE_CLIENT_SECRET,code:'4/P7q7W91a-oMsCeLvIaQm6bTrgtp7',
+//         grant_type:'authorization_code'} ,{headers:{'Content-type':'application/x-www-form-urlencoded'}} )
+//         .then(rsp=>{
+//         console.log(rsp)
+//         })
+
+
+// },
+signoutContorl:(req,res) =>{
+
+    res.status(205).send({message:'로그아웃 완료'})
 
 }
-
 //회원가입
 
 }

@@ -10,7 +10,7 @@ router.post('/signup',controller.signupControl)
 // 회원가입 /auth/signup
 router.post('/signin', controller.signinControl) 
 // 로그인 /auth/signin
-
-router.get('/googlesignin',controller.googleSigninControl)
+// router.get('/signout',controller.signoutControl)
+// router.get('/googlesignin',controller.googleSigninControl)
 //소셜로그인(구글) /auth/googlesignin
 module.exports = router
