@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-const router = require("express").Router();
-const controller = require("../controllers/comment");
-
-router.get("/commentinfo", controller.commentinfoController);
-router.post("/commentregister", controller.commentregisterController);
-router.patch("/commentedit", controller.commenteditController);
-router.delete("/commentdelete", controller.commentdeleteController);
-
-module.exports = router;
-=======
 const express = require('express')
 const router = express.Router()
 
@@ -21,4 +10,3 @@ const router = express.Router()
 // router.delete('commentdelete')
 //댓글 삭제 /comment/commentdelete
 module.exports = router
->>>>>>> b22fe6f2dd68442a707479d3da1c5c7b010bbdf0

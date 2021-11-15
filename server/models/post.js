@@ -10,25 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-<<<<<<< HEAD
-      // define association here
-      post.belongsTo(models.user, {
-        foreignKey: "userId",
-      });
-      post.hasMany(models.post_comment, {
-        foreignKey: "postId",
-      });
-    }
-  }
-  post.init({
-    image: DataTypes.BLOB,
-    description: DataTypes.TEXT,
-    pet_name: DataTypes.STRING,
-    pet_sex: DataTypes.STRING,
-    pet_age: DataTypes.STRING,
-    pet_category: DataTypes.STRING,
-    pet_lost_region: DataTypes.INTEGER,
-=======
       
      post.belongsTo(models.user,{
 foreignKey:'user_id'
@@ -51,7 +32,6 @@ foreignKey:'user_id'
     pet_age: DataTypes.INTEGER,
     pet_category: DataTypes.STRING,
     pet_lost_region: DataTypes.STRING,
->>>>>>> b22fe6f2dd68442a707479d3da1c5c7b010bbdf0
     pet_lost_date: DataTypes.DATE,
     is_found: DataTypes.BOOLEAN
   }, {

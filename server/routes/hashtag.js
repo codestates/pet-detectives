@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-const router = require("express").Router();
-const controller = require("../controllers/hashtag");
-
-router.get("/hashtaginfo", controller.hashtaginfoController);
-router.post("/hashtagregister", controller.hashtagregisterController);
-router.patch("/hashtagedit", controller.hashtageditController);
-router.delete("/hashtagdelete", controller.hashtagdeleteController);
-
-module.exports = router;
-=======
 const express = require('express')
 const router = express.Router()
 // router.post('/hashtagregister')
@@ -20,4 +9,3 @@ const router = express.Router()
 // router.delete('hashtagdelete')
 // 해쉬태그 삭제 /hashtag/hashtagdelete
 module.exports = router
->>>>>>> b22fe6f2dd68442a707479d3da1c5c7b010bbdf0
