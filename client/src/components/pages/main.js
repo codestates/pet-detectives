@@ -1,45 +1,73 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
+import CommentModal from "./Modal/comment_modal";
+import SideBar from "../sidebar";
+import Header from "./Header/header";
+import Tag from "./Tag/tag";
 
 class main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isCommentModalOpen: false,
+    };
+  }
+
+  openCommentModal = () => {
+    this.setState({ isCommentModalOpen: true });
+  };
+
+  closeCommentModal = () => {
+    this.setState({ isCommentModalOpen: false });
+  };
+
+  // axios.get('https://localhost:4000/accesstokenrequest')
+
   render() {
     return (
       <>
-        <div className="main_box">
-          <div className="imsisidebar">
-            <h1>path='/main'</h1>
-            <h3>main</h3>
-            <ul>
-              <li>
-                <Link to={"/"}>intro</Link>
-              </li>
-              <li>
-                <Link to={"/my_page"}>my_page</Link>
-              </li>
-              <li>
-                <Link to={"/contents"}>contents</Link>
-              </li>
-              <li>
-                <Link to={"/found_pet"}>found_pet</Link>
-              </li>
-              <li>
-                <Link to={"/map"}>map</Link>
-              </li>
-            </ul>
-          </div>
+        <Header />
 
-          <div className="main_White_Space"></div>
+        <div className="main_box">
+          <SideBar />
 
           <div className="showing_lost_pet_box">
             {/* 완성될 사이드 바 옆의 박스 */}
             <div className="showing_lost_pet">
               <div className="showing_lost_pet_header">
                 <div className="showing_lost_pet_header_information">
-                  {/* 이름 성별 나이 종류 */} 이름 성별 나이 종류
+                  <div className="showing_lost_pet_header_information_row">
+                    <div className="showing_lost_pet_header_information_box_menu">
+                      이름
+                    </div>
+                    <div className="showing_lost_pet_header_information_box"></div>
+                    <div className="showing_lost_pet_header_information_box_menu">
+                      성별
+                    </div>
+                    <div className="showing_lost_pet_header_information_box"></div>
+                  </div>
+                  <div className="showing_lost_pet_header_information_row">
+                    <div className="showing_lost_pet_header_information_box_menu">
+                      나이
+                    </div>
+                    <div className="showing_lost_pet_header_information_box"></div>
+                    <div className="showing_lost_pet_header_information_box_menu">
+                      종류
+                    </div>
+                    <div className="showing_lost_pet_header_information_box"></div>
+                  </div>
                 </div>
-                <div className="showing_lost_pet_header_location"></div>
+                <div className="showing_lost_pet_header_location">
+                  <Link to={"/map"}>
+                    <div className="showing_lost_pet_header_location_btn">
+                      실종 map
+                    </div>
+                  </Link>
+                </div>
                 <div className="showing_lost_pet_header_location_info">
-                  {/* 지역명, 잃어버린 날짜 */} 지역명 잃어버린 날짜 두개
+                  <div className="showing_lost_pet_header_location_info_row"></div>
+                  <div className="showing_lost_pet_header_location_info_row"></div>
                 </div>
               </div>
               <div className="showing_lost_pet_body">
@@ -50,20 +78,27 @@ class main extends Component {
                 <div className="showing_lost_pet_describe_contents">
                   {/* 강아지 설명 */} 강아지 특징 설명
                 </div>
-                <div className="showing_lost_pet_describe_tag">
-                  {/* 지역태그 */} 지역 태그 구현
+                <div className="showing_lost_pet_describe_tag_box">
+                  <Tag></Tag>
+                  <Tag></Tag>
                 </div>
-              </div>            
+              </div>
             </div>
             <div className="showing_lost_pet_comment">
-                {/* 댓글창 */} comment 구현
+              <button
+                className="showing_lost_pet_comment_btn"
+                onClick={this.openCommentModal}
+              >
+                댓 글
+              </button>
             </div>
-            <div className="pagenation">pagenation 구현</div>
+            <div className="pagination">pagination 구현</div>
           </div>
-
-          <div className="main_White_Space"></div>
-
         </div>
+        <CommentModal
+          isCommentModalOpen={this.state.isCommentModalOpen}
+          close={this.closeCommentModal}
+        />
       </>
     );
   }

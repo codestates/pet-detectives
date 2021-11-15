@@ -7,7 +7,7 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.loginModal {
+.userEditModal {
   width: 480px;
   height: 621px;
   background-color: white;
@@ -34,18 +34,19 @@
   flex-direction: column;
 }
 
-.loginId {
-  margin-top: 30px;
-  border-radius: 2px;
+.userEditId {
+  margin-top: 80px;
   width: 100%;
   height: 40px;
   border: 1px solid #e5e5e5;
   padding: 9px 12px;
   outline: none;
   box-sizing: border-box;
+  border: 0;
+  border-bottom: solid 1px black;
 }
 
-.loginPw {
+.userEditNickName {
   margin-top: 15px;
   border-radius: 2px;
   width: 100%;
@@ -56,94 +57,77 @@
   box-sizing: border-box;
 }
 
-.loginBtn {
-  height: 40px;
-  font-size: 22px;
-  padding: 13px 30px;
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  line-height: 1px;
-  margin-top: 20px;
-  margin-bottom: 12px;
-  border-radius: 3px;
-  border-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-}
-
-.socialBox {
-  margin-bottom: 30px;
-}
-
-.kakao {
-  background-color: #feec34;
-  border-color: #feec34;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  border-radius: 3px;
-}
-
-.kakaoLogo {
-  width: 24px;
-  height: 25px;
-}
-
-.kakaoText {
-  width: 300px;
-  font-size: 15px;
-  text-align: center;
-  display: inline-block;
-  box-sizing: border-box;
-}
-
-.google {
-  background-color: #df4a32;
-  border-color: #df4a32;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box;
-  color: #fff;
-  border-radius: 3px;
-}
-
-.googleText {
-  padding-top: 12px;
-  width: 310px;
-  color: #fff;
-  font-size: 15px;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.googleLogo {
-  padding-top: 7px;
-  width: 24px;
-  height: 25px;
-}
-
-.loginModal_signupBtn {
-  height: 40px;
-  font-size: 22px;
-  padding: 13px 30px;
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  line-height: 1px;
-  margin-top: 20px;
-  margin-bottom: 12px;
-  border-radius: 3px;
-  border-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
+.userEditPw {
+  margin-top: 25px;
+  border-radius: 2px;
   width: 100%;
+  height: 40px;
+  border: 1px solid #e5e5e5;
+  padding: 9px 12px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.userEditTry {
+  margin-top: 15px;
+  /* border: solid 1px blue; */
+}
+
+.userEditTry_btn {
+  float: right;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  border-style: none;
+  height: 25px;
+}
+
+.signTry {
+  padding: 5px;
+}
+
+.userEditTry_span {
+  opacity: 0.4;
+}
+
+.userEditBtn_box {
+  display: flex;
+  align-items: center;
+}
+
+.userEditBtn {
+  margin-top: 10%;
+  width: 59%;
+  font-size: 22px;
+  padding: 13px 30px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  line-height: 1px;
+  border-radius: 3px;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.userExit {
+  margin-left: 1%;
+  margin-top: 10%;
+  /* height: %; */
+  width: 39%;
+  font-size: 15px;
+  padding: 13px 30px;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  line-height: 1px;
+  border-radius: 3px;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }

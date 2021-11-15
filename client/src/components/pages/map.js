@@ -1,6 +1,7 @@
 /*global kakao*/
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Header from "./Header/header";
 
 class Map extends Component {
   componentDidMount() {
@@ -25,7 +26,12 @@ class Map extends Component {
   }
 
   render() {
-    return <div id="map" style={{ width: "100%", height: "700px" }}></div>;
+    return (
+      <>
+        <Header />
+        <div id="map" style={{ width: "100%", height: "700px" }}></div>;
+      </>
+    );
   }
 }
 export default Map;
