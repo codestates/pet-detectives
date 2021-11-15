@@ -2,22 +2,26 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class RegisteredPet extends Component {
+
   render() {
+    const { lostpet, idx, deleteLostpet } = this.props
     return (
       <>
         <div className="mypage_middleSpace_myRegisteredInfo">
           <div className="mypage_lost_pet_info_high">
             <div className="mypage_pet_name">이름 : </div>
-            <div className="mypage_pet_name_value"> 김멍멍 </div>
+            <div className="mypage_pet_name_value">{lostpet.name}</div>
             <div className="mypage_pet_lost_day">잃어버린 날짜 : </div>
-            <div className="mypage_pet_lost_day_value">2021년 11월09일</div>
+            <div className="mypage_pet_lost_day_value">{lostpet.lostday}</div>
             <div className="mypage_pet_age">나이 : </div>
-            <div className="mypage_pet_age_value">3</div>
+            <div className="mypage_pet_age_value">{lostpet.age} </div>
             <div className="mypage_pet_location">지역명 : </div>
-            <div className="mypage_pet_location_value">서울</div>
+            <div className="mypage_pet_location_value">{lostpet.location}</div>
             <button
               className="mypage_middleSpace_myRegisteredInfo_exit"
-              onClick={() => {}}
+              onClick={() => {
+                // console.log(idx)
+                deleteLostpet(idx)}}
             >
               x
             </button>
