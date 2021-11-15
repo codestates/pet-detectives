@@ -1,14 +1,14 @@
-var express = require("express");
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-const { petsController } = require("../controllers");
-
-// * get /pets/petinfo
-// router.get("/pets/petinfo");
-router.get("/petinfo", petsController.petinfo.get);
-
-// * POST /pets/changepet
-// router.get("/pets/changepet");
-router.get("/changepet", petsController.changepet.get);
-
-module.exports = router;
+// router.post('/petimage')
+// //펫 사진 등록 /pet/petimage
+// router.post('/petregister')
+// // 펫 정보 등록 /pet/petregister
+// router.get('/petinfo')
+// // 펫 조회 /pet/petinfo
+// router.patch('/petedit')
+// // 펫 정보 수정 /pet/petedit
+// router.delete('petdelete')
+// //펫 삭제 /pet/petdelete
+module.exports = router

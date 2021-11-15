@@ -2,8 +2,24 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header/header";
 import RegisteredPet from "./registeredPet/registeredPet";
+import UserEdit from "./Modal/userEdit";
 
 class my_page extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isUserEditModalOpen: false,
+    };
+  }
+
+  openUserEditModal = () => {
+    this.setState({ isUserEditModalOpen: true });
+  };
+
+  closeUserEditModal = () => {
+    this.setState({ isUserEditModalOpen: false });
+  };
+
   render() {
     return (
       <>
@@ -11,25 +27,32 @@ class my_page extends Component {
         <div className="mypage_box">
           <div className="mypage_rowSpace"></div>
           <div className="mypage_middleSpace">
-            <div className="mypage_middleSpace_high"></div>
+            <div className="mypage_middleSpace_high">
+              <h1>My Page</h1>
+            </div>
 
             <div className="mypage_middleSpace_middle">
               <div className="mypage_middleSpace_myRegisteredInfo_box">
-
-                <RegisteredPet/>
-                <RegisteredPet/>
-
+                <RegisteredPet />
+                <RegisteredPet />
               </div>
             </div>
 
             <div className="mypage_middleSpace_low">
-              <Link to={"/userEdit"}>
-                <button className="userEdit_button">회원정보 수정하기</button>
-              </Link>
+              <button
+                className="userEdit_button"
+                onClick={this.openUserEditModal}
+              >
+                회원정보 수정하기
+              </button>
             </div>
           </div>
           <div className="mypage_rowSpace"></div>
         </div>
+        <UserEdit
+          isUserEditModalOpen={this.state.isUserEditModalOpen}
+          close={this.closeUserEditModal}
+        />
       </>
     );
   }
