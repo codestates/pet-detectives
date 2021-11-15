@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./loginModal.css";
@@ -8,7 +9,32 @@ class LoginModal extends Component {
     super(props);
     this.state = {
       isSignUpModalOpen: false,
+      userId: "",
+      password: "",
     };
+    this.inputHandler = this.inputHandler.bind(this);
+    this.loginRequestHandler = this.loginRequestHandler.bind(this);
+  }
+
+  inputHandler(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  loginRequestHandler() {
+    const { userId, password } = this.state;
+
+    axios
+      .get("http://localhost:8080/tweets")
+      .then((res) => {
+        console.log(this.state.userId);
+        console.log(this.state.password);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(this.state.userId);
+        console.log(this.state.password);
+        console.log("ImERRRRRRRRRR");
+      });
   }
 
   openSignUpModal = () => {
@@ -19,6 +45,7 @@ class LoginModal extends Component {
   closeSignUpModal = () => {
     this.setState({ isSignUpModalOpen: false });
   };
+
   render() {
     let { isLoginOpen, close } = this.props;
 
@@ -27,16 +54,30 @@ class LoginModal extends Component {
         {isLoginOpen ? (
           <div className="modal" onClick={close}>
             <div className="loginModal" onClick={(e) => e.stopPropagation()}>
-
               <span className="close" onClick={close}>
                 &times;
               </span>
               <div className="modalContents">
-                <input className="loginId" placeholder="아이디" />
-                <input className="loginPw" placeholder="비밀번호" />
-                <Link className="loginBtn" to="/main">
+                <input
+                  className="loginId"
+                  name="userId"
+                  onChange={(e) => this.inputHandler(e)}
+                  type="text"
+                  value={this.state.userId}
+                  placeholder="아이디"
+                />
+                <input
+                  className="loginPw"
+                  name="password"
+                  onChange={(e) => this.inputHandler(e)}
+                  type="password"
+                  value={this.state.password}
+                  placeholder="비밀번호"
+                />
+                <button className="loginBtn" onClick={this.loginRequestHandler}>
                   로그인
-                </Link>
+                </button>
+
                 <div className="socialBox">
                   <button
                     className="loginModal_signupBtn"
