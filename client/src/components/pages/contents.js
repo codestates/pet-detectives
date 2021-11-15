@@ -1,8 +1,65 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header/header";
+import axios from "axios";
 
 class contents extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "test@test.com",
+      image: "hi",
+      description: "",
+      pet_name: "",
+      pet_sex: "",
+      pet_age: "",
+      pet_category: "",
+      pet_lost_date: "",
+      pet_lost_region: "서울",
+      is_found: "false",
+    };
+    this.inputHandler = this.inputHandler.bind(this);
+    this.contentsRequestHandler = this.contentsRequestHandler.bind(this);
+  }
+
+  inputHandler(e) {
+    console.log("imInput");
+    this.setState({ [e.target.name]: e.target.value });
+  }
+  contentsRequestHandler() {
+    const {
+      email,
+      image,
+      description,
+      pet_name,
+      pet_sex,
+      pet_age,
+      pet_category,
+      pet_lost_date,
+      pet_lost_region,
+      is_found,
+    } = this.state;
+    axios
+      .post("http://localhost:8080/pet/petregister", {
+        email: email,
+        image: image,
+        description: description,
+        pet_name: pet_name,
+        pet_sex: pet_sex,
+        pet_age: pet_age,
+        pet_category: pet_category,
+        pet_lost_date: pet_lost_date,
+        pet_lost_region: pet_lost_region,
+        is_found: is_found,
+      })
+      .then((res) => {
+        console.log("im good", res);
+        // window.location.href = "/main";
+      })
+      .catch((err) => {
+        console.log("ImERRRRAAAARRRRRR", this.state);
+      });
+  }
   render() {
     return (
       <>
@@ -57,6 +114,9 @@ class contents extends Component {
                       피드 내용
                       <input
                         type="text"
+                        onChange={(e) => this.inputHandler(e)}
+                        value={this.state.description}
+                        name="description"
                         className="inputbox_default"
                         id="text_inputbox"
                         placeholder="문구 입력 ..."
@@ -67,19 +127,39 @@ class contents extends Component {
                 <div className="contents_box_high_infobox_high_middle">
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">이름</span>
-                    <input className="contents_input"></input>
+                    <input
+                      className="contents_input"
+                      onChange={(e) => this.inputHandler(e)}
+                      value={this.state.pet_name}
+                      name="pet_name"
+                    />
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">성별</span>
-                    <input className="contents_input"></input>
+                    <input
+                      className="contents_input"
+                      onChange={(e) => this.inputHandler(e)}
+                      value={this.state.pet_sex}
+                      name="pet_sex"
+                    />
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">나이</span>
-                    <input className="contents_input"></input>
+                    <input
+                      className="contents_input"
+                      onChange={(e) => this.inputHandler(e)}
+                      value={this.state.pet_age}
+                      name="pet_age"
+                    />
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">종류</span>
-                    <input className="contents_input"></input>
+                    <input
+                      className="contents_input"
+                      onChange={(e) => this.inputHandler(e)}
+                      value={this.state.pet_category}
+                      name="pet_category"
+                    />
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">잃어버린 위치</span>
@@ -139,14 +219,22 @@ class contents extends Component {
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">실종날짜</span>
-                    <input className="contents_input"></input>
+                    <input
+                      className="contents_input"
+                      onChange={(e) => this.inputHandler(e)}
+                      value={this.state.pet_lost_date}
+                      name="pet_lost_date"
+                    />
                   </div>
                 </div>
                 <div className="contents_box_high_infobox_high_right"></div>
               </div>
               <div className="contents_box_high_infobox_low">
                 <div className="contents_box_high_infobox_low_button">
-                  <button className="contents_box_pushBtn">
+                  <button
+                    className="contents_box_pushBtn"
+                    onClick={this.contentsRequestHandler}
+                  >
                     반려동물 등록하기
                   </button>
                 </div>
