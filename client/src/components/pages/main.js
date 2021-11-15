@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import CommentModal from "./Modal/comment_modal";
 import MainSideBar from "./Sidebar/mainsidebar";
 import Header from "./Header/header";
-import LostPet from "./MainLostPet/LostPet";
-
+import LostPet from "./MainLostPet/LostPet"
 
 class main extends Component {
   constructor(props) {
@@ -44,8 +43,21 @@ class main extends Component {
         <div className="main_box">
           <MainSideBar />
           <div className="showing_lost_pet_box">
+          <LostPet 
+            openCommentModal={this.openCommentModal}/>
             <LostPet 
             openCommentModal={this.openCommentModal}/>
+            <LostPet 
+            openCommentModal={this.openCommentModal}/>
+            <LostPet 
+            openCommentModal={this.openCommentModal}/>
+            <LostPet 
+            openCommentModal={this.openCommentModal}/>
+            <LostPet 
+            openCommentModal={this.openCommentModal}/>
+            
+            
+            
             <div className="pagination">pagination 구현</div>
             <div className="footer_space"></div>
           </div>

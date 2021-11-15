@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import Header from "./Header/header";
 
 class contents extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
+
+
   render() {
     return (
       <>
@@ -67,19 +75,23 @@ class contents extends Component {
                 <div className="contents_box_high_infobox_high_middle">
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">이름</span>
-                    <input className="contents_input"></input>
+                    <input className="contents_input"
+                    ></input>
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">성별</span>
-                    <input className="contents_input"></input>
+                    <input className="contents_input"
+                    ></input>
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">나이</span>
-                    <input className="contents_input"></input>
+                    <input className="contents_input"
+                    ></input>
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">종류</span>
-                    <input className="contents_input"></input>
+                    <input className="contents_input"
+                    ></input>
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">잃어버린 위치</span>
@@ -139,14 +151,17 @@ class contents extends Component {
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">실종날짜</span>
-                    <input className="contents_input"></input>
+                    <input className="contents_input"
+                    ></input>
                   </div>
                 </div>
                 <div className="contents_box_high_infobox_high_right"></div>
               </div>
               <div className="contents_box_high_infobox_low">
                 <div className="contents_box_high_infobox_low_button">
-                  <button className="contents_box_pushBtn">
+                  <button 
+                  className="contents_box_pushBtn"
+                  >
                     반려동물 등록하기
                   </button>
                 </div>
