@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./signUpModal.css";
+
+// axios.defaults.withCredentials = true;
 
 class SignUpModal extends Component {
   constructor(props) {
@@ -9,32 +11,52 @@ class SignUpModal extends Component {
     this.state = {
       email: "",
       password: "",
-      nickName: "",
+      nickname: "",
+      passwordCheck: "",
+      passwordChecked: false,
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.singUpRequestHandler = this.singUpRequestHandler.bind(this);
   }
 
   inputHandler(e) {
+    console.log("imInput");
     this.setState({ [e.target.name]: e.target.value });
+    if (e.target.name !== "name") {
+      setTimeout(this.passwordChecking, 100);
+    }
   }
-  singUpRequestHandler() {
-    const { userId, password, nickName } = this.state;
 
-    axios
-      .post("http://localhost:8080/auth/signup", {
-        email: this.state.email,
-        nickname: this.state.nickName,
-        password: this.state.password,
-      })
-      .then((res) => {
-        console.log("im good", res);
-        console.log("im good", this.state);
-      })
-      .catch((err) => {
-        console.log("ImERRRRAAAARRRRRR");
-        console.log("ImERRRRAAAARRRRRR", this.state);
+  passwordChecking = () => {
+    const { password, passwordCheck } = this.state;
+    if (password === passwordCheck) {
+      this.setState({
+        passwordChecked: true,
       });
+    } else {
+      this.setState({
+        passwordChecked: false,
+      });
+    }
+  };
+
+  singUpRequestHandler() {
+    const { email, password, nickname, passwordChecked } = this.state;
+    if (passwordChecked) {
+      axios
+        .post("http://localhost:8080/auth/signup", {
+          email: email,
+          nickname: nickname,
+          password: password,
+        })
+        .then((res) => {
+          console.log("im good", res);
+          window.location.href = "/main";
+        })
+        .catch((err) => {
+          console.log("ImERRRRAAAARRRRRR", this.state);
+        });
+    }
   }
   render() {
     const { isSignUpModalOpen, close } = this.props;
@@ -62,25 +84,39 @@ class SignUpModal extends Component {
                 </div>
                 <input
                   className="signNickName"
-                  name="nickName"
+                  name="nickname"
                   onChange={(e) => this.inputHandler(e)}
                   type="text"
-                  value={this.state.nickName}
+                  value={this.state.nickname}
                   placeholder="닉네임"
                 />
                 <input
                   className="signPw"
                   name="password"
                   onChange={(e) => this.inputHandler(e)}
+                  // onChange={(e) => this.passwordChecking(e)}
                   type="password"
                   value={this.state.password}
                   placeholder="비밀번호"
                 />
                 <input
                   className="signPw"
+                  name="passwordCheck"
+                  onChange={(e) => this.inputHandler(e)}
                   type="password"
+                  value={this.state.passwordCheck}
                   placeholder="비밀번호확인"
                 />
+                <div class="signTry">
+                  <span class="signTry_span">
+                    {this.state.passwordChecked ? (
+                      <span></span>
+                    ) : (
+                      <span>비밀번호가 일치하지 않습니다. </span>
+                    )}
+                  </span>
+                </div>
+
                 <button className="signBtn" onClick={this.singUpRequestHandler}>
                   회원가입
                 </button>
