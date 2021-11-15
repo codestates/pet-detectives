@@ -8,11 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-<<<<<<< HEAD:server/migrations/20211114105052-create-user.js
-      nickname: {
-=======
       email: {
->>>>>>> b22fe6f2dd68442a707479d3da1c5c7b010bbdf0:server/migrations/20211112140836-create-user.js
         type: Sequelize.STRING
       },
       nickname: {
