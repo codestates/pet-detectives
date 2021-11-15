@@ -83,6 +83,7 @@ a:active {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 10%;
   /* display: inline-grid; */
   /* grid-template-rows: 50% 50%; */
   /* grid-template-columns: 50% 50%; */
@@ -92,12 +93,20 @@ a:active {
   background-color: #1b3960;
   color:white;
   font-weight: bold;
+  height: 10%;
+}
+
+.sidebar_district_box:active {
+  color: rgb(80, 75, 75);
+  font-weight: bold;
+}
+.sidebar_district_Link {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 11%;
 }
-
 
 .header_box {
   background-color: white;
@@ -117,9 +126,6 @@ a:active {
   border-bottom: solid 3px rgb(74, 74, 194, 0.7);
 }
 
-.header {
-  box-shadow: 0 4px 4px 0px black;
-}
 
 /* content */
 
