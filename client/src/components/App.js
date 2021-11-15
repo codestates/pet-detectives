@@ -7,8 +7,6 @@ import contents from "./pages/contents";
 import my_page from "./pages/my_page";
 import found_pet from "./pages/found_pet";
 import map from "./pages/map";
-import Header from "./pages/Header/header";
-import SideBar from "./sidebar";
 import "./css/app.css";
 import "./css/app2.css";
 
