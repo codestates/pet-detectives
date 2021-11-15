@@ -9,7 +9,7 @@ class LoginModal extends Component {
     super(props);
     this.state = {
       isSignUpModalOpen: false,
-      userId: "",
+      email: "",
       password: "",
     };
     this.inputHandler = this.inputHandler.bind(this);
@@ -24,18 +24,23 @@ class LoginModal extends Component {
     const { userId, password } = this.state;
 
     axios
-      .get("http://localhost:8080/tweets")
+      .post("http://localhost:8080/auth/signin", {
+        email: this.state.email,
+        password: this.state.password,
+      })
       .then((res) => {
-        console.log(this.state.userId);
-        console.log(this.state.password);
-        console.log(res.data);
+        console.log("good", res);
+        console.log("good", this.state);
+        window.location.href = "/main";
       })
       .catch((err) => {
-        console.log(this.state.userId);
-        console.log(this.state.password);
-        console.log("ImERRRRRRRRRR");
+        console.log("ImERRRRRRRRRR", this.state);
       });
   }
+
+  hotlink = () => {
+    window.location.href = "/main";
+  };
 
   openSignUpModal = () => {
     console.log("singup!!", this.state.isSignUpModalOpen);
@@ -60,10 +65,10 @@ class LoginModal extends Component {
               <div className="modalContents">
                 <input
                   className="loginId"
-                  name="userId"
+                  name="email"
                   onChange={(e) => this.inputHandler(e)}
                   type="text"
-                  value={this.state.userId}
+                  value={this.state.email}
                   placeholder="아이디"
                 />
                 <input
@@ -99,6 +104,12 @@ class LoginModal extends Component {
                     />
                     <div className="googleText">구글 계정으로 신규가입</div>
                   </div>
+                  <button
+                    className="loginModal_signupBtn"
+                    onClick={this.hotlink}
+                  >
+                    메인페이지로~
+                  </button>
                 </div>
               </div>
               {/* <div className="signup_box">ddd</div> */}
