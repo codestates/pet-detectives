@@ -22,9 +22,8 @@ app.use(express.urlencoded({ extended: false })); // qs모듈로 추가적인 �
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["https://localhost:3000"], // 허락하고자하는 요청 주소
-    methods: ["GET", "POST", "OPTIONS", "PATCH","DELETE"], // 허락하고자 하는 method
-
+    origin: ["http://localhost:3000"], // 허락하고자하는 요청 주소
+    methods: ["GET", "POST", "OPTIONS", "PATCH", "DELETE"], // 허락하고자 하는 method
   })
 );
 //미들웨어 구성 /user, /pet , /search , /google, 루트와 연결
