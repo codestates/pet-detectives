@@ -5,7 +5,7 @@ import CommentModal from "./Modal/comment_modal";
 import MainSideBar from "./Sidebar/mainsidebar";
 import Header from "./Header/header";
 import LostPet from "./MainLostPet/LostPet";
-import axios from 'axios'
+
 
 class main extends Component {
   constructor(props) {
