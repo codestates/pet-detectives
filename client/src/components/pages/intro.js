@@ -14,7 +14,9 @@ class intro extends Component {
   }
 
   openLoginModal = () => {
+    if (this.state.isSignUpModalOpen) return;
     this.setState({ isLoginModalOpen: true });
+    console.log("login", this.state.isSignUpModalOpen);
   };
 
   closeLoginModal = () => {
@@ -44,10 +46,6 @@ class intro extends Component {
               <div className="intro_btn_box">
                 <button className="intro_btn" onClick={this.openLoginModal}>
                   Log-In
-                </button>
-
-                <button className="intro_btn" onClick={this.openSignUpModal}>
-                  회원가입
                 </button>
               </div>
             </div>
