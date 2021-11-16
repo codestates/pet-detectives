@@ -67,6 +67,13 @@
   box-sizing: border-box;
 }
 
+.canSignUp {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  opacity: 0.4;
+}
+
 .signBtn {
   height: 40px;
   font-size: 22px;
@@ -75,7 +82,7 @@
   background-color: black;
   color: white;
   line-height: 1px;
-  margin-top: 80px;
+  margin-top: 5%;
   margin-bottom: 12px;
   border-radius: 3px;
   border-style: none;
