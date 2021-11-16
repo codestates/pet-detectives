@@ -24,6 +24,7 @@ class contents extends Component {
 
   inputHandler(e) {
     console.log("imInput");
+    console.log(e.target.name);
     this.setState({ [e.target.name]: e.target.value });
   }
   contentsRequestHandler() {
@@ -54,6 +55,7 @@ class contents extends Component {
       })
       .then((res) => {
         console.log("im good", res);
+        console.log(res.data.data);
         // window.location.href = "/main";
       })
       .catch((err) => {
@@ -163,7 +165,12 @@ class contents extends Component {
                   </div>
                   <div className="contents_box_high_infobox_high_middle_infobox">
                     <span className="contents_text">잃어버린 위치</span>
-                    <select className="contents_dropdown">
+                    <select
+                      className="contents_dropdown"
+                      onChange={(e) => this.inputHandler(e)}
+                      value={this.state.pet_lost_region}
+                      name="pet_lost_region"
+                    >
                       <option className="contents_dropdown_list" value="서울">
                         서울
                       </option>
