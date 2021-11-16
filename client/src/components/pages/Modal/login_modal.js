@@ -29,9 +29,9 @@ class LoginModal extends Component {
         password: this.state.password,
       })
       .then((res) => {
-        console.log("good", res);
+        console.log("good", res.data.accessToken);
         console.log("good", this.state);
-        window.location.href = "/main";
+        // window.location.href = "/main";
       })
       .catch((err) => {
         console.log("ImERRRRRRRRRR", this.state);
