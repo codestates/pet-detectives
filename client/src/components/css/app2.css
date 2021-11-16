@@ -72,22 +72,24 @@
 
 .showing_lost_pet_box {
   padding-left: 20%;
-  padding-right: 30px;
+  padding-right: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow: auto;
 }
 .showing_lost_pet {
-  width: 100%;
-  height: 100%;
+  border: solid 1px #1b5ac2;
+  width: 600px;
+  height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .showing_lost_pet_space {
   width: 600px;
-  height: 10%;
+  height: 20%;
 }
 .showing_lost_pet_header {
   border-top: 1px solid black;
