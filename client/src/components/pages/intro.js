@@ -10,8 +10,10 @@ class intro extends Component {
       isLoginModalOpen: false,
       isSignUpModalOpen: false,
       isIntro: true,
+      accessToken: "",
     };
   }
+
 
   openLoginModal = () => {
     if (this.state.isSignUpModalOpen) return;
@@ -73,6 +75,7 @@ class intro extends Component {
           </ul>
         </div>
         <LoginModal
+          issueAccessToken={this.issueAccessToken}
           isLoginOpen={this.state.isLoginModalOpen}
           close={this.closeLoginModal}
         />

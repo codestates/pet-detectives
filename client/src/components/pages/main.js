@@ -74,7 +74,8 @@ class main extends Component {
               <div className="scroll_image_minibox_space">맨위로</div>
               <div className="scroll_image_minibox">
                 <img className="backtotopArrow_image"
-                onClick={this.scrollToTop} src="image/backtotop.png"></img>
+                 src="image/backtotop.png"
+                 onClick={this.scrollToTop}></img>
               </div>
             </div>
           </div>

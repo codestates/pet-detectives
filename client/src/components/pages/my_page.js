@@ -26,7 +26,7 @@ class my_page extends Component {
 deleteLostpet = (idx) => {
   let lostpetListdata = this.state.lostpetList
   lostpetListdata.splice(idx,1)
-  // console.log('wow',idx)
+  console.log('wow',idx)
   this.setState({lostpetList : lostpetListdata})
 }
       

@@ -1,10 +1,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import DeleteConfirmModal from "../Modal/deleteConfirm_Modal";
 
 class RegisteredPet extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isdeleteConfirmOpen : false,
+    }
+  }
+
+  opendeleteConfirmModal = () => {
+    this.setState({ isdeleteConfirmOpen : true });
+  };
+
+  closedeleteConfirmModal = () => {
+    window.location.href = "/my_page"
+  };
+
 
   render() {
     const { lostpet, idx, deleteLostpet } = this.props
+
     return (
       <>
         <div className="mypage_middleSpace_myRegisteredInfo">
@@ -19,10 +36,7 @@ class RegisteredPet extends Component {
             <div className="mypage_pet_location_value">{lostpet.location}</div>
             <button
               className="mypage_middleSpace_myRegisteredInfo_exit"
-              onClick={() => {
-                // console.log(idx)
-                deleteLostpet(idx)}}
-            >
+              onClick={this.opendeleteConfirmModal}>
               x
             </button>
           </div>
@@ -51,6 +65,12 @@ class RegisteredPet extends Component {
             </div>
           </div>
         </div>
+        <DeleteConfirmModal
+        deleteLostpet={deleteLostpet}
+        idx={idx}
+        isdeleteConfirmOpen={this.state.isdeleteConfirmOpen}
+        close={this.closedeleteConfirmModal}
+        />
       </>
     );
   }
