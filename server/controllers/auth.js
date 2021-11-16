@@ -77,7 +77,7 @@ signinController: (req,res) =>{
     }
  //로그인 시 입력한 데이터와 db 일치하는지 확인, 일치 -> 로그인, 불일치 -> 로그인 x
     user.findOne({where:{email,password}}).then(data=>{
-        // console.log(data.dataValues)
+        console.log(data.dataValues)
         if(!data){
             return res.status(404).send({message:'존재하지 않는 회원입니다.'})
         }
@@ -87,9 +87,9 @@ signinController: (req,res) =>{
     const accessToken = generateAccessToken(data.dataValues)
 //     const refreshToken = generateRefreshToken(data.dataValues)
 // sendToken(res,accessToken)
-res.setHeader('authorization', accessToken);
+// res.setHeader('authorization', accessToken);
 
-sendRefreshToken(res,refreshToken)
+// sendRefreshToken(res,refreshToken)
 
    return res.status(200).send({ accessToken ,message:'로그인 되었습니다.'})
 // res.json(accessToken)
