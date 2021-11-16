@@ -24,6 +24,7 @@ app.use(
   cors({
     origin: ["http://localhost:3000"], // 허락하고자하는 요청 주소
     methods: ["GET", "POST", "OPTIONS", "PATCH", "DELETE"], // 허락하고자 하는 method
+    exposeHeaders: ['*','Authorization']
   })
 );
 
