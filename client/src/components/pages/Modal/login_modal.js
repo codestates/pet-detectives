@@ -22,23 +22,6 @@ class LoginModal extends Component {
   }
 
   loginRequestHandler() {
-<<<<<<< HEAD
-    const { userId, password } = this.state;
-
-    axios
-      .post("http://localhost:8080/auth/signin", {
-        email: this.state.email,
-        password: this.state.password,
-      })
-      .then((res) => {
-        console.log("good", res.data.accessToken);
-        console.log("good", this.state);
-        // window.location.href = "/main";
-      })
-      .catch((err) => {
-        console.log("ImERRRRRRRRRR", this.state);
-      });
-=======
     const { email, password } = this.state;
     if (email && password) {
       axios
@@ -57,7 +40,6 @@ class LoginModal extends Component {
     } else {
       this.setState({ loginCheckText: "로그인에 실패 하였습니다." });
     }
->>>>>>> ee5cdfb0bfde35eab31242a1a5f19e13eac65bfc
   }
 
   hotlink = () => {

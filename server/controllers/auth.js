@@ -68,88 +68,6 @@ module.exports = {
         .status(400)
         .send({ message: "이메일, 비밀번호를 입력해주세요" });
     }
-<<<<<<< HEAD
- //로그인 시 입력한 데이터와 db 일치하는지 확인, 일치 -> 로그인, 불일치 -> 로그인 x
-    user.findOne({where:{email,password}}).then(data=>{
-        console.log(data.dataValues)
-        if(!data){
-            return res.status(404).send({message:'존재하지 않는 회원입니다.'})
-        }
-//로그인 성공시 토큰 발급 access , refresh 
-
-
-    const accessToken = generateAccessToken(data.dataValues)
-//     const refreshToken = generateRefreshToken(data.dataValues)
-// sendToken(res,accessToken)
-// res.setHeader('authorization', accessToken);
-
-// sendRefreshToken(res,refreshToken)
-
-   return res.status(200).send({ accessToken ,message:'로그인 되었습니다.'})
-// res.json(accessToken)
-    }).catch(err=>{
-        console.log(err)
-    })
-
-
-},
-// googleSigninControl:(req,res)=>{
-// // console.log(req.body.authorizationCode)
-//     axios.post('https://oauth2.googleapis.com/token',
-//    {client_id:GOOGLE_CLIENT_ID,redirect_uri:'https%3A//oauth2.example.com/code',client_secret:GOOGLE_CLIENT_SECRET,code:'4/P7q7W91a-oMsCeLvIaQm6bTrgtp7',
-//         grant_type:'authorization_code'} ,{headers:{'Content-type':'application/x-www-form-urlencoded'}} )
-//         .then(rsp=>{
-//         console.log(rsp)
-//         })
-
-
-// },
-
-signoutContorller:async(req,res) =>{
-
-// console.log(req.headers.authorization)
-// const accessTokenData = authorized(req,req.headers.authorization) 
-// console.log(accessTokenData)
-// //accesstoken이 없어도 refresh는 삭제
-// if(!accessTokenData){
-//  //쿠키삭제
-// sendRefreshToken('refresh','')
-//     return res.status(401).send({message:'토큰이 존재하지 않습니다.'})
-// }
-// //logout시 accesstoken 을 검증한뒤 존재하면 (쿠키, 헤더 삭제)
-
-
-// res.setHeader('authorization', '')
-sendRefreshToken('refresh','')
-
-
-   return res.status(205).send({message:'로그아웃 완료}'})
-// }
-
-},
-
-// newTokenController: async (req,res) =>{
-
-//     console.log(req.cookies.refresh)
-//     const refreshTokenData = authorized(req,req.cookies.refresh)
-//     if(!refreshTokenData){
-//         return res.status(401).sned({message:'해독할 수 없다.'})
-//     }
-
-// const userToken = await user.findOne({where:{email:refreshTokenData.email} } )
-
-// if(!userToken ){
-//     return res.status(401).send({message:'토큰과 일치하는 정보 없다'})
-// }
-
-// const accessToken = generateAccessToken(userToken )
-
-// return res.status(200).send({data:{accessToken:accessToken},message:'새 토큰 발급'})
-
-// }
-
-}
-=======
     //로그인 시 입력한 데이터와 db 일치하는지 확인, 일치 -> 로그인, 불일치 -> 로그인 x
     user
       .findOne({ where: { email, password } })
@@ -226,4 +144,3 @@ sendRefreshToken('refresh','')
 
   // }
 };
->>>>>>> ee5cdfb0bfde35eab31242a1a5f19e13eac65bfc
