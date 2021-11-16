@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import CommentModal from "./Modal/comment_modal";
 import MainSideBar from "./Sidebar/mainsidebar";
 import Header from "./Header/header";
-import LostPet from "./MainLostPet/LostPet";
-
+import LostPet from "./MainLostPet/LostPet"
+import { useRef } from "react";
 
 class main extends Component {
   constructor(props) {
@@ -26,6 +26,11 @@ class main extends Component {
   };
  // 모달관련
 
+  upToArrow = React.createRef()
+  scrollToTop = (event) => {
+    this.upToArrow.current.scrollTo(0, 0);
+  }
+  
   async getPet() {
     // 서버에 GET /pet 로 요청?
     
@@ -38,16 +43,40 @@ class main extends Component {
 
 
   render() {
+    
+
+
     return (
       <>
         <Header />
         <div className="main_box">
           <MainSideBar />
-          <div className="showing_lost_pet_box">
+          <div className="showing_lost_pet_box"
+          ref={this.upToArrow}>
             <LostPet 
             openCommentModal={this.openCommentModal}/>
-            <div className="pagination">pagination 구현</div>
-            <div className="footer_space"></div>
+            <LostPet 
+            openCommentModal={this.openCommentModal}/>
+            <LostPet 
+            openCommentModal={this.openCommentModal}/>
+            <LostPet 
+            openCommentModal={this.openCommentModal}/>
+            <LostPet 
+            openCommentModal={this.openCommentModal}/>
+            <LostPet 
+            openCommentModal={this.openCommentModal}/>
+
+            {/* <div className="pagination">pagination 구현</div>
+            <div className="footer_space"></div> */}
+          </div>
+          <div className="up_to_scroll">
+            <div className="scroll_image_box">
+              <div className="scroll_image_minibox_space">맨위로</div>
+              <div className="scroll_image_minibox">
+                <img className="backtotopArrow_image"
+                onClick={this.scrollToTop} src="image/backtotop.png"></img>
+              </div>
+            </div>
           </div>
         </div>
         <CommentModal

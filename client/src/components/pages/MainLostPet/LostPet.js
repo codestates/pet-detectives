@@ -4,7 +4,7 @@ import Tag from "../Tag/tag";
 
 class LostPet extends Component {
   render() {
-    const { openCommentModal } = this.props;
+    const { openCommentModal, lostpet } = this.props;
     return (
       <>
         <div className="showing_lost_pet">

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Header from "./Header/header";
 import RegisteredPet from "./registeredPet/registeredPet";
 import lostpetList from "../dummyfile/lostpetinfo";
-import { ScrollButton } from "../scroll/scroll";
 import UserEdit from "./Modal/userEdit";
 
 class my_page extends Component {
