@@ -2,7 +2,7 @@
   "name": "pet-detectives-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.js" ,
   "scripts": {
     "start": "nodemon index.js"
   },

@@ -25,9 +25,9 @@ sendRefreshToken:(res,token) =>{
     res.cookie('refresh',token,{httpOnly:true,sameSite:'none'}) //secuire 은 https이용하는경우
 
 },
-authorized :(req)=>{
+authorized :(req,token)=>{
 
-    return jwt.verify(req,process.env.ACCESS_SECRET)
+    return jwt.verify(req,token)
 }
 
 //필요할때마다 생성

@@ -2,6 +2,12 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    // await queryInterface.bulkInsert('posts',[{
+
+
+
+    // ],},
+   
     /**
      * Add seed commands here.
      *
@@ -12,8 +18,8 @@ module.exports = {
      * }], {});
     */
   },
-
   down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete('pets',null,{})
     /**
      * Add commands to revert seed here.
      *

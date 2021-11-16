@@ -16,14 +16,17 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
+     
         references: {
           model: {
             tableName: "users",
           },
           key: "id",
         },
-        allowNull: false,
-
+        allowNum:false,
+        onDelete: 'cascade', 
+        onUpdate: 'cascade',
+        
       },
       pet_name: {
         type: Sequelize.STRING
@@ -44,9 +47,8 @@ module.exports = {
         type: Sequelize.DATE
       },
       is_found: {
-        type: Sequelize.BOOLEAN,
-        defaultValue:'false'
-            },
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
