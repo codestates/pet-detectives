@@ -1,0 +1,19 @@
+.box {
+  /* border: solid 7px red; */
+  background-color: rgb(196, 193, 184, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.intro_box {
+  /* border: solid 1px gray; */
+  height: 20vh;
+  width: 25vw;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

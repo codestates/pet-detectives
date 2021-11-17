@@ -143,15 +143,6 @@ class contents extends Component {
                         </div>
                       </Link>
                     </div>
-                    <div className="contents_tag">
-                      #Tags &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input
-                        type="text"
-                        className="inputbox_default"
-                        id="tags_inputbox"
-                        placeholder="#Tags 최소 1개이상 등록해주세요"
-                      ></input>
-                    </div>
                     <div className="contents_box_low_describe">
                       피드 내용 &nbsp;
                       <input

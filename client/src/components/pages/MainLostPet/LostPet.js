@@ -130,19 +130,9 @@ class LostPet extends Component {
                 {petinfo.description}
               </div>
             </div>
-            <div className="showing_lost_pet_describe_tag_box">
-              <Tag></Tag>
-              <Tag></Tag>
-            </div>
+            <div className="showing_lost_pet_describe_tag_box"></div>
           </div>
-          <div className="showing_lost_pet_comment">
-            <button
-              className="showing_lost_pet_comment_btn"
-              onClick={openCommentModal}
-            >
-              댓 글 보 기
-            </button>
-          </div>
+          <div className="showing_lost_pet_comment"></div>
         </div>
       </>
     );

@@ -34,22 +34,25 @@ module.exports = {
       });
   },
   commentregisterController: async (req, res) => {
-    const token = req.headers.token;
-
-    if (!token) {
+    const authorization = req.headers.authorization;
+    console.log(authorization);
+    if (!authorization) {
       return res.status(401).send({ message: "권한이 없습니다." });
     }
 
     const { comment, id } = req.body;
 
-    const accessTokenData = authorized(token);
+    const accessTokenData = authorized(authorization);
 
     const userComment = await user.findOne({
       where: { email: accessTokenData.email },
     }); // id, emial pas, nick
     console.log(userComment.id);
 
-    const postComment = await post.findOne({ id: id }); //post 1 2 3 4 5 6 .. user_id =1
+    const postComment = await post.findOne({
+      where: { user_id: userComment.id, id: id },
+    });
+    //post 1 2 3 4 5 6 .. user_id =1
 
     //post cooment user_id , post_id  1 1 1번 유저가 포스트를 2개  1 2 ,  user_id =1
 
