@@ -30,8 +30,6 @@ class UserEdit extends Component {
   }
 
   inputHandler(e) {
-    console.log(e.target.name);
-    console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.name === "nickname") {
       setTimeout(this.isNickChecking, 100);
@@ -43,7 +41,6 @@ class UserEdit extends Component {
   }
 
   passwordChecking = () => {
-    console.log(this.state.isPasswordChecked);
     const { password1, password2 } = this.state;
     if (password1 === password2) {
       this.setState({
@@ -81,13 +78,11 @@ class UserEdit extends Component {
       });
     } else {
       this.setState({ isNick: true, ediTnicknameCheckText: "" });
-      console.log("good boy~");
     }
   };
 
   ediTnicknameCheckText = () => {
     const { nickname, isNick } = this.state;
-    console.log(nickname);
     if (isNick) {
       axios
         .post("http://localhost:8080/auth/nick", {
@@ -95,7 +90,6 @@ class UserEdit extends Component {
         })
         .then((res) => {
           if (res.status === 200 && nickname) {
-            console.log("ok");
             this.setState({
               ediTnicknameCheckText: "사용가능한 닉네임 입니다.",
             });
@@ -105,14 +99,12 @@ class UserEdit extends Component {
               isNick: false,
             });
           }
-          console.log(res.status);
         })
         .catch((err) => {
           this.setState({
             ediTnicknameCheckText: "사용중인 닉네임 입니다.",
             isNick: false,
           });
-          console.log("imERa~");
         });
     }
   };
@@ -206,9 +198,7 @@ class UserEdit extends Component {
               </div>
             </div>
           </div>
-        ) : (
-          <div>null</div>
-        )}
+        ) : null}
         <ResignModal
           isResignModalOpen={this.state.isResignModalOpen}
           close={this.closeResignModal}
