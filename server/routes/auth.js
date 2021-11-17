@@ -4,7 +4,7 @@ const controller=require('../controllers/auth') //controller auth.js module Í∞ùÏ
 
 
 
-
+// router.post('/post',controller.googlePost)
 router.post('/nick',controller.nickCheckController)
 router.get('/signout',controller.signoutContorller)
 router.post('/signup',controller.signupController)
