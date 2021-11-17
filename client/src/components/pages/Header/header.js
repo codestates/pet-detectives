@@ -15,9 +15,7 @@ class Header extends Component {
   componentDidMount() {
     if (localStorage.getItem("accessToken")) {
       this.setState({ isLoginHeader: true });
-      console.log("true");
     } else {
-      console.log("false");
     }
   }
 
