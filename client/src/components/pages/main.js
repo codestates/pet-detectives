@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import CommentModal from "./Modal/comment_modal";
-import MainSideBar from "./Sidebar/mainsidebar";
 import Header from "./Header/header";
+import MainSideBar from "./Sidebar/mainsidebar";
+import CommentModal from "./Modal/comment_modal";
 import LostPet from "./MainLostPet/LostPet"
 import { useRef } from "react";
+
 
 class main extends Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class main extends Component {
     this.state = {
       isCommentModalOpen : false,
       currnetUrl: window.location.href.query,
+      petinfo : []
     }
   }
 
@@ -27,25 +28,24 @@ class main extends Component {
  // 모달관련
 
   upToArrow = React.createRef()
+
   scrollToTop = (event) => {
     this.upToArrow.current.scrollTo(0, 0);
   }
   
-  async getPet() {
-    // 서버에 GET /pet 로 요청?
-    
-    // await axios.get('http://localhost:8080/pet',{
-    //   // headers: { authorization: `token ${this.props.accessToken}`}
-    // }).then((res) => {
-    //   console.log('token으로 image받고 상태 change? :',this.state)
-    // })
+  getPet() {
+    axios.get("http://localhost:8080/pet/petinfo", {
+    }).then((res) => {
+      this.setState({petinfo: res.data.data.slice()})
+    })
   }
 
+  componentDidMount() {
+    this.getPet()
+  }
 
   render() {
-    
-
-
+    const regex = /[^0-9]/g;
     return (
       <>
         <Header />
@@ -53,19 +53,14 @@ class main extends Component {
           <MainSideBar />
           <div className="showing_lost_pet_box"
           ref={this.upToArrow}>
-            <LostPet 
-            openCommentModal={this.openCommentModal}/>
-            <LostPet 
-            openCommentModal={this.openCommentModal}/>
-            <LostPet 
-            openCommentModal={this.openCommentModal}/>
-            <LostPet 
-            openCommentModal={this.openCommentModal}/>
-            <LostPet 
-            openCommentModal={this.openCommentModal}/>
-            <LostPet 
-            openCommentModal={this.openCommentModal}/>
-
+            {this.state.petinfo.map((pet) => 
+            window.location.href.slice(-4) === "main" && !pet.is_found ?  <LostPet petinfo={pet} openCommentModal={this.openCommentModal}/> :
+            !pet.is_found && pet.pet_lost_region === window.location.search.slice(-2).replace(regex, "") ?
+            <LostPet
+            petinfo={pet}
+            openCommentModal={this.openCommentModal}/> 
+            : null
+            )}
             {/* <div className="pagination">pagination 구현</div>
             <div className="footer_space"></div> */}
           </div>

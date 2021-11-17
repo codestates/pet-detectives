@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Tag from "../Tag/tag";
 
-class LostPet extends Component {
+class FoundPet extends Component {
   render() {
-    const { openCommentModal, petinfo } = this.props;
+    const { petinfo } = this.props;
     let region = "서울"
     if(petinfo.pet_lost_region % 18 === 2) { region = "부산"}
     if(petinfo.pet_lost_region % 18 === 3) { region = "대구"}
@@ -102,11 +102,10 @@ class LostPet extends Component {
             </div>
           </div>
           <div className="showing_lost_pet_comment">
-              <button 
-              className="showing_lost_pet_comment_btn"
-              onClick={openCommentModal}>
+              {/* <button 
+              className="showing_lost_pet_comment_btn">
                 댓 글 달 기
-              </button>
+              </button> */}
           </div>
         </div>
       </>
@@ -114,4 +113,4 @@ class LostPet extends Component {
   }
 }
 
-export default LostPet;
+export default FoundPet;

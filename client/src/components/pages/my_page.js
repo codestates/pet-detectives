@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import axios from "axios";
 import Header from "./Header/header";
 import RegisteredPet from "./registeredPet/registeredPet";
 import lostpetList from "../dummyfile/lostpetinfo";
@@ -13,20 +14,10 @@ class my_page extends Component {
       isUserEditModalOpen: false,
     }
   }
-//   handleButtonClick = (event) => {
-//    const newlostPet = {};
-//    newlostPet.id = this.state.commentList.length+1
-//    newlostPet.name = this.state.commentContents
-//    newlostPet.lostday = this.state.commentContents
-//    newlostPet.age = this.state.commentContents
-//    newlostPet.location = this.state.commentContents
-//   this.setState({lostpetList : [newlostPet, ...this.state.lostpetList]})
-// }
 
 deleteLostpet = (idx) => {
   let lostpetListdata = this.state.lostpetList
   lostpetListdata.splice(idx,1)
-  console.log('wow',idx)
   this.setState({lostpetList : lostpetListdata})
 }
       
@@ -37,6 +28,21 @@ deleteLostpet = (idx) => {
   closeUserEditModal = () => {
     this.setState({ isUserEditModalOpen: false });
   };
+
+  // getregisteredPet() {
+  //   axios.get("http://localhost:8080/pet/petinfo", {
+  //   }).then((res) => {
+  //     this.setState({petinfo: res.data.data.slice()})
+  //   })
+  // }
+
+  // componentDidMount() {
+  //   this.getPet()
+  // }
+
+  
+
+
 
   render() {
     return (
