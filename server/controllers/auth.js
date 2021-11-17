@@ -52,10 +52,10 @@ if(created){
    
     const accessToken = generateAccessToken(data.dataValues)
     const refreshToken = generateRefreshToken(data.dataValues)
-    sendReToken(res,accessToken)
+    sendRefreshToken(res,refreshToken)
     console.log(created,data)
 
-res.status(201).send({data:data.dataValues,message:'회원가입 완료'})
+res.status(201).send({data:data.dataValues,accessToken:accessToken,message:'회원가입 완료'})
 } 
 //이미 있는경우g
 else{
@@ -70,26 +70,6 @@ else{
    
 
 },
-
-
-nickCheckController: (req,res ) =>{
-    const {nickname} = req.body
-    user.findOne({where:{nickname}}).then(data=>{
-        if(!data){
-            res.status(200).send({message:'사용가능한 닉네임 입니다.'})
-        
-        }
-        //이미 있는경우g
-        else {
-          return res
-            .status(400)
-            .send({ message: "이미 존재하는 이메일 입니다." });
-        }
-      }); //catch 로 에러 잡아주기
-
-    //created 이미있는거 보내면 false, 아니면 true;
-  },
-
   nickCheckController: (req, res) => {
     const { nickname } = req.body;
     user
@@ -104,6 +84,7 @@ nickCheckController: (req,res ) =>{
         console.log(err);
       });
   },
+
   signinController: (req, res) => {
     const { password, email } = req.body;
 
