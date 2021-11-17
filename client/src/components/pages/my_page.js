@@ -15,15 +15,7 @@ class my_page extends Component {
       // isDeleteLostPetsModalOpen: true,
     };
   }
-  //   handleButtonClick = (event) => {
-  //    const newlostPet = {};
-  //    newlostPet.id = this.state.commentList.length+1
-  //    newlostPet.name = this.state.commentContents
-  //    newlostPet.lostday = this.state.commentContents
-  //    newlostPet.age = this.state.commentContents
-  //    newlostPet.location = this.state.commentContents
-  //   this.setState({lostpetList : [newlostPet, ...this.state.lostpetList]})
-  // }
+
 
   deleteLostpet = (idx) => {
     let lostpetListdata = this.state.lostpetList;
