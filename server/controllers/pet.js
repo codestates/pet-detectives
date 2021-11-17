@@ -31,21 +31,20 @@ module.exports = {
     //회원 가입한 회원의 email - id
     // console.log(req.headers.authorization,req.cookies)
 
-    const {
-      image,
-      description,
-      pet_name,
-      pet_sex,
-      pet_age,
-      pet_category,
-      pet_lost_region,
-      pet_lost_date,
-      is_found,
-      email,
-    } = req.body;
+    // const {
+    //   image,
+    //   description,
+    //   pet_name,
+    //   pet_sex,
+    //   pet_age,
+    //   pet_category,
+    //   pet_lost_region,
+    //   pet_lost_date,
+    //   is_found,
+    // } = req.body;
 
 
-if(!email||!image||!description||!pet_name||!pet_sex||!pet_category||!pet_lost_region||!pet_lost_date||!pet_age){
+if(!req.body.image||!req.body.description||!req.body.pet_name||!req.body.pet_sex||!req.body.pet_category||!req.body.pet_lost_region||!req.body.pet_lost_date||!req.body.pet_age){
 return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
 }
 //verify ?  검증을 통해 데이터를 넘겨준다?
@@ -65,16 +64,16 @@ return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
     // }
 
     const petReigster = await post.create({
-      image: image,
+      image: req.body.image,
       user_id: userId.dataValues.id,
-      description: description,
-      pet_name: pet_name,
-      pet_sex: pet_sex,
-      pet_age: pet_age,
-      pet_category: pet_category,
-      pet_lost_date: pet_lost_date,
-      pet_lost_region: pet_lost_region,
-      is_found: is_found,
+      description: req.body.description,
+      pet_name: req.body.pet_name,
+      pet_sex: req.body.pet_sex,
+      pet_age: req.body.pet_age,
+      pet_category: req.body.pet_category,
+      pet_lost_date: req.body.pet_lost_date,
+      pet_lost_region: req.body.pet_lost_region,
+      is_found: req.body.is_found,
     });
 
     return res

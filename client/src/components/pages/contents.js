@@ -10,7 +10,6 @@ class contents extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "test@test.com",
       image: "",
       description: "",
       pet_name: "",
@@ -18,14 +17,33 @@ class contents extends Component {
       pet_age: "",
       pet_category: "",
       pet_lost_date: "",
-      pet_lost_region: "서울",
+      pet_lost_region: "",
       is_found: "false",
-      startDate: new Date(),
+      startDate: "",
       imagefile : "",
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.contentsRequestHandler = this.contentsRequestHandler.bind(this);
   }
+
+  getReaction() {
+    console.log(this.state.image)
+    console.log(this.state.description)
+    console.log(this.state.pet_name)
+    console.log(this.state.pet_sex)
+    console.log(this.state.pet_age)
+    console.log(this.state.pet_category)
+    console.log(this.state.pet_lost_date)
+    console.log(this.state.pet_lost_region)
+    console.log(this.state.is_found)
+  }
+
+  componentDidUpdate() {
+    this.getReaction()
+  }
+
+
+
   saveFileImage = (e) => { 
     this.setState({
       imagefile : URL.createObjectURL(e.target.files[0]),
@@ -45,30 +63,33 @@ class contents extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
   contentsRequestHandler() {
-    const {
-      email,
-      image,
-      description,
-      pet_name,
-      pet_sex,
-      pet_age,
-      pet_category,
-      pet_lost_date,
-      pet_lost_region,
-      is_found,
-    } = this.state;
+    // const {
+    //   image,
+    //   description,
+    //   pet_name,
+    //   pet_sex,
+    //   pet_age,
+    //   pet_category,
+    //   pet_lost_date,
+    //   pet_lost_region,
+    //   is_found,
+    // } = this.state;
     axios
       .post("http://localhost:8080/pet/petregister", {
-        email: email,
-        image: image,
-        description: description,
-        pet_name: pet_name,
-        pet_sex: pet_sex,
-        pet_age: pet_age,
-        pet_category: pet_category,
-        pet_lost_date: pet_lost_date,
-        pet_lost_region: pet_lost_region,
-        is_found: is_found,
+        // headers: {
+        //   // token: localStorage.getItem("accessToken"),
+        //   "Content-Type": "application/json",
+        // },
+        // withCredentials: true,
+        image: this.state.image,
+        description: this.state.description,
+        pet_name: this.state.pet_name,
+        pet_sex: this.state.pet_sex,
+        pet_age: this.state.pet_age,
+        pet_category: this.state.pet_category,
+        pet_lost_date: this.state.pet_lost_date,
+        pet_lost_region: this.state.pet_lost_region,
+        // is_found: this.state.is_found,
       })
       .then((res) => {
         console.log("im good", res);
@@ -76,7 +97,7 @@ class contents extends Component {
         // window.location.href = "/main";
       })
       .catch((err) => {
-        console.log("ImERRRRAAAARRRRRR", this.state);
+        console.log(err);
       });
   }
   render() {

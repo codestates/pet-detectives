@@ -45,7 +45,9 @@ class RegisteredPet extends Component {
             <div className="mypage_pet_name">이름 : </div>
             <div className="mypage_pet_name_value">{lostpet.pet_name}</div>
             <div className="mypage_pet_lost_day">잃어버린 날짜 : </div>
-            <div className="mypage_pet_lost_day_value">{lostpet.pet_lost_date.slice(0,10)}</div>
+            <div className="mypage_pet_lost_day_value">
+              {/* {lostpet.pet_lost_date.slice(0,10)} */}
+            </div>
             <div className="mypage_pet_age">나이 : </div>
             <div className="mypage_pet_age_value">{lostpet.pet_age} </div>
             <div className="mypage_pet_location">지역명 : </div>
