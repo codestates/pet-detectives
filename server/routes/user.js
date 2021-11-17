@@ -10,7 +10,6 @@ router.patch('/passwordedit',controller.passwordeditController)
 //유저 비밀번호 수정 /user/useredit
 router.delete('/withdrawal',controller.withdrawalController) 
 //회원탈퇴 /user/withdrawal
-router.delete('googlewithdrawal')
 //소셜 회원탈퇴 /user/googlewithdrawal
 
 module.exports = router
