@@ -31,6 +31,12 @@ a:active {
   justify-content: center;
   align-items: center;
 }
+.h5 {
+  display: flex;
+  font-size: 15px;
+  margin: 5%;
+  width: 100%;
+}
 
 .intro_btn_box {
   /* border: solid 7px blue; */
