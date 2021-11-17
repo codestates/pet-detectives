@@ -23,7 +23,7 @@ module.exports = {
           },
           key: "id",
         },
-        allowNum:false,
+        allowNum: false,
         onDelete: 'cascade', 
         onUpdate: 'cascade',
         
@@ -41,7 +41,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       pet_lost_region: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       pet_lost_date: {
         type: Sequelize.DATE

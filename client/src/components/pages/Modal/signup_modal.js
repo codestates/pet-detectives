@@ -21,6 +21,7 @@ class SignUpModal extends Component {
       isEmail: false,
       isNick: false,
       isPassword: false,
+      isSignUpModalClose: true,
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.singUpRequestHandler = this.singUpRequestHandler.bind(this);
@@ -145,7 +146,7 @@ class SignUpModal extends Component {
         })
         .then((res) => {
           console.log("im good", res);
-          window.location.href = "/main";
+          this.setState({ isSignUpModalClose: false });
         })
         .catch((err) => {
           console.log("ImERRRRAAAARRRRRR", this.state);
@@ -156,9 +157,10 @@ class SignUpModal extends Component {
   }
   render() {
     const { isSignUpModalOpen, close } = this.props;
+
     return (
       <>
-        {isSignUpModalOpen ? (
+        {isSignUpModalOpen && this.state.isSignUpModalClose ? (
           <div className="modal" onClick={close}>
             <div className="SignUpModal" onClick={(e) => e.stopPropagation()}>
               <span className="close" onClick={close}>

@@ -1,7 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import LoginModal from "./Modal/login_modal";
 import SignUpModal from "./Modal/signup_modal";
+
+const mapStateToProps = (state) => {
+  return {
+    articles: state.articles,
+  };
+};
 
 class intro extends Component {
   constructor(props) {
@@ -10,10 +17,8 @@ class intro extends Component {
       isLoginModalOpen: false,
       isSignUpModalOpen: false,
       isIntro: true,
-      accessToken: "",
     };
   }
-
 
   openLoginModal = () => {
     if (this.state.isSignUpModalOpen) return;
@@ -48,20 +53,18 @@ class intro extends Component {
             </div>
             <div className="intro_box">
               <p>
-                현재 실종 동물 수 : 52
-                <br />
-                현재 찾은 동물 수 : 3
+                <p className="h5">현재 실종 동물 수 : 52</p>
+                <p className="h5">현재 찾은 동물 수 : 3</p>
               </p>
             </div>
           </ul>
           <ul>
             <div className="intro_box">
               <p className="intro_box_text">
-                찾을겁니다. 반드시!
+                <h1>찾을겁니다.&nbsp;&nbsp;반드시!</h1>
                 <br />
-                당신의 소중한 반려동물 결코 포기하지 마세요!
-                <br />
-                저희, 그리고 모두가 도와드립니다.
+                <h3>당신의 소중한 반려동물, 결코 포기하지 마세요!</h3>
+                <h3>저희, 그리고 모두가 도와드립니다.</h3>
                 <br />
               </p>
             </div>
@@ -75,7 +78,6 @@ class intro extends Component {
           </ul>
         </div>
         <LoginModal
-          issueAccessToken={this.issueAccessToken}
           isLoginOpen={this.state.isLoginModalOpen}
           close={this.closeLoginModal}
         />
@@ -87,5 +89,7 @@ class intro extends Component {
     );
   }
 }
+
+intro = connect(mapStateToProps)(intro);
 
 export default intro;

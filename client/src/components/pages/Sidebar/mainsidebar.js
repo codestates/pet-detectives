@@ -121,7 +121,7 @@ class MainSideBar extends Component {
             <div className="sidebar_district_box">
               <Link 
               className="sidebar_district_Link"
-              to="/main/?q=g16">
+              to="/main/?q=16">
                 경 남
               </Link>
             </div>

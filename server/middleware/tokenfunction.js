@@ -18,16 +18,16 @@ generateRefreshToken:(data) =>{
 },
 //쿠키로 보내는경우
 sendAccessToken:(res,token) =>{
-    res.cookie('access',token,{httpOnly:true,sameSite:'none'}) //secuire 은 https이용하는경우
+    res.cookie('access',token,{httpOnly:true}) //secuire 은 https이용하는경우
 
 },
 sendRefreshToken:(res,token) =>{
-    res.cookie('refresh',token,{httpOnly:true,sameSite:'none'}) //secuire 은 https이용하는경우
+    res.cookie('refresh',token,{httpOnly:true}) //secuire 은 https이용하는경우
 
 },
-authorized :(req,token)=>{
+authorized :(token)=>{
 
-    return jwt.verify(req,token)
+    return jwt.verify(token, process.env.ACCESS_SECRET)
 }
 
 //필요할때마다 생성

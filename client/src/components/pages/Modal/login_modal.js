@@ -1,16 +1,28 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, Route } from "react-router-dom";
 import "./loginModal.css";
 import SignUpModal from "./signup_modal";
+import { connect } from "react-redux";
+import { addArticle } from "../../../redux/actions";
+
+axios.defaults.withCredentials = true;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addArticle: (article) => dispatch(addArticle(article)),
+  };
+};
 
 class LoginModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLogin: false,
       isSignUpModalOpen: false,
       email: "",
       password: "",
+      token: "",
       loginCheckText: "아이디와 비밀번호를 입력해 주세요.",
     };
     this.inputHandler = this.inputHandler.bind(this);
@@ -18,21 +30,55 @@ class LoginModal extends Component {
   }
 
   inputHandler(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value, token: "dummy" });
   }
 
+  isAuthenticated = () => {
+    // const { token } = this.state;
+    // console.log(this.state.token, "IM SUPER TOKEN");
+    axios
+      .get("http://localhost:8080/user/userinfo", {
+        headers: {
+          token: localStorage.getItem("accessToken"),
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res, "hihihi");
+      })
+      .catch((err) => {
+        console.log("imERROR");
+      });
+  };
+
   loginRequestHandler() {
-    const { email, password } = this.state;
+    const { email, password, token } = this.state;
     if (email && password) {
       axios
-        .post("http://localhost:8080/auth/signin", {
-          email: this.state.email,
-          password: this.state.password,
+        .post(
+          "http://localhost:8080/auth/signin",
+          {
+            email: this.state.email,
+            password: this.state.password,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          console.log("good", res.data);
+          this.setState({
+            token: res.data.accessToken,
+          });
+          localStorage.setItem("accessToken", res.data.accessToken);
         })
         .then((res) => {
-          console.log("good", res);
-          console.log("good", this.state);
-          window.location.href = "/main";
+          console.log(this.state);
+          setTimeout(this.isAuthenticated(), 100);
+          // this.handleResponseSuccess(token);
+          setTimeout(this.isLoginTrue, 200);
         })
         .catch((err) => {
           console.log("ImERRRRRRRRRR", this.state);
@@ -42,12 +88,19 @@ class LoginModal extends Component {
     }
   }
 
+  isLoginTrue = () => {
+    const { token } = this.state;
+    this.props.addArticle({ token });
+    this.setState({
+      isLogin: true,
+    });
+  };
+
   hotlink = () => {
     window.location.href = "/main";
   };
 
   openSignUpModal = () => {
-    console.log("singup!!", this.state.isSignUpModalOpen);
     this.setState({ isSignUpModalOpen: true });
   };
 
@@ -57,7 +110,9 @@ class LoginModal extends Component {
 
   render() {
     let { isLoginOpen, close } = this.props;
-
+    const { token } = this.state;
+    // console.log(this.props);
+    // console.log(this.state);
     return (
       <>
         {isLoginOpen ? (
@@ -94,13 +149,6 @@ class LoginModal extends Component {
                   >
                     회원가입
                   </button>
-                  <div className="google">
-                    <img
-                      className="googleLogo"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMa0_vLo8iP-q1hUHn-7QdD4qdr0OXbMckLg&usqp=CAU"
-                    />
-                    <div className="googleText">구글 계정으로 신규가입</div>
-                  </div>
                   <button
                     className="loginModal_signupBtn"
                     onClick={this.hotlink}
@@ -118,9 +166,12 @@ class LoginModal extends Component {
           isSignUpModalOpen={this.state.isSignUpModalOpen}
           close={this.closeSignUpModal}
         />
+        {this.state.isLogin ? <Redirect to="/main" /> : null}
       </>
     );
   }
 }
+
+LoginModal = connect(null, mapDispatchToProps)(LoginModal);
 
 export default LoginModal;

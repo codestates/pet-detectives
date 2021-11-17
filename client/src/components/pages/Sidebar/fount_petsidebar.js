@@ -36,7 +36,7 @@ class FoundPetSideBar extends Component {
               <Link 
               className="sidebar_district_Link"
               to="/found_pet/?q=4">
-                인천 
+                인 천 
               </Link>
             </div>
             <div className="sidebar_district_box">
