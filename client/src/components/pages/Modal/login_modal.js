@@ -149,13 +149,6 @@ class LoginModal extends Component {
                   >
                     회원가입
                   </button>
-                  <div className="google">
-                    <img
-                      className="googleLogo"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMa0_vLo8iP-q1hUHn-7QdD4qdr0OXbMckLg&usqp=CAU"
-                    />
-                    <div className="googleText">구글 계정으로 신규가입</div>
-                  </div>
                   <button
                     className="loginModal_signupBtn"
                     onClick={this.hotlink}
