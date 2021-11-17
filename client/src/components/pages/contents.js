@@ -11,7 +11,7 @@ class contents extends Component {
     super(props);
     this.state = {
       email: "test@test.com",
-      image: "hi",
+      image: "",
       description: "",
       pet_name: "",
       pet_sex: "",
@@ -20,11 +20,23 @@ class contents extends Component {
       pet_lost_date: "",
       pet_lost_region: "서울",
       is_found: "false",
-      startDate: new Date()
+      startDate: new Date(),
+      imagefile : "",
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.contentsRequestHandler = this.contentsRequestHandler.bind(this);
   }
+  saveFileImage = (e) => { 
+    this.setState({
+      imagefile : URL.createObjectURL(e.target.files[0]),
+      image : URL.createObjectURL(e.target.files[0])
+    })
+  };
+
+  deleteFileImage = () => { 
+    URL.revokeObjectURL(this.state.imagefile)
+    this.setState({imagefile : "", image: "" })
+  };
 
 
   inputHandler(e) {
@@ -80,20 +92,28 @@ class contents extends Component {
                   <div className="contents_box_high_infobox_high_left_imgbox">
                     <div className="contents_box_high_infobox_high_left_imgbox_text">
                       <div className="contents_box_high_infobox_high_left_imgbox_text_main">
-                      &nbsp;&nbsp;&nbsp;실종 동물 이미지
+                      &nbsp;&nbsp;&nbsp;실 종&nbsp;&nbsp;동 물&nbsp;&nbsp; 이 미 지
                       </div>
                       <div className="contents_box_high_infobox_high_left_imgbox_text_space">
-                        <label for="upload" className="contents_box_high_infobox_high_left_imgbox_text_space_button">
+                        <label for="upload" className="contents_box_high_infobox_high_left_imgbox_text_space_button1">
                           사진 올리기
                         </label>
+                      </div>
+                      <div className="contents_box_high_infobox_high_left_imgbox_text_space">
+                        <div 
+                        className="contents_box_high_infobox_high_left_imgbox_text_space_button2"
+                        onClick={this.deleteFileImage}>
+                          사진 삭제
+                        </div>
                       </div>
                     </div>
                     <div className="contents_box_high_infobox_high_left_imgbox_img">
                       <div className="contents_box_high_infobox_high_left_imgbox_img_center">
-                      
-                      <input type="file" accept="img/*" id="upload" className="uploaded_img" />
+                      {this.state.imagefile && (<img className="uploaded_img" alt="sample" src={this.state.imagefile} style={{ margin: "auto" }} />)}
+                      <input type="file" accept="img/*" id="upload" className="upload" 
+                        onChange={this.saveFileImage}/>
                         <span className="contents_box_high_infobox_high_left_imgbox_img_text">
-                          이미지를 등록해 주세요
+                        {!this.state.imagefile && "이미지를 등록해 주세요"}
                         </span>
                       </div>
                     </div>
@@ -231,13 +251,13 @@ class contents extends Component {
                     <span className="contents_text">실종날짜</span>
                     <div
                       className="contents_input_date"
-                      onChange={(e) => this.inputHandler(e)}
-                      value={this.state.pet_lost_date}
+                      // onChange={(e) => this.inputHandler(e)}
+                      // value={this.state.pet_lost_date}
                       name="pet_lost_date">
                         <DatePicker
                         className="date_picker"
                         selected={this.state.startDate} 
-                        onChange={(date) => this.setState({startDate : date})}
+                        onChange={(date) => this.setState({startDate : date, pet_lost_date : date})}
                         />
                     </div>
                   </div>
