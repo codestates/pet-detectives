@@ -79,27 +79,47 @@ nickCheckController: (req,res ) =>{
             res.status(200).send({message:'사용가능한 닉네임 입니다.'})
         
         }
-        res.status(400).send({message:'존재하는 닉네임 입니다.'})
-    })
-    .catch(err=>{
-      console.log(err)
-    })
+        //이미 있는경우g
+        else {
+          return res
+            .status(400)
+            .send({ message: "이미 존재하는 이메일 입니다." });
+        }
+      }); //catch 로 에러 잡아주기
 
-},
-signinController: (req,res) =>{
+    //created 이미있는거 보내면 false, 아니면 true;
+  },
 
+  nickCheckController: (req, res) => {
+    const { nickname } = req.body;
+    user
+      .findOne({ where: { nickname } })
+      .then((data) => {
+        if (!data) {
+          res.status(200).send({ message: "사용가능한 닉네임 입니다." });
+        }
+        res.status(400).send({ message: "존재하는 닉네임 입니다." });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  signinController: (req, res) => {
+    const { password, email } = req.body;
 
-    const {password, email} =req.body
-    
     //pas, em 입력안한경우
-    if(!password||!email){
-        return res.status(400).send({message:'이메일, 비밀번호를 입력해주세요'})
+    if (!password || !email) {
+      return res
+        .status(400)
+        .send({ message: "이메일, 비밀번호를 입력해주세요" });
     }
- //로그인 시 입력한 데이터와 db 일치하는지 확인, 일치 -> 로그인, 불일치 -> 로그인 x
-    user.findOne({where:{email,password}}).then(data=>{
+    //로그인 시 입력한 데이터와 db 일치하는지 확인, 일치 -> 로그인, 불일치 -> 로그인 x
+    user
+      .findOne({ where: { email, password } })
+      .then((data) => {
         // console.log(data.dataValues)
-        if(!data){
-            return res.status(404).send({message:'존재하지 않는 회원입니다.'})
+        if (!data) {
+          return res.status(404).send({ message: "존재하지 않는 회원입니다." });
         }
 //로그인 성공시 토큰 발급 access , refresh 
 

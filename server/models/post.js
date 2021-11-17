@@ -33,7 +33,7 @@ foreignKey:'user_id'
     pet_sex: DataTypes.STRING,
     pet_age: DataTypes.INTEGER,
     pet_category: DataTypes.STRING,
-    pet_lost_region: DataTypes.STRING,
+    pet_lost_region: DataTypes.INTEGER,
     pet_lost_date: DataTypes.DATE,
     is_found: DataTypes.BOOLEAN
   }, {
