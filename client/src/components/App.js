@@ -7,8 +7,15 @@ import contents from "./pages/contents";
 import my_page from "./pages/my_page";
 import found_pet from "./pages/found_pet";
 import map from "./pages/map";
+
+import store from "../redux/store";
+import { addArticle } from "../redux/actions";
+
 import "./css/app.css";
 import "./css/app2.css";
+
+window.store = store;
+window.addArticle = addArticle;
 
 class App extends Component {
   constructor(props) {
@@ -18,6 +25,9 @@ class App extends Component {
     };
   }
 
+  reduxConsole = () => {
+    console.log("hi");
+  };
 
   render() {
     return (

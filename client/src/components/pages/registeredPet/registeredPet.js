@@ -6,22 +6,22 @@ class RegisteredPet extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isdeleteConfirmOpen : false,
-    }
+      isDeleteLostPetsModalOpen: false,
+    };
   }
-
-  opendeleteConfirmModal = () => {
-    this.setState({ isdeleteConfirmOpen : true });
+  openDeleteLostPetsModal = () => {
+    if (this.state.isDeleteLostPetsModalOpen) return;
+    this.setState({
+      isDeleteLostPetsModalOpen: true,
+    });
   };
 
-  closedeleteConfirmModal = () => {
-    window.location.href = "/my_page"
+  closeDeleteLostPetsModal = () => {
+    this.setState({ isDeleteLostPetsModalOpen: false });
   };
-
-
   render() {
-    const { lostpet, idx, deleteLostpet } = this.props
-
+    const { lostpet, idx, deleteLostpet } = this.props;
+    console.log(idx);
     return (
       <>
         <div className="mypage_middleSpace_myRegisteredInfo">
@@ -36,8 +36,10 @@ class RegisteredPet extends Component {
             <div className="mypage_pet_location_value">{lostpet.location}</div>
             <button
               className="mypage_middleSpace_myRegisteredInfo_exit"
-              onClick={this.opendeleteConfirmModal}>
-              x
+              onClick={this.openDeleteLostPetsModal}
+              // onClick={deleteLostpet}
+            >
+              {/* console.log(idx); // deleteLostpet(idx);  */}x
             </button>
           </div>
           <div className="mypage_lost_pet_info_low">
@@ -66,10 +68,10 @@ class RegisteredPet extends Component {
           </div>
         </div>
         <DeleteConfirmModal
-        deleteLostpet={deleteLostpet}
-        idx={idx}
-        isdeleteConfirmOpen={this.state.isdeleteConfirmOpen}
-        close={this.closedeleteConfirmModal}
+          isDeleteLostPetsModalOpen={this.state.isDeleteLostPetsModalOpen}
+          close={this.closeDeleteLostPetsModal}
+          idx={idx}
+          deleteLostpet={deleteLostpet}
         />
       </>
     );

@@ -156,6 +156,7 @@ class SignUpModal extends Component {
   }
   render() {
     const { isSignUpModalOpen, close } = this.props;
+
     return (
       <>
         {isSignUpModalOpen ? (

@@ -1,16 +1,27 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, Route } from "react-router-dom";
 import "./loginModal.css";
 import SignUpModal from "./signup_modal";
+
+import { connect } from "react-redux";
+import { addArticle } from "../../../redux/actions";
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addArticle: (article) => dispatch(addArticle(article)),
+  };
+};
 
 class LoginModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLogin: false,
       isSignUpModalOpen: false,
       email: "",
       password: "",
+      token: "",
       loginCheckText: "아이디와 비밀번호를 입력해 주세요.",
     };
     this.inputHandler = this.inputHandler.bind(this);
@@ -18,11 +29,28 @@ class LoginModal extends Component {
   }
 
   inputHandler(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value, token: "dummy" });
   }
 
+  isAuthenticated = (token) => {
+    axios
+      .post("http://localhost:8080/user/userinfo", {
+        headers: { token: token },
+      })
+      .then((res) => {
+        console.log("hi");
+      })
+      .catch((err) => {
+        console.log("imERROR");
+      });
+  };
+
+  handleResponseSuccess = (token) => {
+    this.isAuthenticated(token);
+  };
+
   loginRequestHandler() {
-    const { email, password } = this.state;
+    const { email, password, token } = this.state;
     if (email && password) {
       axios
         .post("http://localhost:8080/auth/signin", {
@@ -30,9 +58,15 @@ class LoginModal extends Component {
           password: this.state.password,
         })
         .then((res) => {
-          console.log("good", res);
-          console.log("good", this.state);
-          window.location.href = "/main";
+          console.log("good", res.data);
+          this.setState({
+            token: res.data.accessToken,
+          });
+          console.log(this.state);
+          this.handleResponseSuccess(token);
+        })
+        .then((res) => {
+          setTimeout(this.isLoginTrue, 100);
         })
         .catch((err) => {
           console.log("ImERRRRRRRRRR", this.state);
@@ -42,12 +76,19 @@ class LoginModal extends Component {
     }
   }
 
+  isLoginTrue = () => {
+    const { token } = this.state;
+    this.props.addArticle({ token });
+    this.setState({
+      isLogin: true,
+    });
+  };
+
   hotlink = () => {
     window.location.href = "/main";
   };
 
   openSignUpModal = () => {
-    console.log("singup!!", this.state.isSignUpModalOpen);
     this.setState({ isSignUpModalOpen: true });
   };
 
@@ -57,7 +98,9 @@ class LoginModal extends Component {
 
   render() {
     let { isLoginOpen, close } = this.props;
-
+    const { token } = this.state;
+    // console.log(this.props);
+    // console.log(this.state);
     return (
       <>
         {isLoginOpen ? (
@@ -118,9 +161,12 @@ class LoginModal extends Component {
           isSignUpModalOpen={this.state.isSignUpModalOpen}
           close={this.closeSignUpModal}
         />
+        {this.state.isLogin ? <Redirect to="/main" /> : null}
       </>
     );
   }
 }
+
+LoginModal = connect(null, mapDispatchToProps)(LoginModal);
 
 export default LoginModal;

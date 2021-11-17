@@ -109,7 +109,7 @@ class contents extends Component {
                         type="text"
                         className="inputbox_default"
                         id="tags_inputbox"
-                        placeholder="#Tags"
+                        placeholder="#Tags 최소 1개이상 등록해주세요"
                       ></input>
                     </div>
                     <div className="contents_box_low_describe">
