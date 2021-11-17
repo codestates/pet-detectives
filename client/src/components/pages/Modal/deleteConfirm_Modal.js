@@ -35,8 +35,8 @@ class DeleteConfirmModal extends Component {
                   <div
                     className="deleteConfirmModal_box_choicebox_yes"
                     onClick={() => {
-                      deleteLostpet(idx);
-                    }}
+                      deleteLostpet(idx); close();}}
+                      
                     // onClick={this.onClickConsole}
                   >
                     네
