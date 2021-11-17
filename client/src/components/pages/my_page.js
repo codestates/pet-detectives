@@ -26,9 +26,7 @@ class my_page extends Component {
   // }
 
   deleteLostpet = (idx) => {
-    console.log(idx, "delete PLS!!!!!!!!!!");
     let lostpetListdata = this.state.lostpetList;
-    console.log(lostpetList, "LOST PET ");
     lostpetListdata.splice(idx, 1);
     // console.log('wow',idx)
     this.setState({
@@ -55,10 +53,6 @@ class my_page extends Component {
   // componentDidMount() {
   //   this.getPet()
   // }
-
-  
-
-
 
   render() {
     return (
@@ -101,6 +95,7 @@ class my_page extends Component {
           isDeleteLostPetsModalOpen={this.state.isDeleteLostPetsModalOpen}
           close={this.closeUserEditModal}
         />
+        {/* <button>COOKIE PUSH TEST</button> */}
       </>
     );
   }

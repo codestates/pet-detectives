@@ -1,7 +1,19 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.useSuperCookie = this.useSuperCookie.bind(this);
+  }
+
+  useSuperCookie() {
+    axios.post();
+    console.log("hi");
+  }
+
   render() {
     return (
       <>
@@ -35,7 +47,7 @@ class Header extends Component {
                 <Link to={"/main"}>
                   <div className="header_box">Main Page</div>
                 </Link>
-                <Link to={"/my_page"}>
+                <Link to={"/my_page"} onClick={this.useSuperCookie}>
                   <div className="header_box">My page</div>
                 </Link>
                 <Link to={"/"}>

@@ -31,7 +31,19 @@ module.exports = {
     //회원 가입한 회원의 email - id
     // console.log(req.headers.authorization,req.cookies)
 
-const{image,description,pet_name,pet_sex,pet_age,pet_category,pet_lost_region,pet_lost_date,is_found,email} =req.body
+    const {
+      image,
+      description,
+      pet_name,
+      pet_sex,
+      pet_age,
+      pet_category,
+      pet_lost_region,
+      pet_lost_date,
+      is_found,
+      email,
+    } = req.body;
+
 
 if(!email||!image||!description||!pet_name||!pet_sex||!pet_category||!pet_lost_region||!pet_lost_date||!pet_age){
 return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
@@ -39,28 +51,18 @@ return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
 //verify ?  검증을 통해 데이터를 넘겨준다?
 // authorized(req.header.authorization[1])
  //사용자의 email이 들어간 db
- const userId = await user.findOne({where:{email}})
+
 // const cookie = req.cookie.accessToken
 // console.log(cookie)
 // authorized(req,cookie)
-  //   petimageController: async (req, res) => {
-  // //user와 post를 찾아서 그림을 edit
 
   // const{image} = req.body
 
-  //  post.create({image:image}).then(data=>{
-  //    if(!data){
-  // return res.status(400).send({message:'그림을 올려주세요'})
-  //    }
-  //    return res.status(200).send({data:{image:image},message:'완료'})
-
-  //  })
-
   //   },
 
-    if (!userId) {
-      return res.status(403).send({ messagee: "로그인후 이용해 주세요" });
-    }
+    // if (!userId) {
+    //   return res.status(403).send({ messagee: "로그인후 이용해 주세요" });
+    // }
 
     const petReigster = await post.create({
       image: image,
@@ -90,6 +92,8 @@ return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
 
     return res.json({ data: searchPet, message: "펫 정보 조회" });
   },
+
+
   petisfoundController: async (req, res) => {
     const { is_found, email } = req.body;
     console.log(is_found);
@@ -99,7 +103,10 @@ return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
     //found 를 update 해서 false=> true
 
     return res.json({ message: "펫을 찾았다" });
+
   },
+
+
   petdeleteController: async (req, res) => {
     const { id, email } = req.body;
     // console.log(user_id,id)
