@@ -15,9 +15,7 @@ class Header extends Component {
   componentDidMount() {
     if (localStorage.getItem("accessToken")) {
       this.setState({ isLoginHeader: true });
-      console.log("true");
     } else {
-      console.log("false");
     }
   }
 
@@ -41,15 +39,7 @@ class Header extends Component {
                 <img className="logo" src="image/pet_detectives_logo.png"></img>
               </Link>
             </div>
-            <div className="tag">
-              {/* 태그검색창 */}
-              <input
-                className="tag_search"
-                type="text"
-                placeholder="태그 검색"
-              />
-              <button className="tag_button">검색</button>
-            </div>
+            <div className="tag">{/* 태그검색창 */}</div>
 
             <div className="connection">
               {/* 버튼모음 */}
