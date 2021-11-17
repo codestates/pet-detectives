@@ -12,6 +12,6 @@ router.post('/signup',controller.signupController)
 router.post('/signin', controller.signinController) 
 // 로그인 /auth/signin
 // router.get('/newtoken',controller.newTokenController)
-// router.get('/googlesignin',controller.googleSigninControl)
+router.get('/googlesignin',controller.googleSigninControl)
 //소셜로그인(구글) /auth/googlesignin
 module.exports = router

@@ -19,7 +19,7 @@ module.exports = {
     */
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('pets',null,{})
+    return queryInterface.dropTable('posts');
     /**
      * Add commands to revert seed here.
      *

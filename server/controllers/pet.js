@@ -26,13 +26,13 @@ module.exports = {
 
 const{image,description,pet_name,pet_sex,pet_age,pet_category,pet_lost_region,pet_lost_date,is_found,email} =req.body
 
-if(!image||!description||!pet_name||!pet_sex||!pet_category||!pet_lost_region||pet_lost_date){
+if(!email||!image||!description||!pet_name||!pet_sex||!pet_category||!pet_lost_region||!pet_lost_date||!pet_age){
 return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
 }
 //verify ?  검증을 통해 데이터를 넘겨준다?
 // authorized(req.header.authorization[1])
  //사용자의 email이 들어간 db
- const userId =await user.findOne({where:{email}})
+ const userId = await user.findOne({where:{email}})
 // const cookie = req.cookie.accessToken
 // console.log(cookie)
 // authorized(req,cookie)

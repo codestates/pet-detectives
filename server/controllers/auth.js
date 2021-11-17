@@ -5,15 +5,31 @@
 
 const express = require('express')
 const {user,post,post_comment,hashtag} = require('../models')
-const {generateAccessToken,authorized,sendRefreshToken,generateRefreshToken} = require('../middleware/tokenfunction')
-const axios = require('axios')
+const {generateAccessToken,authorized,sendAccessToken,sendRefreshToken,generateRefreshToken} = require('../middleware/tokenfunction')
+const { default: axios } = require('axios')
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
-const redirecURI = 'http://localhost:8080/auth/googlesignin/callback'
 
+const redirecURI = 'http://localhost:8080/auth/googlesignin/callback'
+const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth"
+const GOOGLE_AUTH_TOKEN_URL= "https://oauth2.googleapis.com/token"
 
 module.exports ={
+
+    googleSigninControl:(req,res)=>{
+
+
+
+        axios.post('')
+ //승인 요청생성 구글 로그인 어플리케이션 
+       return res.redirect(200,`https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&
+       redirect_uri=http://localhost:8080/auth/googlesignin/callback&
+   respons_type=code &scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly`)
+         
+        
+        
+        },
 
 
 signupController: (req,res)=>{
@@ -29,11 +45,15 @@ if(!email||!password||!nickname){
    user.findOrCreate({where:{email,nickname},defaults:{email,password,nickname}
    })
    .then(([data,created])=>{
-       console.log(created,data)
+       //!긴급 조치 토큰으로만 보내기
+       
        //회원가입 요청성공, 토큰을 보내준다. 어디에? header? cookie?
 if(created){
-
-
+   
+    const accessToken = generateAccessToken(data.dataValues)
+    const refreshToken = generateRefreshToken(data.dataValues)
+    sendReToken(res,accessToken)
+    console.log(created,data)
 
 res.status(201).send({data:data.dataValues,message:'회원가입 완료'})
 } 
@@ -83,12 +103,14 @@ signinController: (req,res) =>{
         }
 //로그인 성공시 토큰 발급 access , refresh 
 
-
     const accessToken = generateAccessToken(data.dataValues)
-//     const refreshToken = generateRefreshToken(data.dataValues)
+    console.log(accessToken)
+    const refreshToken = generateRefreshToken(data.dataValues)
 // sendToken(res,accessToken)
 res.setHeader('authorization', accessToken);
-
+//! 긴급조치 토큰 쿠키로 보내기
+delete data.dataValues.password
+sendAccessToken(res,accessToken)
 sendRefreshToken(res,refreshToken)
 
    return res.status(200).send({ accessToken ,message:'로그인 되었습니다.'})
@@ -99,17 +121,7 @@ sendRefreshToken(res,refreshToken)
 
 
 },
-// googleSigninControl:(req,res)=>{
-// // console.log(req.body.authorizationCode)
-//     axios.post('https://oauth2.googleapis.com/token',
-//    {client_id:GOOGLE_CLIENT_ID,redirect_uri:'https%3A//oauth2.example.com/code',client_secret:GOOGLE_CLIENT_SECRET,code:'4/P7q7W91a-oMsCeLvIaQm6bTrgtp7',
-//         grant_type:'authorization_code'} ,{headers:{'Content-type':'application/x-www-form-urlencoded'}} )
-//         .then(rsp=>{
-//         console.log(rsp)
-//         })
 
-
-// },
 
 signoutContorller:async(req,res) =>{
 
@@ -126,7 +138,10 @@ signoutContorller:async(req,res) =>{
 
 
 // res.setHeader('authorization', '')
-sendRefreshToken('refresh','')
+const cookie = req.cookies.access
+// const accessTokenData = authorized(cookie)
+res.cookie('access',cookie,{httpOnly:true,sameSite:'none',maxAge:0.5})
+
 
 
    return res.status(205).send({message:'로그아웃 완료}'})
