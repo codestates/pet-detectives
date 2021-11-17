@@ -16,7 +16,7 @@ router.get("/intro", async (req, res, next)  =>{
 
 
  //찾은동물수
- try{
+ try{ 
 
 
 const findPet = await post.count({where:{is_found:{ [Op.eq]:1}}})
