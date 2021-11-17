@@ -79,11 +79,11 @@ module.exports = {
         //로그인 성공시 토큰 발급 access , refresh
 
         const accessToken = generateAccessToken(data.dataValues);
-        // const refreshToken = generateRefreshToken(data.dataValues);
+        const refreshToken = generateRefreshToken(data.dataValues);
         // // sendToken(res,accessToken)
         // // res.setHeader("authorization", accessToken);
 
-        // sendRefreshToken(res, refreshToken);
+        sendRefreshToken(res, refreshToken);
 
         return res
           .status(200)

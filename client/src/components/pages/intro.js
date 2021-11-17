@@ -1,7 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import LoginModal from "./Modal/login_modal";
 import SignUpModal from "./Modal/signup_modal";
+
+const mapStateToProps = (state) => {
+  return {
+    articles: state.articles,
+  };
+};
 
 class intro extends Component {
   constructor(props) {
@@ -10,10 +17,8 @@ class intro extends Component {
       isLoginModalOpen: false,
       isSignUpModalOpen: false,
       isIntro: true,
-      accessToken: "",
     };
   }
-
 
   openLoginModal = () => {
     if (this.state.isSignUpModalOpen) return;
@@ -75,7 +80,6 @@ class intro extends Component {
           </ul>
         </div>
         <LoginModal
-          issueAccessToken={this.issueAccessToken}
           isLoginOpen={this.state.isLoginModalOpen}
           close={this.closeLoginModal}
         />
@@ -87,5 +91,7 @@ class intro extends Component {
     );
   }
 }
+
+intro = connect(mapStateToProps)(intro);
 
 export default intro;

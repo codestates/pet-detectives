@@ -4,35 +4,41 @@ import Header from "./Header/header";
 import MainSideBar from "./Sidebar/mainsidebar";
 import CommentModal from "./Modal/comment_modal";
 import LostPet from "./MainLostPet/LostPet"
-import { useRef } from "react";
+import { connect } from "react-redux";
 
+const mapStateToProps = (state) => {
+  return {
+    articles: state.articles,
+  };
+};
 
-class main extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isCommentModalOpen : false,
+      isCommentModalOpen: false,
       currnetUrl: window.location.href.query,
-      petinfo : []
-    }
+      petinfo : [],
+      token: "",
+    };
   }
 
   // 모달관련
   openCommentModal = () => {
-    this.setState({ isCommentModalOpen : true });
-    console.log(this.state.currnetUrl)
+    this.setState({ isCommentModalOpen: true });
+    console.log(this.state.currnetUrl);
   };
   closeCommentModal = () => {
     this.setState({ isCommentModalOpen: false });
   };
- // 모달관련
+  // 모달관련
 
   upToArrow = React.createRef()
 
   scrollToTop = (event) => {
     this.upToArrow.current.scrollTo(0, 0);
   }
-  
+
   getPet() {
     axios.get("http://localhost:8080/pet/petinfo", {
     }).then((res) => {
@@ -45,7 +51,10 @@ class main extends Component {
   }
 
   render() {
+    const { articles } = this.props;
     const regex = /[^0-9]/g;
+    
+  
     return (
       <>
         <Header />
@@ -68,9 +77,11 @@ class main extends Component {
             <div className="scroll_image_box">
               <div className="scroll_image_minibox_space">맨위로</div>
               <div className="scroll_image_minibox">
-                <img className="backtotopArrow_image"
-                 src="image/backtotop.png"
-                 onClick={this.scrollToTop}></img>
+                <img
+                  className="backtotopArrow_image"
+                  src="image/backtotop.png"
+                  onClick={this.scrollToTop}
+                ></img>
               </div>
             </div>
           </div>
@@ -84,4 +95,6 @@ class main extends Component {
   }
 }
 
-export default main;
+Main = connect(mapStateToProps)(Main);
+
+export default Main;
