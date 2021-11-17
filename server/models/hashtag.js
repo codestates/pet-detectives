@@ -10,8 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      hashtag.belongsToMany(models.post,{
-        through:'post_hashtag',foreignKey:'hashtag_id'
+     hashtag.belongsToMany(models.post,{
+        through:'post_hashtag'
+        , onDelete: 'cascade', 
+          onUpdate: 'cascade',
 
       })
       // define association here

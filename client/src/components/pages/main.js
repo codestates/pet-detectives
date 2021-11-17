@@ -1,98 +1,89 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import CommentModal from "./Modal/comment_modal";
-import SideBar from "../sidebar";
 import Header from "./Header/header";
-import Tag from "./Tag/tag";
+import MainSideBar from "./Sidebar/mainsidebar";
+import CommentModal from "./Modal/comment_modal";
+import LostPet from "./MainLostPet/LostPet"
+import { connect } from "react-redux";
 
-class main extends Component {
+const mapStateToProps = (state) => {
+  return {
+    articles: state.articles,
+  };
+};
+
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isCommentModalOpen: false,
+      currnetUrl: window.location.href.query,
+      petinfo : [],
+      token: "",
     };
   }
 
+  // 모달관련
   openCommentModal = () => {
     this.setState({ isCommentModalOpen: true });
+    console.log(this.state.currnetUrl);
   };
-
   closeCommentModal = () => {
     this.setState({ isCommentModalOpen: false });
   };
+  // 모달관련
 
-  // axios.get('https://localhost:4000/accesstokenrequest')
+  upToArrow = React.createRef()
+
+  scrollToTop = (event) => {
+    this.upToArrow.current.scrollTo(0, 0);
+  }
+
+  getPet() {
+    axios.get("http://localhost:8080/pet/petinfo", {
+    }).then((res) => {
+      this.setState({petinfo: res.data.data.slice()})
+    })
+  }
+
+  componentDidMount() {
+    this.getPet()
+  }
 
   render() {
+    const { articles } = this.props;
+    const regex = /[^0-9]/g;
+    
+  
     return (
       <>
         <Header />
-
         <div className="main_box">
-          <SideBar />
-
-          <div className="showing_lost_pet_box">
-            {/* 완성될 사이드 바 옆의 박스 */}
-            <div className="showing_lost_pet">
-              <div className="showing_lost_pet_header">
-                <div className="showing_lost_pet_header_information">
-                  <div className="showing_lost_pet_header_information_row">
-                    <div className="showing_lost_pet_header_information_box_menu">
-                      이름
-                    </div>
-                    <div className="showing_lost_pet_header_information_box"></div>
-                    <div className="showing_lost_pet_header_information_box_menu">
-                      성별
-                    </div>
-                    <div className="showing_lost_pet_header_information_box"></div>
-                  </div>
-                  <div className="showing_lost_pet_header_information_row">
-                    <div className="showing_lost_pet_header_information_box_menu">
-                      나이
-                    </div>
-                    <div className="showing_lost_pet_header_information_box"></div>
-                    <div className="showing_lost_pet_header_information_box_menu">
-                      종류
-                    </div>
-                    <div className="showing_lost_pet_header_information_box"></div>
-                  </div>
-                </div>
-                <div className="showing_lost_pet_header_location">
-                  <Link to={"/map"}>
-                    <div className="showing_lost_pet_header_location_btn">
-                      실종 map
-                    </div>
-                  </Link>
-                </div>
-                <div className="showing_lost_pet_header_location_info">
-                  <div className="showing_lost_pet_header_location_info_row"></div>
-                  <div className="showing_lost_pet_header_location_info_row"></div>
-                </div>
-              </div>
-              <div className="showing_lost_pet_body">
-                {/* 잃어버린 강아지 이미지 */} 강아지 이미지
-                <img></img>
-              </div>
-              <div className="showing_lost_pet_describe">
-                <div className="showing_lost_pet_describe_contents">
-                  {/* 강아지 설명 */} 강아지 특징 설명
-                </div>
-                <div className="showing_lost_pet_describe_tag_box">
-                  <Tag></Tag>
-                  <Tag></Tag>
-                </div>
+          <MainSideBar />
+          <div className="showing_lost_pet_box"
+          ref={this.upToArrow}>
+            {this.state.petinfo.map((pet) => 
+            window.location.href.slice(-4) === "main" && !pet.is_found ?  <LostPet petinfo={pet} openCommentModal={this.openCommentModal}/> :
+            !pet.is_found && pet.pet_lost_region === window.location.search.slice(-2).replace(regex, "") ?
+            <LostPet
+            petinfo={pet}
+            openCommentModal={this.openCommentModal}/> 
+            : null
+            )}
+            {/* <div className="pagination">pagination 구현</div>
+            <div className="footer_space"></div> */}
+          </div>
+          <div className="up_to_scroll">
+            <div className="scroll_image_box">
+              <div className="scroll_image_minibox_space">맨위로</div>
+              <div className="scroll_image_minibox">
+                <img
+                  className="backtotopArrow_image"
+                  src="image/backtotop.png"
+                  onClick={this.scrollToTop}
+                ></img>
               </div>
             </div>
-            <div className="showing_lost_pet_comment">
-              <button
-                className="showing_lost_pet_comment_btn"
-                onClick={this.openCommentModal}
-              >
-                댓 글
-              </button>
-            </div>
-            <div className="pagination">pagination 구현</div>
           </div>
         </div>
         <CommentModal
@@ -104,4 +95,6 @@ class main extends Component {
   }
 }
 
-export default main;
+Main = connect(mapStateToProps)(Main);
+
+export default Main;
