@@ -76,11 +76,7 @@ module.exports = {
     */
   },
   down: async (queryInterface, Sequelize) => {
-<<<<<<< HEAD
-    return queryInterface.dropTable('posts');
-=======
     await queryInterface.bulkDelete('posts',null,{})
->>>>>>> 3c5a7a49e96e277993d1d366a60081b99f3e5a67
     /**
      * Add commands to revert seed here.
      *

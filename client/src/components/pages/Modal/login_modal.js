@@ -3,9 +3,10 @@ import React, { Component } from "react";
 import { Link, Redirect, Route } from "react-router-dom";
 import "./loginModal.css";
 import SignUpModal from "./signup_modal";
-
 import { connect } from "react-redux";
 import { addArticle } from "../../../redux/actions";
+
+axios.defaults.withCredentials = true;
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -32,41 +33,52 @@ class LoginModal extends Component {
     this.setState({ [e.target.name]: e.target.value, token: "dummy" });
   }
 
-  isAuthenticated = (token) => {
+  isAuthenticated = () => {
+    // const { token } = this.state;
+    // console.log(this.state.token, "IM SUPER TOKEN");
     axios
-      .post("http://localhost:8080/user/userinfo", {
-        headers: { token: token },
+      .get("http://localhost:8080/user/userinfo", {
+        headers: {
+          token: localStorage.getItem("accessToken"),
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
       })
       .then((res) => {
-        console.log("hi");
+        console.log(res, "hihihi");
       })
       .catch((err) => {
         console.log("imERROR");
       });
   };
 
-  handleResponseSuccess = (token) => {
-    this.isAuthenticated(token);
-  };
-
   loginRequestHandler() {
     const { email, password, token } = this.state;
     if (email && password) {
       axios
-        .post("http://localhost:8080/auth/signin", {
-          email: this.state.email,
-          password: this.state.password,
-        })
+        .post(
+          "http://localhost:8080/auth/signin",
+          {
+            email: this.state.email,
+            password: this.state.password,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        )
         .then((res) => {
           console.log("good", res.data);
           this.setState({
             token: res.data.accessToken,
           });
-          console.log(this.state);
-          this.handleResponseSuccess(token);
+          localStorage.setItem("accessToken", res.data.accessToken);
         })
         .then((res) => {
-          setTimeout(this.isLoginTrue, 100);
+          console.log(this.state);
+          setTimeout(this.isAuthenticated(), 100);
+          // this.handleResponseSuccess(token);
+          setTimeout(this.isLoginTrue, 200);
         })
         .catch((err) => {
           console.log("ImERRRRRRRRRR", this.state);

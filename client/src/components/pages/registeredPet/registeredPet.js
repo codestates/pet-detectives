@@ -21,7 +21,6 @@ class RegisteredPet extends Component {
   };
   render() {
     const { lostpet, idx, deleteLostpet } = this.props;
-    console.log(idx);
     return (
       <>
         <div className="mypage_middleSpace_myRegisteredInfo">
@@ -38,9 +37,7 @@ class RegisteredPet extends Component {
               className="mypage_middleSpace_myRegisteredInfo_exit"
               onClick={this.openDeleteLostPetsModal}
               // onClick={deleteLostpet}
-            >
-              {/* console.log(idx); // deleteLostpet(idx);  */}x
-            </button>
+            ></button>
           </div>
           <div className="mypage_lost_pet_info_low">
             <div className="mypage_pet_image">

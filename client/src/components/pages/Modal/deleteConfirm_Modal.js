@@ -9,13 +9,10 @@ class DeleteConfirmModal extends Component {
 
   onClickConsole = () => {
     const idx = this.props.idx;
-    console.log("click me!", idx);
-    console.log("delete boom~", this.props.deleteLostpet);
   };
 
   render() {
     const { isDeleteLostPetsModalOpen, close, idx, deleteLostpet } = this.props;
-    console.log(idx, "delete modal idx!");
     return (
       <>
         {isDeleteLostPetsModalOpen ? (
