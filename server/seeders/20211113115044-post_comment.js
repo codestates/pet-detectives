@@ -2,6 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+  
     /**
      * Add seed commands here.
      *
@@ -14,6 +15,8 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
+
+    return queryInterface.dropTable('post_comments');
     /**
      * Add commands to revert seed here.
      *

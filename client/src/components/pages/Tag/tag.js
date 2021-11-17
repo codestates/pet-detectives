@@ -5,7 +5,7 @@ class Tag extends Component {
     return (
       <> 
         <div className="showing_lost_pet_describe_tag">
-          태그1
+          #태그
         </div>
       </>
     )

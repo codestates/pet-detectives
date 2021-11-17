@@ -1,7 +1,35 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoginHeader: false,
+    };
+    this.useSuperCookie = this.useSuperCookie.bind(this);
+    this.logOutHandler = this.logOutHandler.bind(this);
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem("accessToken")) {
+      this.setState({ isLoginHeader: true });
+      console.log("true");
+    } else {
+      console.log("false");
+    }
+  }
+
+  useSuperCookie() {
+    axios.post();
+    console.log("hi");
+  }
+
+  logOutHandler() {
+    localStorage.removeItem("accessToken");
+  }
+
   render() {
     return (
       <>
@@ -29,18 +57,28 @@ class Header extends Component {
                 <Link to={"/found_pet"}>
                   <div className="header_box">찾은 반려동물 목록</div>
                 </Link>
-                <Link to={"/contents"}>
-                  <div className="header_box">반려동물 등록</div>
-                </Link>
+                {this.state.isLoginHeader ? (
+                  <Link to={"/contents"}>
+                    <div className="header_box">반려동물 등록</div>
+                  </Link>
+                ) : null}
                 <Link to={"/main"}>
                   <div className="header_box">Main Page</div>
                 </Link>
-                <Link to={"/my_page"}>
-                  <div className="header_box">My page</div>
-                </Link>
-                <Link to={"/"}>
-                  <div className="header_box">LogOut</div>
-                </Link>
+                {this.state.isLoginHeader ? (
+                  <Link to={"/my_page"} onClick={this.useSuperCookie}>
+                    <div className="header_box">My page</div>
+                  </Link>
+                ) : null}
+                {this.state.isLoginHeader ? (
+                  <Link to={"/"} onClick={this.logOutHandler}>
+                    <div className="header_box">LogOut</div>
+                  </Link>
+                ) : (
+                  <Link to={"/"} onClick={this.logOutHandler}>
+                    <div className="header_box">돌아가기</div>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
