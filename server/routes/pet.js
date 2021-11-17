@@ -12,5 +12,5 @@ router.patch('/petedit')
 // 펫 정보 수정 /pet/petedit
 router.delete('/petdelete',controller.petdeleteController)
 // 펫 삭제 /pet/petdelete
-router.patch('/petfound',controller.petisfoundController)
+// router.patch('/petfound',controller.petisfoundController)
 module.exports = router

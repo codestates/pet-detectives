@@ -2,7 +2,7 @@ const express = require("express");
 const { user, post, post_comment, hashtag } = require("../models");
 const {
   generateAccessToken,
-  sendToken,
+
   generateRefreshToken,
   authorized,
 } = require("../middleware/tokenfunction");
@@ -29,7 +29,12 @@ module.exports = {
   petregisterController: async (req, res) => {
     //회원 가입한 회원의 email - id
     // console.log(req.headers.authorization,req.cookies)
+    const token = req.headers.token
 
+    if(!token){
+      return res.status(401).send({message:'권한이 없습니다.'})
+    }
+  
     const {
       image,
       description,
@@ -42,6 +47,7 @@ module.exports = {
       is_found,
     } = req.body;
 
+<<<<<<< HEAD
     if (
       !image ||
       !description ||
@@ -72,6 +78,16 @@ module.exports = {
 
     const petReigster = await post.create({
       image: image,
+=======
+
+if(!image||!description||!pet_name||!pet_sex||!pet_category||!pet_lost_region||!pet_lost_date||!pet_age){
+return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
+}
+
+    const petReigster = await post.create({
+      image: image,
+      user_id: userId.id,
+>>>>>>> 9eccc8af16087d700c9390db2e3a1636ea411489
       description: description,
       pet_name: pet_name,
       pet_sex: pet_sex,
@@ -92,36 +108,76 @@ module.exports = {
   },
 
   petinfoController: async (req, res) => {
+    let pageNum = req.query.page; //2
+    let offset = 0
     console.log(req.headers);
-    const searchPet = await post.findAll();
+    if (pageNum > 1) {
+      offset = 10 * (pageNum - 1);
+    }
+    const searchPet = await post.findAll({
+   offset: offset,
+   limit: 7
+      
+    });
 
     return res.json({ data: searchPet, message: "펫 정보 조회" });
   },
 
+<<<<<<< HEAD
   petisfoundController: async (req, res) => {
     const { is_found, email } = req.body;
     console.log(is_found);
     const foundPet = await user.findOne({ where: { email } });
+=======
 
-    post.update({ is_found: true }, { where: { is_found: foundPet.id } });
-    //found 를 update 해서 false=> true
+  // petisfoundController: async (req, res) => {
+  //   const { is_found, email } = req.body;
+  //   console.log(is_found);
+  //   const foundPet = await user.findOne({ where: { email } });
+>>>>>>> 9eccc8af16087d700c9390db2e3a1636ea411489
 
+  //   post.update({ is_found: true }, { where: { is_found: foundPet.id } });
+  //   //found 를 update 해서 false=> true
+
+<<<<<<< HEAD
     return res.json({ message: "펫을 찾았다" });
   },
+=======
+  //   return res.json({ message: "펫을 찾았다" });
+
+// },
+>>>>>>> 9eccc8af16087d700c9390db2e3a1636ea411489
 
   petdeleteController: async (req, res) => {
-    const { id, email } = req.body;
-    // console.log(user_id,id)
 
-    const deletePet = user.findOne({ where: email });
+    const token = req.headers.token
 
-    post.destroy({ where: { user_id: deletePet.id, id } }).then((data) => {
+    if(!token){
+      return res.status(401).send({message:'권한이 없습니다.'})
+    }
+
+    const accessTokenData = authorized(token)
+
+    const deletePet = await user.findOne({where:{emiail:accessTokenData.email}})
+  
+
+    post.destroy({ where: { user_id: deletePet.id,} }).then((data) => {
       console.log(data);
-      return res.status(200).send({ message: "펫 삭제" });
+      return res.status(200).send({message: "펫 삭제" });
     });
   },
 
   peteditController: async (req, res) => {
+
+
+
+
+    const token = req.headers.token
+
+    if(!token){
+      return res.status(401).send({message:'권한이 없습니다.'})
+    }
+
     const {
       image,
       description,
@@ -132,10 +188,14 @@ module.exports = {
       pet_lost_region,
       pet_lost_date,
       is_found,
-      email,
+     
     } = req.body;
 
-    const petEdit = user.findOne({ where: { email } });
+    const accessTokenData = authorized(token)
+
+    const editPet = await user.findOne({where:{emiail:accessTokenData.email}})
+
+    
 
     post.update(
       {
@@ -149,7 +209,7 @@ module.exports = {
         pet_lost_date: pet_lost_date,
         is_found: is_found,
       },
-      { where: { user_id: petEdit.id } }
+      { where: { user_id: editPet.id } }
     );
 
     return res.status(200).send({ message: "펫 정보가 수정되었습니다." });

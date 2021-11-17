@@ -27,100 +27,115 @@ module.exports = {
         if (!data) {
           return res.status(400).sedn({ message: "댓글이 없습니다." });
         }
-        return res.status(200).send({ data, message: "댓글" });
+        return res.status(200).send({ data: data, message: "댓글" });
       })
       .catch((err) => {
         console.log(err);
       });
   },
   commentregisterController: async (req, res) => {
-    const { email, user_id, id, comment } = req.body;
-    if (!email) {
-      return res.status(404).send({ messagae: "이용 할 수 없습니다." });
-    } else {
-      const userComment = await user.findOne({ where: { email } });
-      const postComment = await post.findOne({ where: { user_id } });
+    const token = req.headers.token;
 
-      // console.log(userComment)
-      // console.log(postComment)
+    if (!token) {
+      return res.status(401).send({ message: "권한이 없습니다." });
+    }
 
-      //코멘트를 등록한다 post 에 댓글을 달아야함.
-      //post_id , user_id를 고려해서 생성되어야함.
+    const { comment, id } = req.body;
 
-      try {
-        if (!userComment.email) {
-          return res.status(404).send({ messagae: "이용 할 수 없습니다." });
-        }
+    const accessTokenData = authorized(token);
 
-        post_comment
-          .create({
-            user_id: userComment.id,
-            post_id: postComment.id,
-            comment: comment,
-          })
-          .then((data) => {
-            return res.status(200).send({ data, message: "댓글 이 달렸다." });
-          });
-      } catch (err) {
-        console.log(err);
-      }
+    const userComment = await user.findOne({
+      where: { email: accessTokenData.email },
+    }); // id, emial pas, nick
+    console.log(userComment.id);
+
+    const postComment = await post.findOne({ id: id }); //post 1 2 3 4 5 6 .. user_id =1
+
+    //post cooment user_id , post_id  1 1 1번 유저가 포스트를 2개  1 2 ,  user_id =1
+
+    try {
+      post_comment
+        .create({
+          user_id: userComment.id,
+          post_id: postComment.id,
+          comment: comment,
+        })
+        .then((data) => {
+          return res.status(200).send({ data, message: "댓글 이 달렸다." });
+        });
+    } catch (err) {
+      console.log(err);
     }
 
     // res.send("commentregister ok!");
   },
   commenteditController: async (req, res) => {
-    const { email, user_id, id, comment } = req.body;
+    const token = req.headers.token;
 
-    if (!email) {
-      return res.status(404).send({ messagae: "이용 할 수 없습니다." });
-    } else {
-      const userComment = await user.findOne({ where: { email } });
-      console.log(userComment.id);
-      const postComment = await post.findOne({ where: { user_id } });
-
-      post_comment
-        .patch({
-          where: { user_id: userComment.id, post_id: postComment.id },
-          attributes: ["comment"],
-        })
-        .then((data) => {
-          if (!data) {
-            return res.status(400).sedn({ message: "댓글이 없습니다." });
-          }
-          return res.status(200).send({ data, message: "댓글" });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    if (!token) {
+      return res.status(401).send({ message: "권한이 없습니다." });
     }
+
+    const { newCommnent, id } = req.body;
+
+    const accessTokenData = authorized(token);
+
+    const userComment = await user.findOne({
+      where: { email: accessTokenData.email },
+    });
+    console.log(userComment.id);
+    const postComment = await post.findOne({ where: { id: id } });
+
+    post_comment
+      .update(
+        { comment: newCommnent },
+        { where: { user_id: userComment.id, post_id: postComment.id } }
+      )
+      .then((data) => {
+        if (!data) {
+          return res
+            .status(400)
+            .sedn({ message: "댓글이 없거나, 이미 수정되었습니다." });
+        }
+        return res
+          .status(200)
+          .send({ data, message: "댓글이 수정되었습니다." });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   commentdeleteController: async (req, res) => {
-    const { email, user_id, id, comment } = req.body;
+    const token = req.headers.token;
 
-    if (!email) {
-      return res.status(404).send({ messagae: "이용 할 수 없습니다." });
-    } else {
-      const userComment = await user.findOne({ where: { email } });
-      console.log(userComment.id);
-      const postComment = await post.findOne({ where: { user_id } });
-
-      post_comment
-        .destroy({
-          where: { user_id: userComment.id, post_id: postComment.id },
-        })
-        .then((data) => {
-          if (!data) {
-            return res
-              .status(400)
-              .send({ message: "삭제되었거나, 없는 댓글 입니다." });
-          }
-          return res
-            .status(200)
-            .send({ data, message: "댓글이 삭제되었습니다." });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    if (!token) {
+      return res.status(401).send({ message: "권한이 없습니다." });
     }
+
+    const { id, comment } = req.body;
+
+    const accessTokenData = authorized(token);
+
+    const userComment = await user.findOne({
+      where: { email: accessTokenData.email },
+    });
+    console.log(userComment.id);
+    const postComment = await post.findOne({ id: id });
+
+    post_comment
+      .destroy({ where: { user_id: userComment.id, post_id: postComment.id } })
+      .then((data) => {
+        if (!data) {
+          return res
+            .status(400)
+            .send({ message: "삭제되었거나, 없는 댓글 입니다." });
+        }
+        return res
+          .status(200)
+          .send({ data, message: "댓글이 삭제되었습니다." });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
