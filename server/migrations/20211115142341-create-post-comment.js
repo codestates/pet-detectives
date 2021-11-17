@@ -10,30 +10,31 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-   
-  references: {
-    model: {
-      tableName: "users",
-    },
-    key: "id",
-  },
- 
-allowNull:false,
-},
 
+        references: {
+          model: {
+            tableName: "users",
+          },
+          key: "id",
+        },
+        allowNum:false,
+        onDelete: 'cascade', 
+        onUpdate: 'cascade',
+        
+      },
       post_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
-
-  ,references: {
-    model: {
-      tableName: "users",
-    },
-    key: "id",
-  },
-allowNull:false
-},
- 
+        references: {
+          model: {
+            tableName: "posts",
+          },
+          key: "id",
+        },
+        allowNum:false,
+        onDelete: 'cascade', 
+        onUpdate: 'cascade',
+        
+      },
       comment: {
         type: Sequelize.TEXT
       },

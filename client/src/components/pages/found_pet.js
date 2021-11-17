@@ -1,89 +1,65 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
 import Header from "./Header/header";
-import SideBar from "../sidebar";
-import Tag from "./Tag/tag";
+import FoundPetSideBar from "./Sidebar/fount_petsidebar";
+import FoundPet from "./FoundPet/FoundPet";
+import { useRef } from "react";
 
 class found_pet extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      petinfo : []
+    }
+  }
+
+  upToArrow = React.createRef()
+
+  scrollToTop = (event) => {
+    this.upToArrow.current.scrollTo(0, 0);
+  }
+
+  getPet() {
+    axios.get("http://localhost:8080/pet/petinfo", {
+    }).then((res) => {
+      this.setState({petinfo: res.data.data.slice()})
+    })
+  }
+  
+  componentDidMount() {
+    this.getPet()
+  }
+
+
   render() {
+    const regex = /[^0-9]/g;
     return (
       <>
         <Header />
-
         <div className="main_box">
-          <SideBar />
-          <div className="imsisidebar"></div>
-          <div className="main_White_Space"></div>
-
+          <FoundPetSideBar />
           <div className="showing_lost_pet_box">
-            {/* 완성될 사이드 바 옆의 박스 */}
-            <div className="showing_lost_pet">
-              <div className="showing_lost_pet_header">
-                <div className="showing_lost_pet_header_information">
-                  <div className="showing_lost_pet_header_information_row">
-                    <div className="showing_lost_pet_header_information_box_menu">이름</div>
-                    <div className="showing_lost_pet_header_information_box">
-
-                    </div>
-                    <div className="showing_lost_pet_header_information_box_menu">성별</div>
-                    <div className="showing_lost_pet_header_information_box">
-
-                    </div>
-                  </div>
-                  <div className="showing_lost_pet_header_information_row">
-                  <div className="showing_lost_pet_header_information_box_menu">나이</div>
-                  <div className="showing_lost_pet_header_information_box">
-
-                  </div>
-                  <div className="showing_lost_pet_header_information_box_menu">종류</div>
-                  <div className="showing_lost_pet_header_information_box">
-
-                  </div>
-                  </div>
-                </div>
-                <div className="showing_lost_pet_header_location">
-                  <Link to={"/map"}>
-                    <div
-                    className="showing_lost_pet_header_location_btn">
-                      실종
-                      map
-                    </div>
-                  </Link>
-                </div>
-                <div className="showing_lost_pet_header_location_info">
-                  <div className="showing_lost_pet_header_location_info_row">
-                  </div>
-                  <div className="showing_lost_pet_header_location_info_row">
-                  </div>
-                </div>
-              </div>
-              <div className="showing_lost_pet_body">
-                {/* 잃어버린 강아지 이미지 */} 펫 이미지
-                <img></img>
-              </div>
-              <div className="showing_lost_pet_describe">
-                <div className="showing_lost_pet_describe_contents">
-                  {/* 강아지 설명 */} 피드 내용
-                </div>
-                  <div className="showing_lost_pet_describe_tag_box">
-                    <Tag></Tag>
-                    <Tag></Tag>
-                  </div>
-              </div>
-            </div>
-            <div className="showing_lost_pet_comment">{/* 댓글창 */} 댓글</div>
+          {this.state.petinfo.map((pet) => 
+            window.location.href.slice(-9) === "found_pet" && pet.is_found ?  <FoundPet petinfo={pet}/> :
+            pet.is_found && pet.pet_lost_region === window.location.search.slice(-2).replace(regex, "") ?
+            <FoundPet
+            petinfo={pet}
+            /> 
+            : null
+            )}
+            {/* <div className="pagination_space"></div>
+            <div className="footer_space"></div> */}
           </div>
-          <div className="infinite_scroll">
-            {/* 무한 스크롤 구현 위한 공간 */}
-            <div className="arrow_image_box">
-              <img className="upArrow_image" src="image/upArrow.png"></img>
-            </div>
-            <div className="arrow_image_box_space"> 이미지 좋은거 찾아보기</div>
-            <div className="arrow_image_box">
-              <img className="downArrow_image" src="image/downArrow.png"></img>
+          <div className="up_to_scroll">
+            <div className="scroll_image_box">
+              {/* <div className="scroll_image_minibox_space">맨위로</div>
+              <div className="scroll_image_minibox">
+                <img className="backtotopArrow_image"
+                 src="image/backtotop2.png"
+                 onClick={this.scrollToTop}></img>
+              </div> */}
             </div>
           </div>
-          <div className="main_White_Space"></div>
         </div>
       </>
     );
