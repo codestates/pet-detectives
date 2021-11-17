@@ -702,11 +702,12 @@ input:checked + .slider:before {
 
 .contents_box_high_infobox_high_left_imgbox_text_main {
   /* border: 1px solid blue; */
-  width: 80%;
+  width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: x-large;
+  font-weight: 700;
   border-bottom: solid 1px black;
 }
 
@@ -717,13 +718,28 @@ input:checked + .slider:before {
   border-bottom: solid 1px black;
 }
 
-.contents_box_high_infobox_high_left_imgbox_text_space_button {
+.contents_box_high_infobox_high_left_imgbox_text_space_button1 {
   width: 80%;
   height: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: black;
+  background: rgb(60, 60, 120);
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+  border-radius: 20px;
+  padding: 10px;
+}
+.contents_box_high_infobox_high_left_imgbox_text_space_button2 {
+  width: 80%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(37, 37, 75);
   outline: none;
   float: right;
   color: #ffffff;
@@ -746,7 +762,7 @@ input:checked + .slider:before {
   /* border: solid 1px red; */
   width: 100%;
   height: 80%;
-  opacity: 0.4;
+  /* opacity: 0.4; */
 }
 
 .contents_box_high_infobox_high_left_imgbox_img_center {
@@ -863,11 +879,17 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
-.uploaded_img {
+.upload {
   width:100%;
   height:100%;
   display: none;
 }
+.uploaded_img {
+  width:80%;
+  height:100%;
+  z-index: 3;
+}
+
 /* contents */
 
 /* userEdit */
