@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import axios from "axios";
 import Header from "./Header/header";
 import RegisteredPet from "./registeredPet/registeredPet";
 import lostpetList from "../dummyfile/lostpetinfo";
@@ -43,6 +44,21 @@ class my_page extends Component {
   closeUserEditModal = () => {
     this.setState({ isUserEditModalOpen: false });
   };
+
+  // getregisteredPet() {
+  //   axios.get("http://localhost:8080/pet/petinfo", {
+  //   }).then((res) => {
+  //     this.setState({petinfo: res.data.data.slice()})
+  //   })
+  // }
+
+  // componentDidMount() {
+  //   this.getPet()
+  // }
+
+  
+
+
 
   render() {
     return (
