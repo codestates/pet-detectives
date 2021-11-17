@@ -8,8 +8,10 @@ const {
 } = require("../middleware/tokenfunction");
 const jwt = require("jsonwebtoken");
 
+// let pageNum = req.query.page; // 요청 페이지 넘버
+// let offset = 0;
+
 module.exports = {
-<<<<<<< HEAD
 //   petimageController: async (req, res) => {
 // //user와 post를 찾아서 그림을 edit
 
@@ -41,10 +43,8 @@ return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
 // const cookie = req.cookie.accessToken
 // console.log(cookie)
 // authorized(req,cookie)
-=======
   //   petimageController: async (req, res) => {
   // //user와 post를 찾아서 그림을 edit
->>>>>>> 3c5a7a49e96e277993d1d366a60081b99f3e5a67
 
   // const{image} = req.body
 
@@ -57,33 +57,6 @@ return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
   //  })
 
   //   },
-  petregisterController: async (req, res) => {
-    //회원 가입한 회원의 email - id
-    // console.log(req.headers.authorization,req.cookies)
-
-    const {
-      image,
-      description,
-      pet_name,
-      pet_sex,
-      pet_age,
-      pet_category,
-      pet_lost_region,
-      pet_lost_date,
-      is_found,
-      email,
-    } = req.body;
-
-    // if(!image||!description||!pet_name||!pet_sex||!pet_category||!pet_lost_region||pet_lost_date){
-    // return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
-    // }
-    //verify ?  검증을 통해 데이터를 넘겨준다?
-    // authorized(req.header.authorization[1])
-    //사용자의 email이 들어간 db
-    const userId = await user.findOne({ where: { email } });
-    // const cookie = req.cookie.accessToken
-    // console.log(cookie)
-    // authorized(req,cookie)
 
     if (!userId) {
       return res.status(403).send({ messagee: "로그인후 이용해 주세요" });
