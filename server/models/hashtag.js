@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
      hashtag.belongsToMany(models.post,{
-        through:'post_hashtag',foreignKey:'hashtag_id'
+        through:'post_hashtag'
+        , onDelete: 'cascade', 
+          onUpdate: 'cascade',
 
       })
       // define association here

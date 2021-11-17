@@ -19,7 +19,8 @@ foreignKey:'user_id'
       post.hasMany(models.post_comment,{foreignKey:'post_id'})
 
       post.belongsToMany(models.hashtag,{
-        through:'post_hashtag',foreignKey:'post_id'})
+        through:'post_hashtag', onDelete: 'cascade', 
+        onUpdate: 'cascade',})
       // define association here)
     }
   
