@@ -3,8 +3,10 @@ import axios from "axios";
 import Header from "./Header/header";
 import MainSideBar from "./Sidebar/mainsidebar";
 import CommentModal from "./Modal/comment_modal";
-import LostPet from "./MainLostPet/LostPet"
+import LostPet from "./MainLostPet/LostPet";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 const mapStateToProps = (state) => {
   return {
@@ -18,12 +20,19 @@ class Main extends Component {
     this.state = {
       isCommentModalOpen: false,
       currnetUrl: window.location.href.query,
-      petinfo : [],
+      petinfo: [],
       token: "",
+      isLoding: false,
     };
   }
 
   // 모달관련
+
+  isLodingTrue = () => {
+    this.setState({ isLoding: true });
+    console.log(this.state.isLoding);
+  };
+
   openCommentModal = () => {
     this.setState({ isCommentModalOpen: true });
     console.log(this.state.currnetUrl);
@@ -33,57 +42,65 @@ class Main extends Component {
   };
   // 모달관련
 
-  upToArrow = React.createRef()
+  upToArrow = React.createRef();
 
   scrollToTop = (event) => {
     this.upToArrow.current.scrollTo(0, 0);
-  }
+  };
 
   getPet() {
-    axios.get("http://localhost:8080/pet/petinfo", {
-    }).then((res) => {
+    axios.get("http://localhost:8080/pet/petinfo", {}).then((res) => {
       const regex = /[^0-9]/g;
-      this.setState({petinfo: res.data.data.slice()})
-      console.log(window.location.search.slice(-2).replace(regex, ""))
-    })
+      this.setState({ petinfo: res.data.data.slice() });
+      console.log(window.location.search.slice(-2).replace(regex, ""));
+    });
   }
   // componentDidUpdate() {
   componentDidMount() {
-    this.getPet()
+    this.getPet();
+    setTimeout(this.isLodingTrue, 3000);
   }
 
   render() {
     const { articles } = this.props;
     const regex = /[^0-9]/g;
-    
-  
+
     return (
       <>
         <Header />
         <div className="main_box">
           <MainSideBar />
-          <div className="showing_lost_pet_box"
-          ref={this.upToArrow}>
-            {this.state.petinfo.map((pet) => 
-            // {console.log("pet.pet_lost_region :",pet.pet_lost_region)
-            // console.log("window.location :",window.location.search.slice(-2).replace(regex, ""))}
-            window.location.href.slice(-4) === "main" && !pet.is_found ?  <LostPet petinfo={pet} openCommentModal={this.openCommentModal}/> :
-            !pet.is_found && pet.pet_lost_region === Number(window.location.search.slice(-2).replace(regex, "")) ?
-            <LostPet petinfo={pet} openCommentModal={this.openCommentModal}/>
-            : null
+          <div className="showing_lost_pet_box" ref={this.upToArrow}>
+            {this.state.petinfo.map((pet) =>
+              // {console.log("pet.pet_lost_region :",pet.pet_lost_region)
+              // console.log("window.location :",window.location.search.slice(-2).replace(regex, ""))}
+              window.location.href.slice(-4) === "main" && !pet.is_found ? (
+                <LostPet
+                  petinfo={pet}
+                  openCommentModal={this.openCommentModal}
+                />
+              ) : !pet.is_found &&
+                pet.pet_lost_region ===
+                  Number(
+                    window.location.search.slice(-2).replace(regex, "")
+                  ) ? (
+                <LostPet
+                  petinfo={pet}
+                  openCommentModal={this.openCommentModal}
+                />
+              ) : null
             )}
             {/* <div className="pagination">pagination 구현</div>
             <div className="footer_space"></div> */}
           </div>
           <div className="up_to_scroll">
             <div className="scroll_image_box">
-              <div className="scroll_image_minibox_space">맨위로</div>
               <div className="scroll_image_minibox">
-                <img
-                  className="backtotopArrow_image"
-                  src="image/backtotop.png"
+                <FontAwesomeIcon
+                  icon={faArrowUp}
                   onClick={this.scrollToTop}
-                ></img>
+                  className="scroll_image_minibox_arrow"
+                />
               </div>
             </div>
           </div>

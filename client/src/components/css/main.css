@@ -29,12 +29,16 @@
   justify-content: flex-end;
   flex-direction: column;
   width: 80%;
-  height: 70%;
+  height: 80%;
 }
 
 .scroll_image_minibox_space {
   height: 6%;
   margin-bottom: 8%;
+}
+
+.scroll_image_minibox_arrow {
+  font-size: 50px;
 }
 
 .backtotopArrow_image {
