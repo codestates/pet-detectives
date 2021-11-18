@@ -17,16 +17,6 @@ module.exports = {
 
     return queryInterface.bulkInsert('users', datas, {});
     
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-  },
 
   down: async (queryInterface, Sequelize) => {
     return queryInterface.dropTable('users');
