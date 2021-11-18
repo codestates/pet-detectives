@@ -35,22 +35,18 @@ class my_page extends Component {
   };
 
   getregisteredPet() {
-    axios
-      .get(
-        "http://localhost:8080/pet/petinfo",
-        {},
-        {
-          headers: {
-            token: localStorage.getItem("accessToken"),
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        console.log(res.data);
-        this.setState({ lostpetList: res.data.data.slice() });
-      });
+    axios.get("http://localhost:8080/pet/petinfo",
+      {},
+      {
+        headers: {
+        token: localStorage.getItem("accessToken"),
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    }).then((res) => {
+      console.log(res.data)
+      this.setState({ lostpetList: res.data.data.slice() })
+    })
   }
 
   componentDidMount() {

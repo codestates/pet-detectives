@@ -127,10 +127,12 @@ class LostPet extends Component {
           <div className="showing_lost_pet_describe">
             <div className="showing_lost_pet_describe_contents_box">
               <div className="showing_lost_pet_describe_contents">
-                {petinfo.description}
+                <div className="showing_lost_pet_describe_contents_text">
+                  {petinfo.description}
+                </div>
               </div>
             </div>
-            <div className="showing_lost_pet_describe_tag_box"></div>
+            
           </div>
           <div className="showing_lost_pet_comment"></div>
         </div>

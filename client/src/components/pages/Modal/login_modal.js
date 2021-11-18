@@ -116,7 +116,7 @@ class LoginModal extends Component {
     return (
       <>
         {isLoginOpen ? (
-          <div className="modal" onClick={close}>
+          <div className="modal">
             <div className="loginModal" onClick={(e) => e.stopPropagation()}>
               <span className="close" onClick={close}>
                 &times;

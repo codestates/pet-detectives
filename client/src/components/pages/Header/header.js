@@ -39,8 +39,6 @@ class Header extends Component {
                 <img className="logo" src="image/pet_detectives_logo.png"></img>
               </Link>
             </div>
-            <div className="tag">{/* 태그검색창 */}</div>
-
             <div className="connection">
               {/* 버튼모음 */}
               <div className="header_box_main">
