@@ -40,7 +40,7 @@
 팀원 | 김강민 | FRONT-END | 
 팀원 | 이창무 | FRONT-END | 
 팀원 | 이인행 | BACK-END | 
-팀장 | 정다희 | BACK_END | 
+팀장 | 김재후 | BACK_END | 
 
 ## WIKI PAGE
 ### [4_detectives의 WIKI PAGE](https://github.com/codestates/pet-detectives/wiki)
