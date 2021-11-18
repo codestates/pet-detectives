@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import DeleteConfirmModal from "../Modal/deleteConfirm_Modal";
 
 class RegisteredPet extends Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -102,7 +104,7 @@ class RegisteredPet extends Component {
                 {lostpet.description}
               </div>
               <div className="mypage_pet_describe_tags">
-                #귀여움, #흰색, #멍멍멍
+              
               </div>
             </div>
             <div className="mypage_pet_toggle_and_revise">

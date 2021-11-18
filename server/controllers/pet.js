@@ -2,7 +2,7 @@ const express = require("express");
 const { user, post, post_comment, hashtag } = require("../models");
 const {
   generateAccessToken,
-
+  sendToken,
   generateRefreshToken,
   authorized,
 } = require("../middleware/tokenfunction");
@@ -34,6 +34,9 @@ module.exports = {
     ) {
       return res.status(404).send({ message: "펫 정보를 모두 입력해주세요" });
     }
+    //verify ?  검증을 통해 데이터를 넘겨준다?
+    // authorized(req.header.authorization[1])
+    //사용자의 email이 들어간 db
 
     const accessTokenData = authorized(token);
     const findUser = await user.findOne({
@@ -53,16 +56,15 @@ module.exports = {
       return res.status(404).send({ message: "펫 정보를 모두 입력해주세요" });
     }
     const petReigster = await post.create({
-      image: req.body.image,
-      // user_id: userId.id,
-      description: req.body.description,
-      pet_name: req.body.pet_name,
-      pet_sex: req.body.pet_sex,
-      pet_age: req.body.pet_age,
-      pet_category: req.body.pet_category,
-      pet_lost_date: req.body.pet_lost_date,
-      pet_lost_region: req.body.pet_lost_region,
-      is_found: req.body.is_found,
+      image: image,
+      description: description,
+      pet_name: pet_name,
+      pet_sex: pet_sex,
+      pet_age: pet_age,
+      pet_category: pet_category,
+      pet_lost_date: pet_lost_date,
+      pet_lost_region: pet_lost_region,
+      is_found: is_found,
     });
 
     return res
