@@ -74,7 +74,8 @@ class my_page extends Component {
             <div className="mypage_middleSpace_high">
               <h1>My Page</h1>
             </div>
-            <div className="mypage_middleSpace_middle">
+
+            <div className="mypage_middleSpace_middle">  
               <div className="mypage_middleSpace_myRegisteredInfo_box">
                 {this.state.lostpetList.map((lostpet, idx) => {
                   return (
