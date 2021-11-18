@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import "./signUpModal.css";
+import "../../App";
 
 // axios.defaults.withCredentials = true;
 

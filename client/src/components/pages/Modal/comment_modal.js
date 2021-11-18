@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserComment from "./userComment/userComment";
-import "./commentModal.css";
+import "../../App";
 import commentList from "../../dummyfile/comments";
 
 class CommentModal extends Component {
