@@ -16,11 +16,8 @@
 
 저희, 4_detectives! 그리고 모두가 도와드립니다.!
 
-
-
 ## DB SCHEME
 ![스크린샷 2021-11-17 오전 10 49 32](https://user-images.githubusercontent.com/83863101/142362448-683e638f-eabf-4bdb-a483-e5dfd97f9b04.png)
-
 
 ## FLOW CHART
 ### front-end
@@ -29,18 +26,19 @@
 ### back-end
 ![system-architecture drawio_4](https://user-images.githubusercontent.com/83863101/142362493-58400324-35ea-41cb-bf99-8b9b422f9995.png)
 
+## SYSTEM ARCHITECTURE
+![system-architecture](https://user-images.githubusercontent.com/83863101/142367682-cc68c93c-b5fd-4214-95ec-65787d0834ee.jpg)
 
 ## WIRE FRAME
 ![141076710-e307880f-096f-40ed-bec7-38718bcc7ce1](https://user-images.githubusercontent.com/83863101/142362581-1df834fd-0b38-4b01-8b74-084e0317db98.jpeg)
 
 ## 4_detectives
-
-역할 | 이름 | 담당분야 | Github 주소
+역할 | 이름 | 담당분야 | Github ID
 --- | --- | ------ | ---------
-팀원 | 김강민 | FRONT-END | 
-팀원 | 이창무 | FRONT-END | 
-팀원 | 이인행 | BACK-END | 
-팀장 | 김재후 | BACK_END | 
+팀원 | 김강민 | FRONT-END | starguys
+팀원 | 이창무 | FRONT-END | changmoolee
+팀원 | 이인행 | BACK-END | dpemdnjem23
+팀장 | 김재후 | BACK_END | nkimtnt
 
 ## WIKI PAGE
 ### [4_detectives의 WIKI PAGE](https://github.com/codestates/pet-detectives/wiki)
