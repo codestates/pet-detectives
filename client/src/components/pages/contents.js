@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header/header";
 import axios from "axios";
-import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 
 class contents extends Component {
@@ -103,16 +103,15 @@ class contents extends Component {
 
   saveFileImage = (e) => { 
     this.setState({
-      imagefile : URL.createObjectURL(e.target.files[0]),
-      image : URL.createObjectURL(e.target.files[0])
-    })
+      imagefile: URL.createObjectURL(e.target.files[0]),
+      image: URL.createObjectURL(e.target.files[0]),
+    });
   };
 
-  deleteFileImage = () => { 
-    URL.revokeObjectURL(this.state.imagefile)
-    this.setState({imagefile : "", image: "" })
+  deleteFileImage = () => {
+    URL.revokeObjectURL(this.state.imagefile);
+    this.setState({ imagefile: "", image: "" });
   };
-
 
   inputHandler(e) {
     console.log("imInput");
@@ -160,28 +159,45 @@ class contents extends Component {
                   <div className="contents_box_high_infobox_high_left_imgbox">
                     <div className="contents_box_high_infobox_high_left_imgbox_text">
                       <div className="contents_box_high_infobox_high_left_imgbox_text_main">
-                      &nbsp;&nbsp;&nbsp;실 종&nbsp;&nbsp;동 물&nbsp;&nbsp; 이 미 지
+                        &nbsp;&nbsp;&nbsp;실 종&nbsp;&nbsp;동 물&nbsp;&nbsp; 이
+                        미 지
                       </div>
                       <div className="contents_box_high_infobox_high_left_imgbox_text_space">
-                        <label for="upload" className="contents_box_high_infobox_high_left_imgbox_text_space_button1">
+                        <label
+                          for="upload"
+                          className="contents_box_high_infobox_high_left_imgbox_text_space_button1"
+                        >
                           사진 올리기
                         </label>
                       </div>
                       <div className="contents_box_high_infobox_high_left_imgbox_text_space">
-                        <div 
-                        className="contents_box_high_infobox_high_left_imgbox_text_space_button2"
-                        onClick={this.deleteFileImage}>
+                        <div
+                          className="contents_box_high_infobox_high_left_imgbox_text_space_button2"
+                          onClick={this.deleteFileImage}
+                        >
                           사진 삭제
                         </div>
                       </div>
                     </div>
                     <div className="contents_box_high_infobox_high_left_imgbox_img">
                       <div className="contents_box_high_infobox_high_left_imgbox_img_center">
-                      {this.state.imagefile && (<img className="uploaded_img" alt="sample" src={this.state.imagefile} style={{ margin: "auto" }} />)}
-                      <input type="file" accept="img/*" id="upload" className="upload" 
-                        onChange={this.saveFileImage}/>
+                        {this.state.imagefile && (
+                          <img
+                            className="uploaded_img"
+                            alt="sample"
+                            src={this.state.imagefile}
+                            style={{ margin: "auto" }}
+                          />
+                        )}
+                        <input
+                          type="file"
+                          accept="img/*"
+                          id="upload"
+                          className="upload"
+                          onChange={this.saveFileImage}
+                        />
                         <span className="contents_box_high_infobox_high_left_imgbox_img_text">
-                        {!this.state.imagefile && "이미지를 등록해 주세요"}
+                          {!this.state.imagefile && "이미지를 등록해 주세요"}
                         </span>
                       </div>
                     </div>
@@ -190,18 +206,9 @@ class contents extends Component {
                     <div className="content_lost_map">
                       <Link to={"/map"} className="content_lost_map">
                         <div className="contents_lost_map_div">
-                        실종위치 등록 (Click me)
+                          실종위치 등록 (Click me)
                         </div>
                       </Link>
-                    </div>
-                    <div className="contents_tag">
-                      #Tags &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input
-                        type="text"
-                        className="inputbox_default"
-                        id="tags_inputbox"
-                        placeholder="#Tags 최소 1개이상 등록해주세요"
-                      ></input>
                     </div>
                     <div className="contents_box_low_describe">
                       피드 내용 &nbsp;
@@ -321,12 +328,18 @@ class contents extends Component {
                       className="contents_input_date"
                       // onChange={(e) => this.inputHandler(e)}
                       // value={this.state.pet_lost_date}
-                      name="pet_lost_date">
-                        <DatePicker
+                      name="pet_lost_date"
+                    >
+                      <DatePicker
                         className="date_picker"
-                        selected={this.state.startDate} 
-                        onChange={(date) => this.setState({startDate : date, pet_lost_date : date})}
-                        />
+                        selected={this.state.startDate}
+                        onChange={(date) =>
+                          this.setState({
+                            startDate: date,
+                            pet_lost_date: date,
+                          })
+                        }
+                      />
                     </div>
                   </div>
                 </div>
@@ -340,7 +353,6 @@ class contents extends Component {
                   >
                     반려동물 등록하기
                   </button>
-                  
                 </div>
               </div>
             </div>

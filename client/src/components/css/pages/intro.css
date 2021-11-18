@@ -1,0 +1,50 @@
+.box {
+  /* border: solid 7px red; */
+  background-color: rgb(196, 193, 184, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.intro_box {
+  /* border: solid 1px gray; */
+  height: 20vh;
+  width: 25vw;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro_btn_box {
+  /* border: solid 7px blue; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.intro_btn {
+  height: 110px;
+  width: 500px;
+  font-size: 22px;
+  padding: 13px 30px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  line-height: 1px;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  border-radius: 3px;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.intro_btn:hover {
+  border: solid 5px rgb(89, 54, 16, 0.8);
+  transition: 1s;
+}

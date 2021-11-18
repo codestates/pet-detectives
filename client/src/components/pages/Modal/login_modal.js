@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link, Redirect, Route } from "react-router-dom";
-import "./loginModal.css";
+import "../../App";
 import SignUpModal from "./signup_modal";
 import { connect } from "react-redux";
 import { addArticle } from "../../../redux/actions";
@@ -39,7 +39,7 @@ class LoginModal extends Component {
     axios
       .get("http://localhost:8080/user/userinfo", {
         headers: {
-          token: localStorage.getItem("accessToken"),
+          Authorization: localStorage.getItem("accessToken"),
           "Content-Type": "application/json",
         },
         withCredentials: true,
