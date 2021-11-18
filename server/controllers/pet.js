@@ -45,7 +45,7 @@ const findUser = await user.findOne({where:{email:accessTokenData.email}})
 
 
 if(!req.body.image||!req.body.description||!req.body.pet_name||!req.body.pet_sex||!req.body.pet_category||!req.body.pet_lost_region||!req.body.pet_lost_date||!req.body.pet_age){
-return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
+return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})}
 
     const petReigster = await post.create({
       image: req.body.image,
