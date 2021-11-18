@@ -24,10 +24,10 @@
 ![141034996-d8869b20-4c2e-451f-9a87-9ae9f6bc057e](https://user-images.githubusercontent.com/83863101/142362948-5173a6ee-3c30-4f74-83fc-bef04fe7667b.png)
 
 ### back-end
-![system-architecture drawio_4](https://user-images.githubusercontent.com/83863101/142362493-58400324-35ea-41cb-bf99-8b9b422f9995.png)
+![system-architecture](https://user-images.githubusercontent.com/83863101/142367682-cc68c93c-b5fd-4214-95ec-65787d0834ee.jpg)
 
 ## SYSTEM ARCHITECTURE
-![system-architecture](https://user-images.githubusercontent.com/83863101/142367682-cc68c93c-b5fd-4214-95ec-65787d0834ee.jpg)
+![system-architecture drawio_4](https://user-images.githubusercontent.com/83863101/142362493-58400324-35ea-41cb-bf99-8b9b422f9995.png)
 
 ## WIRE FRAME
 ![141076710-e307880f-096f-40ed-bec7-38718bcc7ce1](https://user-images.githubusercontent.com/83863101/142362581-1df834fd-0b38-4b01-8b74-084e0317db98.jpeg)
