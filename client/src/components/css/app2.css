@@ -81,7 +81,7 @@
   overflow-x:hidden
 }
 .showing_lost_pet {
-  min-width: 600px;
+  width: 600px;
   min-height: 800px;
   display: flex;
   flex-direction: column;

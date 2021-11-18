@@ -17,10 +17,11 @@ class contents extends Component {
       pet_age: "",
       pet_category: "",
       pet_lost_date: "",
-      pet_lost_region: "",
+      pet_lost_region: 1,
       is_found: "false",
       startDate: "",
       imagefile : "",
+      districtNum: "",
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.contentsRequestHandler = this.contentsRequestHandler.bind(this);
@@ -36,10 +37,66 @@ class contents extends Component {
     console.log(this.state.pet_lost_date)
     console.log(this.state.pet_lost_region)
     console.log(this.state.is_found)
+    console.log(this.state.districtNum)
+    console.log(localStorage.getItem("accessToken"))
   }
 
   componentDidUpdate() {
     this.getReaction()
+  }
+  compute() {
+    if(this.state.districtNum === "서울") {
+      this.setState({pet_lost_region: 1})
+    }
+    if(this.state.districtNum === "부산") {
+      this.setState({pet_lost_region: 2})
+    }
+    if(this.state.districtNum === "대구") {
+      this.setState({pet_lost_region: 3})
+    }
+    if(this.state.districtNum === "인천") {
+      this.setState({pet_lost_region: 4})
+    }
+    if(this.state.districtNum === "광주") {
+      this.setState({pet_lost_region: 5})
+    }
+    if(this.state.districtNum === "대전") {
+      this.setState({pet_lost_region: 6})
+    }
+    if(this.state.districtNum === "울산") {
+      this.setState({pet_lost_region: 7})
+    }
+    if(this.state.districtNum === "세종") {
+      this.setState({pet_lost_region: 8})
+    }
+    if(this.state.districtNum === "경기") {
+      this.setState({pet_lost_region: 9})
+    }
+    if(this.state.districtNum === "강원") {
+      this.setState({pet_lost_region: 10})
+    }
+    if(this.state.districtNum === "충북") {
+      this.setState({pet_lost_region: 11})
+    }
+    if(this.state.districtNum === "충남") {
+      this.setState({pet_lost_region: 12})
+    }
+    if(this.state.districtNum === "전북") {
+      this.setState({pet_lost_region: 13})
+    }
+    if(this.state.districtNum === "전남") {
+      this.setState({pet_lost_region: 14})
+    }
+    if(this.state.districtNum === "경북") {
+      this.setState({pet_lost_region: 15})
+    }
+    if(this.state.districtNum === "경남") {
+      this.setState({pet_lost_region: 16})
+    }
+    if(this.state.districtNum === "제주") {
+      this.setState({pet_lost_region: 17})
+    }
+    
   }
 
 
@@ -63,24 +120,10 @@ class contents extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
   contentsRequestHandler() {
-    // const {
-    //   image,
-    //   description,
-    //   pet_name,
-    //   pet_sex,
-    //   pet_age,
-    //   pet_category,
-    //   pet_lost_date,
-    //   pet_lost_region,
-    //   is_found,
-    // } = this.state;
+
     axios
       .post("http://localhost:8080/pet/petregister", {
-        // headers: {
-        //   // token: localStorage.getItem("accessToken"),
-        //   "Content-Type": "application/json",
-        // },
-        // withCredentials: true,
+        withCredentials: true,
         image: this.state.image,
         description: this.state.description,
         pet_name: this.state.pet_name,
@@ -89,7 +132,11 @@ class contents extends Component {
         pet_category: this.state.pet_category,
         pet_lost_date: this.state.pet_lost_date,
         pet_lost_region: this.state.pet_lost_region,
-        // is_found: this.state.is_found,
+        is_found: this.state.is_found,
+      },
+      { headers : {
+        authorization : localStorage.getItem("accessToken"),
+        "Content-Type": "application/json",}
       })
       .then((res) => {
         console.log("im good", res);
@@ -211,9 +258,9 @@ class contents extends Component {
                     <span className="contents_text">잃어버린 위치</span>
                     <select
                       className="contents_dropdown"
-                      onChange={(e) => this.inputHandler(e)}
-                      value={this.state.pet_lost_region}
-                      name="pet_lost_region"
+                      onChange={(e) => {this.inputHandler(e) ; this.compute()}}
+                      value={this.state.districtNum}
+                      name="districtNum"
                     >
                       <option className="contents_dropdown_list" value="서울">
                         서울

@@ -40,8 +40,10 @@ class found_pet extends Component {
           <FoundPetSideBar />
           <div className="showing_lost_pet_box">
           {this.state.petinfo.map((pet) => 
+          //  {console.log("pet.pet_lost_region :",pet.pet_lost_region)
+          //   console.log("window.location :",window.location.search.slice(-2).replace(regex, ""))}
             window.location.href.slice(-9) === "found_pet" && pet.is_found ?  <FoundPet petinfo={pet}/> :
-            pet.is_found && pet.pet_lost_region === window.location.search.slice(-2).replace(regex, "") ?
+            pet.is_found && pet.pet_lost_region === Number(window.location.search.slice(-2).replace(regex, "")) ?
             <FoundPet
             petinfo={pet}
             /> 
