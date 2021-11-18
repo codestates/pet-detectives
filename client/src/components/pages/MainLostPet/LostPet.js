@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tag from "../Tag/tag";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 class LostPet extends Component {
   render() {
@@ -91,15 +93,7 @@ class LostPet extends Component {
                   </div>
                 </div>
               </div>
-              <div className="showing_lost_pet_header_location">
-                <Link
-                  to={"/map"}
-                  className="showing_lost_pet_header_location_btn"
-                >
-                  실 종 <br />
-                  map
-                </Link>
-              </div>
+
               <div className="showing_lost_pet_header_location_info">
                 <div className="showing_lost_pet_header_location_info_row">
                   <div className="showing_lost_pet_header_location_info_box_menu">
@@ -118,21 +112,23 @@ class LostPet extends Component {
                   </div>
                 </div>
               </div>
+              <div className="showing_lost_pet_header_location">
+                <Link
+                  to={"/map"}
+                  className="showing_lost_pet_header_location_btn"
+                >
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                </Link>
+              </div>
             </div>
             <div className="showing_lost_pet_body">
               <img
                 className="showing_lost_pet_body_image"
                 src={petinfo.image}
-              ></img>
+              />
             </div>
             <div className="showing_lost_pet_describe">
-              <div className="showing_lost_pet_describe_contents_box">
-                <div className="showing_lost_pet_describe_contents">
-                  <div className="showing_lost_pet_describe_contents_text">
-                    {petinfo.description}
-                  </div>
-                </div>
-              </div>
+              {petinfo.description}
             </div>
           </div>
 

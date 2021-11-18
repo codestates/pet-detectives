@@ -1,5 +1,12 @@
 .draw {
   margin-bottom: 4px;
+  background: rgb(21, 168, 115);
+  background: linear-gradient(
+    90deg,
+    rgba(21, 168, 115, 0.10407913165266103) 0%,
+    rgba(59, 86, 123, 0.06486344537815125) 35%,
+    rgba(0, 212, 255, 0.06486344537815125) 100%
+  );
 }
 
 .logo_box {
@@ -27,7 +34,6 @@
 }
 
 .header_box {
-  background-color: white;
   color: black;
   display: flex;
   width: 200px;

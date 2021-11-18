@@ -1,40 +1,47 @@
 .showing_lost_pet {
-  min-width: 600px;
-  min-height: 800px;
+  min-width: 500px;
+  min-height: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .showing_lost_pet_box {
-  padding-top: 30px;
-  padding-left: 250px;
-  padding-right: 250px;
-  min-width: 600px;
+  padding-left: 200px;
+  padding-right: 300px;
+  min-width: 900px;
   max-width: 600px;
   display: flex;
   align-items: center;
+  background-image: url("data:image/svg+xml,%3Csvg id='visual' viewBox='0 0 900 600' width='900' height='600' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23ffffff'%3E%3C/rect%3E%3Cg fill='%239fb9e1'%3E%3Ccircle r='92' cx='128' cy='449'%3E%3C/circle%3E%3Ccircle r='41' cx='45' cy='217'%3E%3C/circle%3E%3Ccircle r='55' cx='323' cy='57'%3E%3C/circle%3E%3Ccircle r='66' cx='427' cy='467'%3E%3C/circle%3E%3Ccircle r='69' cx='722' cy='108'%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+}
+
+.showing_lost_pet_box::-webkit-scrollbar {
+  width: 10px;
+}
+
+.showing_lost_pet_box::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+
+.showing_lost_pet_box::-webkit-scrollbar-track {
+  background-color: rgb(0, 0, 0, 0.4);
 }
 
 .showing_lost_pet_space {
-  width: 100%;
+  width: 0%;
   height: 20%;
-}
-
-.showing_lost_pet_space_box {
-  width: 95%;
-  height: 250%;
-  border: solid 1px rgb(0, 0, 0, 0.4);
 }
 
 .showing_lost_pet_header {
   width: 100%;
-  height: 20%;
+
   display: flex;
+  align-items: center;
 }
 .showing_lost_pet_header_information {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 50%;
   width: 45%;
 }
 .showing_lost_pet_header_information_row {
@@ -49,8 +56,7 @@
   width: 25%;
   font-weight: bold;
   color: #153d73;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+
   background: #efefef;
 }
 .showing_lost_pet_header_information_box {
@@ -60,30 +66,29 @@
   width: 25%;
   font-weight: bold;
   color: #153d73;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  background-color: white;
 }
 
 .showing_lost_pet_header_location {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 50%;
   width: 15%;
 }
 .showing_lost_pet_header_location_btn {
-  border-radius: 40%;
-  background-color: #1e4e8e;
+  border-radius: 18px;
+  background-color: rgb(59, 86, 123, 0.9);
   color: white;
-  width: 60%;
-  height: 60%;
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px;
 }
 .showing_lost_pet_header_location_btn:hover {
-  background-color: #153259;
+  background-color: #1b3960;
 }
 
 .showing_lost_pet_header_location_btn:active {
@@ -92,12 +97,10 @@
 }
 
 .showing_lost_pet_header_location_info {
-  height: 100%;
+  height: 50%;
   width: 40%;
 }
 .showing_lost_pet_header_location_info_row {
-  border-left: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
   display: flex;
   width: 100%;
   height: 50%;
@@ -109,35 +112,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid #ccc;
   background: #efefef;
 }
 .showing_lost_pet_header_location_info_box {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 120px;
+  background-color: white;
 }
 
 .showing_lost_pet_body {
+  border-top: solid 1px rgb(0, 0, 0, 0.4);
+  border-bottom: solid 1px rgb(0, 0, 0, 0.4);
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 50%;
+  height: 620px;
+  width: 530px;
 }
-.showing_lost_pet_body_image {
-  border-top: solid 1px rgb(0, 0, 0, 0.4);
 
-  height: 100%;
+.showing_lost_pet_body_image {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .showing_lost_pet_describe {
-  border: 1px solid black;
-  width: 100%;
-  height: 30%;
+  padding: 3%;
+  width: 498px;
+  height: 100px;
   display: flex;
+  background-color: white;
 }
 .showing_lost_pet_describe_contents_box {
   /* background-color: #1e4476; */
@@ -174,4 +181,10 @@
 .showing_lost_pet_comment {
   width: 600px;
   height: 30%;
+}
+
+.showing_lost_pet_space_box {
+  width: 530px;
+  height: 2800px;
+  border: solid 1px rgb(0, 0, 0, 0.4);
 }
