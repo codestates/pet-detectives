@@ -16,7 +16,6 @@ class my_page extends Component {
     };
   }
 
-
   deleteLostpet = (idx) => {
     let lostpetListdata = this.state.lostpetList;
     lostpetListdata.splice(idx, 1);
@@ -51,7 +50,7 @@ class my_page extends Component {
   }
 
   componentDidMount() {
-    this.getregisteredPet()
+    this.getregisteredPet();
   }
 
   render() {
