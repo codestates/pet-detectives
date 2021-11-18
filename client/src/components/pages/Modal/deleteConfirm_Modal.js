@@ -1,5 +1,6 @@
+import axios from "axios";
 import React, { Component } from "react";
-import "./deleteConfirmModal.css";
+import "../../App";
 
 class DeleteConfirmModal extends Component {
   constructor(props) {
@@ -9,13 +10,10 @@ class DeleteConfirmModal extends Component {
 
   onClickConsole = () => {
     const idx = this.props.idx;
-    console.log("click me!", idx);
-    console.log("delete boom~", this.props.deleteLostpet);
   };
 
   render() {
     const { isDeleteLostPetsModalOpen, close, idx, deleteLostpet } = this.props;
-    console.log(idx, "delete modal idx!");
     return (
       <>
         {isDeleteLostPetsModalOpen ? (
@@ -39,7 +37,9 @@ class DeleteConfirmModal extends Component {
                     className="deleteConfirmModal_box_choicebox_yes"
                     onClick={() => {
                       deleteLostpet(idx);
+                      close();
                     }}
+
                     // onClick={this.onClickConsole}
                   >
                     네

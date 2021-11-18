@@ -26,7 +26,7 @@ foreignKey:'user_id'
   
   };
   post.init({
-    image: DataTypes.BLOB,
+    image: DataTypes.TEXT,
     description: DataTypes.TEXT,
     user_id: DataTypes.INTEGER,
     pet_name: DataTypes.STRING,
