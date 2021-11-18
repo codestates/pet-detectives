@@ -43,6 +43,15 @@ module.exports = {
       where: { email: accessTokenData.email },
     });
 
+<<<<<<< HEAD
+const accessTokenData = authorized(token)
+const findUser = await user.findOne({where:{email:accessTokenData.email}})
+
+
+if(!req.body.image||!req.body.description||!req.body.pet_name||!req.body.pet_sex||!req.body.pet_category||!req.body.pet_lost_region||!req.body.pet_lost_date||!req.body.pet_age){
+return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})}
+
+=======
     if (
       !req.body.image ||
       !req.body.description ||
@@ -55,6 +64,7 @@ module.exports = {
     ) {
       return res.status(404).send({ message: "펫 정보를 모두 입력해주세요" });
     }
+>>>>>>> e2fc9bcc714f94afe20ef82b3a3c58d9dc22879f
     const petReigster = await post.create({
       image: image,
       description: description,

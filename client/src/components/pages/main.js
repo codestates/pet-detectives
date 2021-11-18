@@ -20,6 +20,7 @@ class Main extends Component {
       currnetUrl: window.location.href.query,
       petinfo : [],
       token: "",
+      isLoading: true,
     };
   }
 
@@ -46,11 +47,12 @@ class Main extends Component {
       this.setState({petinfo: res.data.data.slice()})
       console.log(window.location.search.slice(-2).replace(regex, ""))
     })
+    this.setState({isLoading: false})
   }
   // componentDidUpdate() {
-  componentDidMount() {
-    this.getPet()
-  }
+    componentDidMount() {
+      setTimeout(() => this.getPet(),2000)
+    }
 
   render() {
     const { articles } = this.props;
@@ -59,15 +61,23 @@ class Main extends Component {
   
     return (
       <>
+        {this.state.isLoading ?
+            <div className="jungang">
+            <span className="loading">Loading...</span>
+            </div>
+            :
+            <>
         <Header />
         <div className="main_box">
           <MainSideBar />
+          
           <div className="showing_lost_pet_box"
           ref={this.upToArrow}>
-            {this.state.petinfo.map((pet) => 
+            {this.state.petinfo.map((pet, idx) => 
             // {console.log("pet.pet_lost_region :",pet.pet_lost_region)
             // console.log("window.location :",window.location.search.slice(-2).replace(regex, ""))}
-            window.location.href.slice(-4) === "main" && !pet.is_found ?  <LostPet petinfo={pet} openCommentModal={this.openCommentModal}/> :
+            window.location.href.slice(-4) === "main" && !pet.is_found ?  
+            <LostPet petinfo={pet} openCommentModal={this.openCommentModal}/> :
             !pet.is_found && pet.pet_lost_region === Number(window.location.search.slice(-2).replace(regex, "")) ?
             <LostPet petinfo={pet} openCommentModal={this.openCommentModal}/>
             : null
@@ -92,6 +102,7 @@ class Main extends Component {
           isCommentModalOpen={this.state.isCommentModalOpen}
           close={this.closeCommentModal}
         />
+        </>}
       </>
     );
   }
