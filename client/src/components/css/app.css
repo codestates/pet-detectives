@@ -1,5 +1,19 @@
 @import url(./pages/intro.css);
-
+@import url(./pages/modal/commentModal.css);
+@import url(./pages/modal/deleteConfirmModal.css);
+@import url(./pages/modal/resignGoodbyeModal.css);
+@import url(./pages/modal/resignModal.css);
+@import url(./pages/modal/userEdit.css);
+@import url(./pages/modal/loginModal.css);
+@import url(./pages/modal/signUpModal.css);
+@import url(./pages/Header/header.css);
+@import url(./main.css);
+@import url(./my_page.css);
+@import url(./contents.css);
+@import url(./pages/sidebar/mainsidebar.css);
+@import url(./scroll/scroll.css);
+@import url(./pages/registeredPet/registeredPet.css);
+@import url(./pages/MainLostPet/LostPet.css);
 /* a-style */
 
 a {
@@ -21,118 +35,6 @@ a:active {
   width: 100%;
 }
 
-.intro_btn_box {
-  /* border: solid 7px blue; */
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.intro_btn {
-  height: 110px;
-  width: 500px;
-  font-size: 22px;
-  padding: 13px 30px;
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  line-height: 1px;
-  margin-top: 20px;
-  margin-bottom: 12px;
-  border-radius: 3px;
-  border-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-}
-
-.intro_btn:hover {
-  border: solid 5px rgb(89, 54, 16, 0.8);
-  transition: 1s;
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: "100vh";
-}
-.sidebar_category_box {
-  background-color: #2a3b54;
-  color: white;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10%;
-}
-.sideber_row_box {
-  display: flex;
-  width: 100%;
-  height: 90%;
-}
-.sideber_column_box {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  height: 100%;
-}
-.sidebar_district_box {
-  border: solid 0.1px black;
-  background-color: #3b567b;
-  color: white;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10%;
-  /* display: inline-grid; */
-  /* grid-template-rows: 50% 50%; */
-  /* grid-template-columns: 50% 50%; */
-}
-.sidebar_district_box:hover {
-  border: solid 0.5px black;
-  background-color: #1b3960;
-  color: white;
-  font-weight: bold;
-  height: 10%;
-}
-
-.sidebar_district_box:active {
-  color: rgb(80, 75, 75);
-  font-weight: bold;
-}
-.sidebar_district_Link {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.draw {
-  margin-bottom: 4px;
-}
-
-.header_box {
-  background-color: white;
-  color: black;
-  display: flex;
-  width: 200px;
-  height: 70px;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  text-shadow: rgb(196, 193, 184) 1px 0 10px;
-  border-bottom: solid 3px rgb(74, 74, 194, 0);
-  transition: all 0.8s;
-}
-
-.header_box:hover {
-  border-bottom: solid 3px rgb(74, 74, 194, 0.7);
-}
-
 /* content */
 
 .petImg {
@@ -140,15 +42,271 @@ a:active {
   height: 70%;
 }
 
-.contents_dropdown {
-  background-color: white;
-  border: solid 1px black;
-  width: 54%;
-  height: 40%;
-  font-size: 18px;
-  text-align-last: center;
+/* App2.css */
+
+/* header css */
+.header {
+  display: flex;
+  justify-content: flex-start;
+  box-shadow: 0 4px 0 0px black;
 }
-.contents_dropdown_list {
+
+.logo {
+  flex: 1 1 auto;
+  height: 100px;
+  object-fit: cover;
+}
+
+.tag_search {
+  border: solid 1px black;
+  width: 200px;
+  height: 30%;
+  font-size: 16px;
+
+  outline: none;
+  float: left;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+}
+
+.tag_button {
+  width: 50px;
+  height: 35%;
+  border: 0px;
+  background: #1b5ac2;
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+}
+
+.connection > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* header css */
+
+/* main css */
+
+.pagination {
+  border: 1px solid green;
+  width: 600px;
+  height: 5%;
+}
+.pagination_space {
+  width: 600px;
+  height: 5%;
+}
+.footer_space {
+  height: 10%;
+}
+
+/* main css */
+
+/* found_pet */
+
+.infinite_scroll {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.arrow_image_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+}
+.arrow_image_box_space {
+  width: 100%;
+  height: 30%;
+}
+.upArrow_image {
+  object-fit: cover;
+  width: 100%;
+  height: 80px;
+}
+.downArrow_image {
+  object-fit: cover;
+  width: 100%;
+  height: 80px;
+}
+
+/* found_pet  */
+
+/* mypage */
+
+.mypage_pet_info_high_space {
+  width: 40%;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+/* mypage */
+
+/* contents */
+
+.contents_box_high_infobox_high_left_lostloca {
+  /* border: 1px solid green; */
+  height: 10%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contents_box_high_infobox_low_space {
+  /* border: 1px solid green; */
+  width: 60%;
+}
+.contents_box_low {
+  /* border: 1px solid blue; */
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+}
+.contents_tag {
+  margin-top: 2%;
+  /* border: solid 1px red; */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#tags_inputbox {
+  /* border: 1px solid blue; */
+  width: 60%;
+}
+
+#text_inputbox {
+  /* border: 1px solid blue; */
+  width: 60%;
+  height: 100%;
+  text-align: left;
+}
+
+/* contents */
+
+/* userEdit */
+
+.userEdit_box {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+.userEdit_box_high {
+  border: 1px solid green;
+  display: flex;
+  height: 75%;
+}
+.userEdit_box_high_space {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+.userEdit_box_high_space_space {
+  border: 1px solid green;
+  height: 26%;
+}
+.userEdit_box_high_space_buttonBox {
+  display: flex;
+  height: 16%;
+}
+.userEdit_box_high_middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 100%;
+}
+.userEdit_box_high_middle_space {
+  border: 1px solid green;
+  width: 100%;
+  height: 10%;
+}
+.userEdit_box_high_middle_editbox {
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 16%;
+}
+
+.userEdit_box_low {
+  border: 1px solid green;
+  display: flex;
+  height: 25%;
+}
+.userEdit_box_low_resign {
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.userEdit_box_low_reviseButton {
+  border: 1px solid green;
+  width: 50%;
+}
+
+.showing_lost_pet_describe_tag {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #666666;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 2px 36px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
+  height: 20%;
+}
+.showing_lost_pet_describe_tag:hover {
+  background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background-color: #f6f6f6;
+}
+
+.showing_lost_pet_comment_btn {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 100px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
+  height: 60%;
+}
+.showing_lost_pet_comment_btn:hover {
+  background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background-color: #f6f6f6;
+}
+.showing_lost_pet_comment_btn:active {
+  position: relative;
+  top: 1px;
 }

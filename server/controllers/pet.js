@@ -13,31 +13,44 @@ const {
 
 module.exports = {
 
-  petregisterController: async  (req, res) => {
+
+  petregisterController: async (req, res) => {
     //회원 가입한 회원의 email - id
     // console.log(req.headers.authorization,req.cookies)
     const token = req.headers.authorization
     console.log('token',req.headers.authorization)
     console.log('req.body',req.body)
 
+
     if(!token){
       return res.status(401).send({message:'권한이 없습니다.'})
     }
 
+    if (
+      !image ||
+      !description ||
+      !pet_name ||
+      !pet_sex ||
+      !pet_category ||
+      !pet_lost_region ||
+      !pet_lost_date ||
+      !pet_age
+    ) {
+      return res.status(404).send({ message: "펫 정보를 모두 입력해주세요" });
+    }
 
-if(!req.body.image||!req.body.description||!req.body.pet_name||!req.body.pet_sex||!req.body.pet_category||!req.body.pet_lost_region||!req.body.pet_lost_date||!req.body.pet_age){
-return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
-}
 
 const accessTokenData = authorized(token)
 const findUser = await user.findOne({where:{email:accessTokenData.email}})
-console.log(findUser)
+
+
+if(!req.body.image||!req.body.description||!req.body.pet_name||!req.body.pet_sex||!req.body.pet_category||!req.body.pet_lost_region||!req.body.pet_lost_date||!req.body.pet_age){
+return res.status(404).send({message:'펫 정보를 모두 입력해주세요'})
 
     const petReigster = await post.create({
       image: req.body.image,
       // user_id: userId.id,
       description: req.body.description,
-      user_id:findUser.id,
       pet_name: req.body.pet_name,
       pet_sex: req.body.pet_sex,
       pet_age: req.body.pet_age,

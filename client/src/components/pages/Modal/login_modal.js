@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link, Redirect, Route } from "react-router-dom";
-import "./loginModal.css";
+import "../../App";
 import SignUpModal from "./signup_modal";
 import { connect } from "react-redux";
 import { addArticle } from "../../../redux/actions";
@@ -116,7 +116,7 @@ class LoginModal extends Component {
     return (
       <>
         {isLoginOpen ? (
-          <div className="modal" onClick={close}>
+          <div className="modal">
             <div className="loginModal" onClick={(e) => e.stopPropagation()}>
               <span className="close" onClick={close}>
                 &times;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import "./signUpModal.css";
+import "../../App";
 
 // axios.defaults.withCredentials = true;
 
@@ -161,7 +161,7 @@ class SignUpModal extends Component {
     return (
       <>
         {isSignUpModalOpen && this.state.isSignUpModalClose ? (
-          <div className="modal" onClick={close}>
+          <div className="modal">
             <div className="SignUpModal" onClick={(e) => e.stopPropagation()}>
               <span className="close" onClick={close}>
                 &times;
