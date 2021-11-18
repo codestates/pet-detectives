@@ -22,7 +22,7 @@ class Main extends Component {
       currnetUrl: window.location.href.query,
       petinfo: [],
       token: "",
-      isLoding: false,
+      isLoading: true,
     };
   }
 
@@ -54,11 +54,11 @@ class Main extends Component {
       this.setState({ petinfo: res.data.data.slice() });
       console.log(window.location.search.slice(-2).replace(regex, ""));
     });
+    this.setState({ isLoading: false });
   }
   // componentDidUpdate() {
   componentDidMount() {
-    this.getPet();
-    setTimeout(this.isLodingTrue, 3000);
+    setTimeout(() => this.getPet(), 2000);
   }
 
   render() {
@@ -67,48 +67,57 @@ class Main extends Component {
 
     return (
       <>
-        <Header />
-        <div className="main_box">
-          <MainSideBar />
-          <div className="showing_lost_pet_box" ref={this.upToArrow}>
-            {this.state.petinfo.map((pet) =>
-              // {console.log("pet.pet_lost_region :",pet.pet_lost_region)
-              // console.log("window.location :",window.location.search.slice(-2).replace(regex, ""))}
-              window.location.href.slice(-4) === "main" && !pet.is_found ? (
-                <LostPet
-                  petinfo={pet}
-                  openCommentModal={this.openCommentModal}
-                />
-              ) : !pet.is_found &&
-                pet.pet_lost_region ===
-                  Number(
-                    window.location.search.slice(-2).replace(regex, "")
-                  ) ? (
-                <LostPet
-                  petinfo={pet}
-                  openCommentModal={this.openCommentModal}
-                />
-              ) : null
-            )}
-            {/* <div className="pagination">pagination 구현</div>
-            <div className="footer_space"></div> */}
+        {this.state.isLoading ? (
+          <div className="jungang">
+            <span className="loading">Loading...</span>
           </div>
-          <div className="up_to_scroll">
-            <div className="scroll_image_box">
-              <div className="scroll_image_minibox">
-                <FontAwesomeIcon
-                  icon={faArrowUp}
-                  onClick={this.scrollToTop}
-                  className="scroll_image_minibox_arrow"
-                />
+        ) : (
+          <>
+            <Header />
+            <div className="main_box">
+              <MainSideBar />
+
+              <div className="showing_lost_pet_box" ref={this.upToArrow}>
+                {this.state.petinfo.map((pet, idx) =>
+                  // {console.log("pet.pet_lost_region :",pet.pet_lost_region)
+                  // console.log("window.location :",window.location.search.slice(-2).replace(regex, ""))}
+                  window.location.href.slice(-4) === "main" && !pet.is_found ? (
+                    <LostPet
+                      petinfo={pet}
+                      openCommentModal={this.openCommentModal}
+                    />
+                  ) : !pet.is_found &&
+                    pet.pet_lost_region ===
+                      Number(
+                        window.location.search.slice(-2).replace(regex, "")
+                      ) ? (
+                    <LostPet
+                      petinfo={pet}
+                      openCommentModal={this.openCommentModal}
+                    />
+                  ) : null
+                )}
+                {/* <div className="pagination">pagination 구현</div>
+            <div className="footer_space"></div> */}
+              </div>
+              <div className="up_to_scroll">
+                <div className="scroll_image_box">
+                  <div className="scroll_image_minibox">
+                    <FontAwesomeIcon
+                      icon={faArrowUp}
+                      onClick={this.scrollToTop}
+                      className="scroll_image_minibox_arrow"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <CommentModal
-          isCommentModalOpen={this.state.isCommentModalOpen}
-          close={this.closeCommentModal}
-        />
+            <CommentModal
+              isCommentModalOpen={this.state.isCommentModalOpen}
+              close={this.closeCommentModal}
+            />
+          </>
+        )}
       </>
     );
   }

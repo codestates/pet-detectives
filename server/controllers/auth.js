@@ -11,15 +11,14 @@ const {
 } = require("../middleware/tokenfunction");
 const axios = require("axios");
 
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+// const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+// const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 
-const redirectURI = "http://localhost:8080/auth/googlesignin/callback";
-const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
-const GOOGLE_AUTH_TOKEN_URL = "https://oauth2.googleapis.com/token";
+// const redirectURI = "http://localhost:8080/auth/googlesignin/callback";
+// const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
+// const GOOGLE_AUTH_TOKEN_URL = "https://oauth2.googleapis.com/token";
 
 module.exports = {
-
   googleSigninControl: (req, res) => {
     //access token 얻는다
 
@@ -57,7 +56,6 @@ module.exports = {
       })
       .then(([data, created]) => {
         //!긴급 조치 토큰으로만 보내기
-
 
         //회원가입 요청성공, 토큰을 보내준다. 어디에? header? cookie?
         if (created) {

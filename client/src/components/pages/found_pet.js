@@ -9,7 +9,8 @@ class found_pet extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      petinfo : []
+      petinfo : [],
+      isLoading: true,
     }
   }
 
@@ -24,10 +25,11 @@ class found_pet extends Component {
     }).then((res) => {
       this.setState({petinfo: res.data.data.slice()})
     })
+    this.setState({isLoading: false})
   }
   
   componentDidMount() {
-    this.getPet()
+    setTimeout(() => this.getPet(),2000)
   }
 
 
@@ -35,9 +37,16 @@ class found_pet extends Component {
     const regex = /[^0-9]/g;
     return (
       <>
+      {this.state.isLoading ?
+            <div className="jungang">
+            <span className="loading">Loading...</span>
+            </div>
+            :
+            <>
         <Header />
         <div className="main_box">
           <FoundPetSideBar />
+          
           <div className="showing_lost_pet_box">
           {this.state.petinfo.map((pet) => 
           //  {console.log("pet.pet_lost_region :",pet.pet_lost_region)
@@ -63,6 +72,7 @@ class found_pet extends Component {
             </div>
           </div>
         </div>
+        </>}
       </>
     );
   }

@@ -12,6 +12,7 @@ class my_page extends Component {
     this.state = {
       lostpetList: [],
       isUserEditModalOpen: false,
+      isLoading: true,
       // isDeleteLostPetsModalOpen: true,
     };
   }
@@ -35,6 +36,7 @@ class my_page extends Component {
   };
 
   getregisteredPet() {
+  
     axios.get("http://localhost:8080/pet/petinfo",
       {},
       {
@@ -47,15 +49,24 @@ class my_page extends Component {
       console.log(res.data)
       this.setState({ lostpetList: res.data.data.slice() })
     })
+    setTimeout(
+    this.setState({isLoading: false})
+    ,10000)
   }
 
   componentDidMount() {
-    this.getregisteredPet();
+    setTimeout(() => this.getregisteredPet(),2000)
   }
 
   render() {
     return (
       <>
+      {this.state.isLoading ?
+            <div className="jungang">
+            <span className="loading">Loading...</span>
+            </div>
+            :
+            <>
         <Header />
         <div className="mypage_box">
           <div className="mypage_rowSpace"></div>
@@ -64,7 +75,7 @@ class my_page extends Component {
               <h1>My Page</h1>
             </div>
 
-            <div className="mypage_middleSpace_middle">
+            <div className="mypage_middleSpace_middle">  
               <div className="mypage_middleSpace_myRegisteredInfo_box">
                 {this.state.lostpetList.map((lostpet, idx) => {
                   return (
@@ -77,7 +88,7 @@ class my_page extends Component {
                 })}
               </div>
             </div>
-
+            
             <div className="mypage_middleSpace_low">
               <button
                 className="userEdit_button"
@@ -95,6 +106,8 @@ class my_page extends Component {
           close={this.closeUserEditModal}
         />
         {/* <button>COOKIE PUSH TEST</button> */}
+        </>
+              }
       </>
     );
   }
