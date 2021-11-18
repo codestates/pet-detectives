@@ -1,0 +1,44 @@
+.draw {
+  margin-bottom: 4px;
+}
+
+.logo_box {
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag {
+  flex: 2 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+.connection {
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 4px 0 0px black;
+}
+
+.header_box {
+  background-color: white;
+  color: black;
+  display: flex;
+  width: 200px;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  text-shadow: rgb(196, 193, 184) 1px 0 10px;
+  border-bottom: solid 3px rgb(74, 74, 194, 0);
+  transition: all 0.8s;
+}
+
+.header_box:hover {
+  border-bottom: solid 3px rgb(74, 74, 194, 0.7);
+}

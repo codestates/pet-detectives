@@ -1,5 +1,6 @@
+import axios from "axios";
 import React, { Component } from "react";
-import "./deleteConfirmModal.css";
+import "../../App";
 
 class DeleteConfirmModal extends Component {
   constructor(props) {
@@ -35,8 +36,10 @@ class DeleteConfirmModal extends Component {
                   <div
                     className="deleteConfirmModal_box_choicebox_yes"
                     onClick={() => {
-                      deleteLostpet(idx); close();}}
-                      
+                      deleteLostpet(idx);
+                      close();
+                    }}
+
                     // onClick={this.onClickConsole}
                   >
                     네
