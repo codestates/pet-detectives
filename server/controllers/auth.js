@@ -11,19 +11,14 @@ const {
 } = require("../middleware/tokenfunction");
 const axios = require("axios");
 
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+// const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+// const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 
-const redirectURI = "http://localhost:8080/auth/googlesignin/callback";
-const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
-const GOOGLE_AUTH_TOKEN_URL = "https://oauth2.googleapis.com/token";
-<<<<<<< HEAD
-//http://localhost:8080/auth/googlesignin/callback?code=4/0AX4XfWjwI5C8uvI5LPyYkOsZRyxLqQ-L4k4EiL2luhP5h7ZVNRipCQjKUFvVTfulEBW_4A
-const code =
-  "4/0AX4XfWhGZIcmaQNI_JKhliDmcasWY3kMnuVqbw-jUJcdU3ZJojgdP2SM6yYKI7TFvnbJKw";
+// const redirectURI = "http://localhost:8080/auth/googlesignin/callback";
+// const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
+// const GOOGLE_AUTH_TOKEN_URL = "https://oauth2.googleapis.com/token";
+
 module.exports = {
-  googlePost: (req, res) => {},
-
   googleSigninControl: (req, res) => {
     //access token 얻는다
 
@@ -34,21 +29,6 @@ module.exports = {
 
     //구글에서 토큰을 받아온다.  redirect주소에
 
-=======
-
-module.exports = {
-
-  googleSigninControl: (req, res) => {
-    //access token 얻는다
-
-    // axios.post('https://www.googleapis.com/oauth2/token',{code})
-    //
-    console.log(GOOGLE_CLIENT_ID);
-    // const code= req.body.authorizationCode
-
-    //구글에서 토큰을 받아온다.  redirect주소에
-
->>>>>>> d485b0fffa523022adbd9dc63f073a9bc67e4a5f
     //승인 요청앱을 생성 하여 resouce server 로부터 승인 코드를 받아온다. 이때 callbac 에 코드를주며 리다이렉트된다.
     //  res.redirect(200,`https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=http://localhost:8080/auth/googlesignin/callback&response_type=code&scope=https://www.googleapis.com/auth/drive.metadata.readonly`)
 
@@ -77,23 +57,9 @@ module.exports = {
       .then(([data, created]) => {
         //!긴급 조치 토큰으로만 보내기
 
-<<<<<<< HEAD
-        //회원가입 요청성공, 토큰을 보내준다. 어디에? header? cookie?
-        if (created) {
-          const accessToken = generateAccessToken(data.dataValues);
-          const refreshToken = generateRefreshToken(data.dataValues);
-          sendRefreshToken(res, refreshToken);
-          console.log(created, data);
-
-          res
-            .status(201)
-            .send({ accessToken: accessToken, message: "회원가입 완료" });
-=======
-
         //회원가입 요청성공, 토큰을 보내준다. 어디에? header? cookie?
         if (created) {
           return res.status(201).send({ message: "회원가입 완료" });
->>>>>>> d485b0fffa523022adbd9dc63f073a9bc67e4a5f
         }
         //이미 있는경우g
         else {
