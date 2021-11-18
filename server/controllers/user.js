@@ -11,15 +11,18 @@ const axios = require("axios");
 
 //!header 로 accesstoken못받아서 임시로 쿠키로 access만 보내서 작업 ( 추후 수정항 생길시 수정)
 module.exports = {
-
   userinfoController: async (req, res) => {
-
     const token = req.headers.authorization; //!헤더로 토큰 받은경우
     // const cookie = req.cookies.access
+
+    // if(!cookie){
+    //   return res.status(401).send({ message: 'not authorized' });
+    // }
 
     if (!token) {
       return res.status(401).send({ message: "not authorized" }); //! 헤더로 토큰 받은경우
     }
+    // const accessTokenData = authorized(cookie)
 
     const accessTokenData = authorized(token); //! 헤더로 토큰 받은경우
 
@@ -30,7 +33,6 @@ module.exports = {
         .send({ messagea: "인증정보가 올바르지 않습니다." });
     }
 
-
     const userInfo = await user.findOne({
       where: { email: accessTokenData.email },
     });
@@ -39,14 +41,10 @@ module.exports = {
   },
   usereditController: async (req, res) => {
     console.log(req.body);
-    console.log(req.body.newNickName);
     const { newNickName } = req.body;
-
     // const cookie = req.cookies.access
 
     // const accessTokenData = authorized(cookie)
-
-
 
     const authorization = req.headers.authorization; //!헤더로 토큰 받은경우
 
@@ -55,14 +53,10 @@ module.exports = {
 
     user
       .update(
-        { nickname: newNickName},
+        { nickname: newNickName },
         { where: { email: accessTokenData.email } }
       )
       .then((data) => {
-
-
- 
-       
         return res
           .status(200)
           .send({ data: data, message: "닉네임이 변경되었습니다." });
@@ -77,10 +71,7 @@ module.exports = {
 
     // const accessTokenData = authorized(cookie)
 
-
-
     const authorization = req.headers.authorization; //!헤더로 토큰 받은경우
-
 
     const accessTokenData = authorized(authorization); //! 헤더로 토큰 받은경우
 
@@ -91,15 +82,11 @@ module.exports = {
       });
     }
 
-
-// console.log(change)
-  //   return res.status(400).send({message:'현재 비밀번호와 변경된 비밀번호가 같다.'})
-  // }
     //새비밀번호와 현재 비밀번호가 존재 ,
     user
       .update(
-        { password:newPassword},
-        { where: { email: accessTokenData.email} }
+        { password: newPassword },
+        { where: { email: accessTokenData.email } }
       )
       .then((data) => {
         return res
@@ -115,36 +102,29 @@ module.exports = {
 
     //새비밀번호 입력되면
   },
-
   withdrawalController: async (req, res) => {
     // const cookie = req.cookies.access
     // const accessTokenData = authorized(cookie)
-
-
     // const cookie = req.cookies.refresh; //!헤더로 토큰받은경우 refresh 는 쿠키에 담는다
     // const refreshTokenData = authorized(cookie)
     const authorization = req.headers.authorization; //!헤더로 토큰 받은경우
     const accessTokenData = authorized(authorization); //! 헤더로 토큰 받은경우
     console.log(accessTokenData);
-
     //정보가 없다면 삭제 x
-   
-  const userInfo = await  user.findOne({where: { email: accessTokenData.email } })
-
-  console.log(userInfo)
-      if (userInfo ===null) {
-        return res.status(403).send({
-          message: "존재하지 않는 유저 이거나, 이미 탈퇴된 유저 입니다.",
-        })
-      }
- 
+    if (!accessTokenData) {
+      return res.status(403).send({
+        message: "존재하지 않는 유저 이거나, 이미 탈퇴된 유저 입니다.",
+      });
+    }
     //유저정보삭제
     user.destroy({ where: { email: accessTokenData.email } }).then((data) => {
- 
-      
- 
-      return res.status(200).send({ data:data ,messagae: "탈퇴가 완료 되었습니다." })
- 
+      //쿠키삭제
+      // res.cookie("refresh", cookie, {
+      //   httpOnly: true,
+      //   sameSite: "none",
+      //   maxAge: 1,
+      // });
+      return res.status(200).send({ messagae: "탈퇴가 완료 되었습니다." });
     });
   },
   googlewithdrawController: async (req, res) => {},
