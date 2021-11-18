@@ -55,7 +55,7 @@ module.exports = {
 
     user
       .update(
-        { nickname: nickname},
+        { nickname: newNickName},
         { where: { email: accessTokenData.email } }
       )
       .then((data) => {
@@ -72,7 +72,7 @@ module.exports = {
       });
   },
   passwordeditController: async (req, res) => {
-    const { password } = req.body;
+    const { newPassword } = req.body;
     // const cookie = req.cookies.access
 
     // const accessTokenData = authorized(cookie)
@@ -98,7 +98,7 @@ module.exports = {
     //새비밀번호와 현재 비밀번호가 존재 ,
     user
       .update(
-        { password: password },
+        { password:newPassword},
         { where: { email: accessTokenData.email} }
       )
       .then((data) => {
