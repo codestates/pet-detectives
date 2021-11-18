@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import "./signUpModal.css";
+import "../../App";
 
 // axios.defaults.withCredentials = true;
 
@@ -21,6 +21,7 @@ class SignUpModal extends Component {
       isEmail: false,
       isNick: false,
       isPassword: false,
+      isSignUpModalClose: true,
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.singUpRequestHandler = this.singUpRequestHandler.bind(this);
@@ -145,7 +146,7 @@ class SignUpModal extends Component {
         })
         .then((res) => {
           console.log("im good", res);
-          window.location.href = "/main";
+          this.setState({ isSignUpModalClose: false });
         })
         .catch((err) => {
           console.log("ImERRRRAAAARRRRRR", this.state);
@@ -159,8 +160,8 @@ class SignUpModal extends Component {
 
     return (
       <>
-        {isSignUpModalOpen ? (
-          <div className="modal" onClick={close}>
+        {isSignUpModalOpen && this.state.isSignUpModalClose ? (
+          <div className="modal">
             <div className="SignUpModal" onClick={(e) => e.stopPropagation()}>
               <span className="close" onClick={close}>
                 &times;

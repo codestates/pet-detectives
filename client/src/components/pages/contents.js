@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header/header";
 import axios from "axios";
-import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 
 class contents extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "test@test.com",
       image: "",
       description: "",
       pet_name: "",
@@ -18,26 +17,101 @@ class contents extends Component {
       pet_age: "",
       pet_category: "",
       pet_lost_date: "",
-      pet_lost_region: "서울",
+      pet_lost_region: 1,
       is_found: "false",
-      startDate: new Date(),
+      startDate: "",
       imagefile : "",
+      districtNum: "",
     };
     this.inputHandler = this.inputHandler.bind(this);
     this.contentsRequestHandler = this.contentsRequestHandler.bind(this);
   }
+
+  getReaction() {
+    console.log(this.state.image)
+    console.log(this.state.description)
+    console.log(this.state.pet_name)
+    console.log(this.state.pet_sex)
+    console.log(this.state.pet_age)
+    console.log(this.state.pet_category)
+    console.log(this.state.pet_lost_date)
+    console.log(this.state.pet_lost_region)
+    console.log(this.state.is_found)
+    console.log(this.state.districtNum)
+    console.log(localStorage.getItem("accessToken"))
+  }
+
+  componentDidUpdate() {
+    this.getReaction()
+  }
+  compute() {
+    if(this.state.districtNum === "서울") {
+      this.setState({pet_lost_region: 1})
+    }
+    if(this.state.districtNum === "부산") {
+      this.setState({pet_lost_region: 2})
+    }
+    if(this.state.districtNum === "대구") {
+      this.setState({pet_lost_region: 3})
+    }
+    if(this.state.districtNum === "인천") {
+      this.setState({pet_lost_region: 4})
+    }
+    if(this.state.districtNum === "광주") {
+      this.setState({pet_lost_region: 5})
+    }
+    if(this.state.districtNum === "대전") {
+      this.setState({pet_lost_region: 6})
+    }
+    if(this.state.districtNum === "울산") {
+      this.setState({pet_lost_region: 7})
+    }
+    if(this.state.districtNum === "세종") {
+      this.setState({pet_lost_region: 8})
+    }
+    if(this.state.districtNum === "경기") {
+      this.setState({pet_lost_region: 9})
+    }
+    if(this.state.districtNum === "강원") {
+      this.setState({pet_lost_region: 10})
+    }
+    if(this.state.districtNum === "충북") {
+      this.setState({pet_lost_region: 11})
+    }
+    if(this.state.districtNum === "충남") {
+      this.setState({pet_lost_region: 12})
+    }
+    if(this.state.districtNum === "전북") {
+      this.setState({pet_lost_region: 13})
+    }
+    if(this.state.districtNum === "전남") {
+      this.setState({pet_lost_region: 14})
+    }
+    if(this.state.districtNum === "경북") {
+      this.setState({pet_lost_region: 15})
+    }
+    if(this.state.districtNum === "경남") {
+      this.setState({pet_lost_region: 16})
+    }
+    if(this.state.districtNum === "제주") {
+      this.setState({pet_lost_region: 17})
+    }
+    
+  }
+
+
+
   saveFileImage = (e) => { 
     this.setState({
-      imagefile : URL.createObjectURL(e.target.files[0]),
-      image : URL.createObjectURL(e.target.files[0])
-    })
+      imagefile: URL.createObjectURL(e.target.files[0]),
+      image: URL.createObjectURL(e.target.files[0]),
+    });
   };
 
-  deleteFileImage = () => { 
-    URL.revokeObjectURL(this.state.imagefile)
-    this.setState({imagefile : "", image: "" })
+  deleteFileImage = () => {
+    URL.revokeObjectURL(this.state.imagefile);
+    this.setState({ imagefile: "", image: "" });
   };
-
 
   inputHandler(e) {
     console.log("imInput");
@@ -45,30 +119,23 @@ class contents extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
   contentsRequestHandler() {
-    const {
-      email,
-      image,
-      description,
-      pet_name,
-      pet_sex,
-      pet_age,
-      pet_category,
-      pet_lost_date,
-      pet_lost_region,
-      is_found,
-    } = this.state;
+
     axios
       .post("http://localhost:8080/pet/petregister", {
-        email: email,
-        image: image,
-        description: description,
-        pet_name: pet_name,
-        pet_sex: pet_sex,
-        pet_age: pet_age,
-        pet_category: pet_category,
-        pet_lost_date: pet_lost_date,
-        pet_lost_region: pet_lost_region,
-        is_found: is_found,
+        withCredentials: true,
+        image: this.state.image,
+        description: this.state.description,
+        pet_name: this.state.pet_name,
+        pet_sex: this.state.pet_sex,
+        pet_age: this.state.pet_age,
+        pet_category: this.state.pet_category,
+        pet_lost_date: this.state.pet_lost_date,
+        pet_lost_region: this.state.pet_lost_region,
+        is_found: this.state.is_found,
+      },
+      { headers : {
+        authorization : localStorage.getItem("accessToken"),
+        "Content-Type": "application/json",}
       })
       .then((res) => {
         console.log("im good", res);
@@ -76,7 +143,7 @@ class contents extends Component {
         // window.location.href = "/main";
       })
       .catch((err) => {
-        console.log("ImERRRRAAAARRRRRR", this.state);
+        console.log(err);
       });
   }
   render() {
@@ -92,28 +159,45 @@ class contents extends Component {
                   <div className="contents_box_high_infobox_high_left_imgbox">
                     <div className="contents_box_high_infobox_high_left_imgbox_text">
                       <div className="contents_box_high_infobox_high_left_imgbox_text_main">
-                      &nbsp;&nbsp;&nbsp;실 종&nbsp;&nbsp;동 물&nbsp;&nbsp; 이 미 지
+                        &nbsp;&nbsp;&nbsp;실 종&nbsp;&nbsp;동 물&nbsp;&nbsp; 이
+                        미 지
                       </div>
                       <div className="contents_box_high_infobox_high_left_imgbox_text_space">
-                        <label for="upload" className="contents_box_high_infobox_high_left_imgbox_text_space_button1">
+                        <label
+                          for="upload"
+                          className="contents_box_high_infobox_high_left_imgbox_text_space_button1"
+                        >
                           사진 올리기
                         </label>
                       </div>
                       <div className="contents_box_high_infobox_high_left_imgbox_text_space">
-                        <div 
-                        className="contents_box_high_infobox_high_left_imgbox_text_space_button2"
-                        onClick={this.deleteFileImage}>
+                        <div
+                          className="contents_box_high_infobox_high_left_imgbox_text_space_button2"
+                          onClick={this.deleteFileImage}
+                        >
                           사진 삭제
                         </div>
                       </div>
                     </div>
                     <div className="contents_box_high_infobox_high_left_imgbox_img">
                       <div className="contents_box_high_infobox_high_left_imgbox_img_center">
-                      {this.state.imagefile && (<img className="uploaded_img" alt="sample" src={this.state.imagefile} style={{ margin: "auto" }} />)}
-                      <input type="file" accept="img/*" id="upload" className="upload" 
-                        onChange={this.saveFileImage}/>
+                        {this.state.imagefile && (
+                          <img
+                            className="uploaded_img"
+                            alt="sample"
+                            src={this.state.imagefile}
+                            style={{ margin: "auto" }}
+                          />
+                        )}
+                        <input
+                          type="file"
+                          accept="img/*"
+                          id="upload"
+                          className="upload"
+                          onChange={this.saveFileImage}
+                        />
                         <span className="contents_box_high_infobox_high_left_imgbox_img_text">
-                        {!this.state.imagefile && "이미지를 등록해 주세요"}
+                          {!this.state.imagefile && "이미지를 등록해 주세요"}
                         </span>
                       </div>
                     </div>
@@ -122,18 +206,9 @@ class contents extends Component {
                     <div className="content_lost_map">
                       <Link to={"/map"} className="content_lost_map">
                         <div className="contents_lost_map_div">
-                        실종위치 등록 (Click me)
+                          실종위치 등록 (Click me)
                         </div>
                       </Link>
-                    </div>
-                    <div className="contents_tag">
-                      #Tags &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <input
-                        type="text"
-                        className="inputbox_default"
-                        id="tags_inputbox"
-                        placeholder="#Tags 최소 1개이상 등록해주세요"
-                      ></input>
                     </div>
                     <div className="contents_box_low_describe">
                       피드 내용 &nbsp;
@@ -190,9 +265,9 @@ class contents extends Component {
                     <span className="contents_text">잃어버린 위치</span>
                     <select
                       className="contents_dropdown"
-                      onChange={(e) => this.inputHandler(e)}
-                      value={this.state.pet_lost_region}
-                      name="pet_lost_region"
+                      onChange={(e) => {this.inputHandler(e) ; this.compute()}}
+                      value={this.state.districtNum}
+                      name="districtNum"
                     >
                       <option className="contents_dropdown_list" value="서울">
                         서울
@@ -253,12 +328,18 @@ class contents extends Component {
                       className="contents_input_date"
                       // onChange={(e) => this.inputHandler(e)}
                       // value={this.state.pet_lost_date}
-                      name="pet_lost_date">
-                        <DatePicker
+                      name="pet_lost_date"
+                    >
+                      <DatePicker
                         className="date_picker"
-                        selected={this.state.startDate} 
-                        onChange={(date) => this.setState({startDate : date, pet_lost_date : date})}
-                        />
+                        selected={this.state.startDate}
+                        onChange={(date) =>
+                          this.setState({
+                            startDate: date,
+                            pet_lost_date: date,
+                          })
+                        }
+                      />
                     </div>
                   </div>
                 </div>
@@ -272,7 +353,6 @@ class contents extends Component {
                   >
                     반려동물 등록하기
                   </button>
-                  
                 </div>
               </div>
             </div>

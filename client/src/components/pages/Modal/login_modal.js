@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link, Redirect, Route } from "react-router-dom";
-import "./loginModal.css";
+import "../../App";
 import SignUpModal from "./signup_modal";
 import { connect } from "react-redux";
 import { addArticle } from "../../../redux/actions";
@@ -39,7 +39,7 @@ class LoginModal extends Component {
     axios
       .get("http://localhost:8080/user/userinfo", {
         headers: {
-          token: localStorage.getItem("accessToken"),
+          Authorization: localStorage.getItem("accessToken"),
           "Content-Type": "application/json",
         },
         withCredentials: true,
@@ -116,7 +116,7 @@ class LoginModal extends Component {
     return (
       <>
         {isLoginOpen ? (
-          <div className="modal" onClick={close}>
+          <div className="modal">
             <div className="loginModal" onClick={(e) => e.stopPropagation()}>
               <span className="close" onClick={close}>
                 &times;
@@ -149,13 +149,6 @@ class LoginModal extends Component {
                   >
                     회원가입
                   </button>
-                  <div className="google">
-                    <img
-                      className="googleLogo"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMa0_vLo8iP-q1hUHn-7QdD4qdr0OXbMckLg&usqp=CAU"
-                    />
-                    <div className="googleText">구글 계정으로 신규가입</div>
-                  </div>
                   <button
                     className="loginModal_signupBtn"
                     onClick={this.hotlink}
