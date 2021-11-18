@@ -36,8 +36,10 @@ class my_page extends Component {
   };
 
   getregisteredPet() {
-    axios.get("http://localhost:8080/pet/petinfo",{
-      headers: {
+    axios.get("http://localhost:8080/pet/petinfo",
+      {},
+      {
+        headers: {
         token: localStorage.getItem("accessToken"),
         "Content-Type": "application/json",
       },

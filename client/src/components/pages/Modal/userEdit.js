@@ -218,7 +218,7 @@ class UserEdit extends Component {
     return (
       <>
         {isUserEditModalOpen ? (
-          <div className="modal" onClick={close}>
+          <div className="modal">
             <div className="userEditModal" onClick={(e) => e.stopPropagation()}>
               <span className="close" onClick={close}>
                 &times;
