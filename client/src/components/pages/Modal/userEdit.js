@@ -25,6 +25,8 @@ class UserEdit extends Component {
       isCurrentPasswordToTokenPassword: false,
       password1: "",
       password2: "",
+      isNick: false,
+      isPassword: false,
       isNicknameChecked: false,
       isCurrentPasswordChecked: false,
       isCurrentNickanmeChecked: false,
@@ -72,27 +74,56 @@ class UserEdit extends Component {
   }
 
   eduitUserInfo() {
-    axios
-      .patch(
-        "http://localhost:8080/user/useredit",
-        {
-          newNickName: this.state.nickname,
-        },
-        {
-          headers: {
-            Authorization: localStorage.getItem("accessToken"),
-            "Content-Type": "application/json",
+    const {
+      isNicknameNull,
+      isCurrentNickanmeChecked,
+      isNick,
+      isCurrentPasswordToTokenPassword,
+      isPassword,
+    } = this.state;
+    if (isCurrentPasswordToTokenPassword && isPassword) {
+      axios
+        .patch(
+          "http://localhost:8080/user/passwordedit",
+          {
+            newPassword: this.state.password1,
           },
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        console.log("good change Nick");
-      })
-      .catch((err) => {
-        console.log(this.state.nickname);
-        console.log(localStorage.getItem("accessToken"));
-      });
+          {
+            headers: {
+              Authorization: localStorage.getItem("accessToken"),
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          this.setState({ toTokenPassword: this.state.password1 });
+          localStorage.clear("accessToken");
+          window.location.href = "/";
+        });
+    }
+    if (isNick && !isNicknameNull && !isCurrentNickanmeChecked) {
+      axios
+        .patch(
+          "http://localhost:8080/user/useredit",
+          {
+            newNickName: this.state.nickname,
+          },
+          {
+            headers: {
+              Authorization: localStorage.getItem("accessToken"),
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          this.setState({ toTokenNickname: this.state.nickname });
+          localStorage.clear("accessToken");
+          window.location.href = "/";
+        });
+    }
+
     console.log("editUserNickname");
     if (this.state.nickname) {
       console.log("nicknameNull", this.state.nickname, true);
@@ -123,6 +154,7 @@ class UserEdit extends Component {
 
   isCurrentPasswordToTokenPassword = () => {
     const { toTokenPassword, currentPassword } = this.state;
+    console.log(toTokenPassword, currentPassword);
     if (toTokenPassword === currentPassword) {
       this.setState({
         isCurrentPasswordToTokenPassword: true,
