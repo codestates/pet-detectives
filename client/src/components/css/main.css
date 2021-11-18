@@ -1,0 +1,45 @@
+.main_box {
+  display: flex;
+  height: 100vh;
+}
+
+.showing_lost_pet_box {
+  padding-left: 20%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: overlay;
+  overflow-x: hidden;
+}
+
+.up_to_scroll {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.scroll_image_box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  width: 80%;
+  height: 70%;
+}
+
+.scroll_image_minibox_space {
+  height: 6%;
+  margin-bottom: 8%;
+}
+
+.backtotopArrow_image {
+  object-fit: cover;
+  width: 100%;
+  height: 50px;
+  transform: scale(1.8);
+}

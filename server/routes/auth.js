@@ -4,7 +4,7 @@ const controller=require('../controllers/auth') //controller auth.js module 객�
 
 
 
-
+// router.post('/post',controller.googlePost)
 router.post('/nick',controller.nickCheckController)
 router.get('/signout',controller.signoutContorller)
 router.post('/signup',controller.signupController)
@@ -12,6 +12,4 @@ router.post('/signup',controller.signupController)
 router.post('/signin', controller.signinController) 
 // 로그인 /auth/signin
 // router.get('/newtoken',controller.newTokenController)
-router.get('/googlesignin',controller.googleSigninControl)
-//소셜로그인(구글) /auth/googlesignin
 module.exports = router

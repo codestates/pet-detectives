@@ -3,32 +3,22 @@ import React, { Component } from "react";
 import axios from "axios";
 import Header from "./Header/header";
 import RegisteredPet from "./registeredPet/registeredPet";
-import lostpetList from "../dummyfile/lostpetinfo";
+// import lostpetList from "../dummyfile/lostpetinfo";
 import UserEdit from "./Modal/userEdit";
 
 class my_page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lostpetList: lostpetList,
+      lostpetList: [],
       isUserEditModalOpen: false,
       // isDeleteLostPetsModalOpen: true,
     };
   }
-  //   handleButtonClick = (event) => {
-  //    const newlostPet = {};
-  //    newlostPet.id = this.state.commentList.length+1
-  //    newlostPet.name = this.state.commentContents
-  //    newlostPet.lostday = this.state.commentContents
-  //    newlostPet.age = this.state.commentContents
-  //    newlostPet.location = this.state.commentContents
-  //   this.setState({lostpetList : [newlostPet, ...this.state.lostpetList]})
-  // }
+
 
   deleteLostpet = (idx) => {
-    console.log(idx, "delete PLS!!!!!!!!!!");
     let lostpetListdata = this.state.lostpetList;
-    console.log(lostpetList, "LOST PET ");
     lostpetListdata.splice(idx, 1);
     // console.log('wow',idx)
     this.setState({
@@ -45,20 +35,22 @@ class my_page extends Component {
     this.setState({ isUserEditModalOpen: false });
   };
 
-  // getregisteredPet() {
-  //   axios.get("http://localhost:8080/pet/petinfo", {
-  //   }).then((res) => {
-  //     this.setState({petinfo: res.data.data.slice()})
-  //   })
-  // }
+  getregisteredPet() {
+    axios.get("http://localhost:8080/pet/petinfo",{
+      headers: {
+        token: localStorage.getItem("accessToken"),
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    }).then((res) => {
+      console.log(res.data)
+      this.setState({ lostpetList: res.data.data.slice() })
+    })
+  }
 
-  // componentDidMount() {
-  //   this.getPet()
-  // }
-
-  
-
-
+  componentDidMount() {
+    this.getregisteredPet()
+  }
 
   render() {
     return (
@@ -101,6 +93,7 @@ class my_page extends Component {
           isDeleteLostPetsModalOpen={this.state.isDeleteLostPetsModalOpen}
           close={this.closeUserEditModal}
         />
+        {/* <button>COOKIE PUSH TEST</button> */}
       </>
     );
   }

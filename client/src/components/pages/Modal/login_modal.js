@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link, Redirect, Route } from "react-router-dom";
-import "./loginModal.css";
+import "../../App";
 import SignUpModal from "./signup_modal";
-
 import { connect } from "react-redux";
 import { addArticle } from "../../../redux/actions";
+
+axios.defaults.withCredentials = true;
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -32,41 +33,52 @@ class LoginModal extends Component {
     this.setState({ [e.target.name]: e.target.value, token: "dummy" });
   }
 
-  isAuthenticated = (token) => {
+  isAuthenticated = () => {
+    // const { token } = this.state;
+    // console.log(this.state.token, "IM SUPER TOKEN");
     axios
-      .post("http://localhost:8080/user/userinfo", {
-        headers: { token: token },
+      .get("http://localhost:8080/user/userinfo", {
+        headers: {
+          Authorization: localStorage.getItem("accessToken"),
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
       })
       .then((res) => {
-        console.log("hi");
+        console.log(res, "hihihi");
       })
       .catch((err) => {
         console.log("imERROR");
       });
   };
 
-  handleResponseSuccess = (token) => {
-    this.isAuthenticated(token);
-  };
-
   loginRequestHandler() {
     const { email, password, token } = this.state;
     if (email && password) {
       axios
-        .post("http://localhost:8080/auth/signin", {
-          email: this.state.email,
-          password: this.state.password,
-        })
+        .post(
+          "http://localhost:8080/auth/signin",
+          {
+            email: this.state.email,
+            password: this.state.password,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        )
         .then((res) => {
           console.log("good", res.data);
           this.setState({
             token: res.data.accessToken,
           });
-          console.log(this.state);
-          this.handleResponseSuccess(token);
+          localStorage.setItem("accessToken", res.data.accessToken);
         })
         .then((res) => {
-          setTimeout(this.isLoginTrue, 100);
+          console.log(this.state);
+          setTimeout(this.isAuthenticated(), 100);
+          // this.handleResponseSuccess(token);
+          setTimeout(this.isLoginTrue, 200);
         })
         .catch((err) => {
           console.log("ImERRRRRRRRRR", this.state);
@@ -137,13 +149,6 @@ class LoginModal extends Component {
                   >
                     회원가입
                   </button>
-                  <div className="google">
-                    <img
-                      className="googleLogo"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMa0_vLo8iP-q1hUHn-7QdD4qdr0OXbMckLg&usqp=CAU"
-                    />
-                    <div className="googleText">구글 계정으로 신규가입</div>
-                  </div>
                   <button
                     className="loginModal_signupBtn"
                     onClick={this.hotlink}
