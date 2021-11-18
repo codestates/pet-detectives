@@ -18,9 +18,7 @@ const GOOGLE_AUTH_TOKEN_URL= 'https://oauth2.googleapis.com/token'
 const code = '4/0AX4XfWhGZIcmaQNI_JKhliDmcasWY3kMnuVqbw-jUJcdU3ZJojgdP2SM6yYKI7TFvnbJKw'
 module.exports ={
 
-  googlePost:(req,res) =>{
-    
-  },
+ 
 
     googleSigninControl:(req,res)=>{
 
@@ -65,7 +63,7 @@ console.log(GOOGLE_CLIENT_ID)
        //회원가입 요청성공, 토큰을 보내준다. 어디에? header? cookie?
 if(created){
 
-return res.status(201).send({accessToken:accessToken,message:'회원가입 완료'})
+return res.status(201).send({data:data,message:'회원가입 완료'})
 } 
 //이미 있는경우g
 else{
