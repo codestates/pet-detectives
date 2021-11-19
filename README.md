@@ -37,7 +37,7 @@
 --- | --- | ------ | ---------
 팀원 | 김강민 | FRONT-END | starguys
 팀원 | 이창무 | FRONT-END | changmoolee
-팀원 | 이인행 | BACK-END | dpemdnjem23
+팀원 | 이인행 | BACK_END | dpemdnjem23
 팀장 | 김재후 | BACK_END | nkimtnt
 
 ## WIKI PAGE
