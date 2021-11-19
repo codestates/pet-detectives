@@ -109,13 +109,13 @@ module.exports = {
 
         const accessToken = generateAccessToken(data.dataValues);
         console.log(accessToken);
-        const refreshToken = generateRefreshToken(data.dataValues);
+      
         // sendToken(res,accessToken)
         res.setHeader("authorization", accessToken);
         //! 긴급조치 토큰 쿠키로 보내기
 
         // sendAccessToken(res, accessToken);
-        sendRefreshToken(res, refreshToken);
+   
 
         return res
           .status(200)
