@@ -14,13 +14,16 @@ class ResignModal extends Component {
 
   withdrawalHandler() {
     axios
-      .delete("http://localhost:8080/user/withdrawal", {
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      })
+      .delete(
+        "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/user/withdrawal",
+        {
+          headers: {
+            Authorization: localStorage.getItem("accessToken"),
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log("good delete");
         this.setState({ isResignGoodbyeOpen: true });

@@ -49,11 +49,16 @@ class Main extends Component {
   };
 
   getPet() {
-    axios.get("http://localhost:8080/pet/petinfo", {}).then((res) => {
-      const regex = /[^0-9]/g;
-      this.setState({ petinfo: res.data.data.slice() });
-      console.log(window.location.search.slice(-2).replace(regex, ""));
-    });
+    axios
+      .get(
+        "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/pet/petinfo",
+        {}
+      )
+      .then((res) => {
+        const regex = /[^0-9]/g;
+        this.setState({ petinfo: res.data.data.slice() });
+        console.log(window.location.search.slice(-2).replace(regex, ""));
+      });
     this.setState({ isLoading: false });
   }
   // componentDidUpdate() {

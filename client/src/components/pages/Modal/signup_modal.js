@@ -101,10 +101,14 @@ class SignUpModal extends Component {
 
   nickCheckHandler() {
     const { nickname } = this.state;
+    console.log(nickname);
     axios
-      .post("http://localhost:8080/auth/nick", {
-        nickname: nickname,
-      })
+      .post(
+        "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/auth/nick",
+        {
+          nickname: nickname,
+        }
+      )
       .then((res) => {
         if (res.status === 200 && nickname) {
           console.log("ok");
@@ -139,11 +143,14 @@ class SignUpModal extends Component {
     } = this.state;
     if (passwordChecked && isEmail && isNick) {
       axios
-        .post("http://localhost:8080/auth/signup", {
-          email: email,
-          nickname: nickname,
-          password: password,
-        })
+        .post(
+          "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/auth/signup",
+          {
+            email: email,
+            nickname: nickname,
+            password: password,
+          }
+        )
         .then((res) => {
           console.log("im good", res);
           this.setState({ isSignUpModalClose: false });

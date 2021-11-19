@@ -36,78 +36,79 @@ class my_page extends Component {
   };
 
   getregisteredPet() {
-  
-    axios.get("http://localhost:8080/pet/petinfo",
-      {},
-      {
-        headers: {
-        token: localStorage.getItem("accessToken"),
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    }).then((res) => {
-      console.log(res.data)
-      this.setState({ lostpetList: res.data.data.slice() })
-    })
-    setTimeout(
-    this.setState({isLoading: false})
-    ,10000)
+    axios
+      .get(
+        "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/pet/petinfo",
+        {},
+        {
+          headers: {
+            token: localStorage.getItem("accessToken"),
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ lostpetList: res.data.data.slice() });
+      });
+    setTimeout(this.setState({ isLoading: false }), 10000);
   }
 
   componentDidMount() {
-    setTimeout(() => this.getregisteredPet(),2000)
+    setTimeout(() => this.getregisteredPet(), 2000);
   }
 
   render() {
     return (
       <>
-      {this.state.isLoading ?
-            <div className="jungang">
+        {this.state.isLoading ? (
+          <div className="jungang">
             <span className="loading">Loading...</span>
-            </div>
-            :
-            <>
-        <Header />
-        <div className="mypage_box">
-          <div className="mypage_rowSpace"></div>
-          <div className="mypage_middleSpace">
-            <div className="mypage_middleSpace_high">
-              <h1>My Page</h1>
-            </div>
-
-            <div className="mypage_middleSpace_middle">  
-              <div className="mypage_middleSpace_myRegisteredInfo_box">
-                {this.state.lostpetList.map((lostpet, idx) => {
-                  return (
-                    <RegisteredPet
-                      lostpet={lostpet}
-                      idx={idx}
-                      deleteLostpet={this.deleteLostpet}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-            
-            <div className="mypage_middleSpace_low">
-              <button
-                className="userEdit_button"
-                onClick={this.openUserEditModal}
-              >
-                회원정보 수정하기
-              </button>
-            </div>
           </div>
-          <div className="mypage_rowSpace"></div>
-        </div>
-        <UserEdit
-          isUserEditModalOpen={this.state.isUserEditModalOpen}
-          isDeleteLostPetsModalOpen={this.state.isDeleteLostPetsModalOpen}
-          close={this.closeUserEditModal}
-        />
-        {/* <button>COOKIE PUSH TEST</button> */}
-        </>
-              }
+        ) : (
+          <>
+            <Header />
+            <div className="mypage_box">
+              <div className="mypage_rowSpace"></div>
+              <div className="mypage_middleSpace">
+                <div className="mypage_middleSpace_high">
+                  <h1>My Page</h1>
+                </div>
+
+                <div className="mypage_middleSpace_middle">
+                  <div className="mypage_middleSpace_myRegisteredInfo_box">
+                    {this.state.lostpetList.map((lostpet, idx) => {
+                      return (
+                        <RegisteredPet
+                          lostpet={lostpet}
+                          idx={idx}
+                          deleteLostpet={this.deleteLostpet}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="mypage_middleSpace_low">
+                  <button
+                    className="userEdit_button"
+                    onClick={this.openUserEditModal}
+                  >
+                    회원정보 수정하기
+                  </button>
+                </div>
+              </div>
+              <div className="mypage_rowSpace"></div>
+            </div>
+            <UserEdit
+              isUserEditModalOpen={this.state.isUserEditModalOpen}
+              isDeleteLostPetsModalOpen={this.state.isDeleteLostPetsModalOpen}
+              close={this.closeUserEditModal}
+            />
+            {/* <button>COOKIE PUSH TEST</button> */}
+          </>
+        )}
       </>
     );
   }

@@ -37,13 +37,16 @@ class LoginModal extends Component {
     // const { token } = this.state;
     // console.log(this.state.token, "IM SUPER TOKEN");
     axios
-      .get("http://localhost:8080/user/userinfo", {
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      })
+      .get(
+        "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/user/userinfo",
+        {
+          headers: {
+            Authorization: localStorage.getItem("accessToken"),
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log(res, "hihihi");
       })
@@ -54,10 +57,11 @@ class LoginModal extends Component {
 
   loginRequestHandler() {
     const { email, password, token } = this.state;
+    console.log("hi", email, password);
     if (email && password) {
       axios
         .post(
-          "http://localhost:8080/auth/signin",
+          "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/auth/signin",
           {
             email: this.state.email,
             password: this.state.password,

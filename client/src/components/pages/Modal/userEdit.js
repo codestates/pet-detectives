@@ -40,22 +40,28 @@ class UserEdit extends Component {
   }
 
   componentDidMount() {
+    console.log("did~");
     axios
-      .get("http://localhost:8080/user/userinfo", {
-        headers: {
-          Authorization: localStorage.getItem("accessToken"),
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      })
+      .get(
+        "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/user/userinfo",
+        {
+          headers: {
+            Authorization: localStorage.getItem("accessToken"),
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
       .then((res) => {
-        console.log(res.data.accessTokenData);
+        console.log(res);
+        console.log(res.data.accessTokenData, "accessToken");
         this.setState({
           email: res.data.accessTokenData.email,
           toTokenNickname: res.data.accessTokenData.nickname,
           toTokenPassword: res.data.accessTokenData.password,
         });
-      });
+      })
+      .catch((err) => console.log("im ERA"));
   }
 
   inputHandler(e) {
@@ -84,7 +90,7 @@ class UserEdit extends Component {
     if (isCurrentPasswordToTokenPassword && isPassword) {
       axios
         .patch(
-          "http://localhost:8080/user/passwordedit",
+          "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/user/passwordedit",
           {
             newPassword: this.state.password1,
           },
@@ -105,7 +111,7 @@ class UserEdit extends Component {
     if (isNick && !isNicknameNull && !isCurrentNickanmeChecked) {
       axios
         .patch(
-          "http://localhost:8080/user/useredit",
+          "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/user/useredit",
           {
             newNickName: this.state.nickname,
           },
@@ -213,9 +219,12 @@ class UserEdit extends Component {
     const { nickname, isNick } = this.state;
     if (isNick) {
       axios
-        .post("http://localhost:8080/auth/nick", {
-          nickname: nickname,
-        })
+        .post(
+          "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/auth/nick",
+          {
+            nickname: nickname,
+          }
+        )
         .then((res) => {
           if (res.status === 200 && nickname) {
             this.setState({
