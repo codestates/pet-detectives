@@ -1,0 +1,222 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+
+.mypage_middleSpace_myRegisteredInfo {
+  padding: 30px;
+}
+
+.mypage_middleSpace_myRegisteredInfo:hover {
+  background-color: rgba(211, 183, 156, 0.4);
+/* color : yellow; */
+  transition: 1s;
+}
+
+.mypage_lost_pet_info_high {
+  display: flex;
+  justify-content: flex-start;
+  height: 30px;
+}
+/* !변경사항 */
+.mypage_pet_name {
+  
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 550;
+
+}
+.mypage_pet_name_value {
+  width: 10%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 5px;
+  border-right: solid 0.3px black;
+}
+.mypage_pet_lost_day {
+  /* background-color: yellow; */
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 550;
+  padding-left: 10px;
+}
+.mypage_pet_lost_day_value {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-right: solid 0.3px black;
+}
+.mypage_pet_age {
+  /* background-color: yellow; */
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 550;
+  padding-left: 10px;
+}
+.mypage_pet_age_value {
+  width: 10%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-right: solid 0.3px black;
+}
+.mypage_pet_location {
+  /* background-color: yellow; */
+  width: 12.5%;
+  height: 100%;
+  display: flex;
+
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 550;
+  padding-left: 10px;
+}
+.mypage_pet_location_value {
+  font-size:25px;
+
+  width: 12.5%;
+  margin-left: 4px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.mypage_middleSpace_myRegisteredInfo_exit {
+  width: 5%;
+  height: 100%;
+  border: 0px;
+  background: black;
+  outline: none;
+  float: right;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0.3px 0.3px 0px 0px black;
+}
+
+.mypage_lost_pet_info_low {
+  border-bottom: solid 3px black;
+  border-top: solid 1px black;
+  padding: 5px;
+
+  display: flex;
+  justify-content: flex-start;
+  height: 80%;
+}
+/*! 변경사항 */
+.mypage_pet_image {
+  position: relative;
+  right:2%;
+  /* display: inline-block; */
+  /* background-size: cover; */
+  object-fit: fill;
+  width: 23%;
+  height: 150px;
+  /* width: 20%;
+  height: 100%; */
+}
+.mypage_pet_image_box {
+  margin-left: 15px;
+  width: 80%;
+  height: 100%;
+}
+.mypage_pet_describe {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* !변경사항 */
+/* .mypage_pet_describe_text {
+  height: 30%;
+} */
+
+/* .mypage_pet_describe_tags {
+  border-top: solid 1px black;
+   */
+
+/* } */
+
+/* !변경사항 */
+.mypage_pet_toggle_and_revise {
+  position: relative;
+  left:9.7%;
+
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-left: black solid 1px;
+}
+
+.mypage_pet_toggle_switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.mypage_pet_toggle_switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

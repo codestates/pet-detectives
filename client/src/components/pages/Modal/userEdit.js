@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ResignModal from "./resign_modal";
 import axios from "axios";
-import "./userEdit.css";
+import "../../App";
 
 // 1. nick네임 중복확인 - DB랑
 // 2. currentPassword  - DB랑
@@ -14,31 +14,165 @@ class UserEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "kimcoding@codestate.com",
+      email: "",
       isResignModalOpen: false,
       ediTnicknameCheckText: "",
       editPasswordCheckText: "",
       nickname: "",
+      toTokenNickname: "",
       currentPassword: "",
+      toTokenPassword: "",
+      isCurrentPasswordToTokenPassword: false,
       password1: "",
       password2: "",
+      isNick: false,
+      isPassword: false,
       isNicknameChecked: false,
       isCurrentPasswordChecked: false,
+      isCurrentNickanmeChecked: false,
       isPasswordChecked: false,
+      currentNickname: "",
+      isCurrentNickname: true,
+      isNicknameNull: false,
     };
     this.inputHandler = this.inputHandler.bind(this);
+    this.eduitUserInfo = this.eduitUserInfo.bind(this);
+  }
+
+  componentDidMount() {
+    console.log("did~");
+    axios
+      .get(
+        "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/user/userinfo",
+        {
+          headers: {
+            Authorization: localStorage.getItem("accessToken"),
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        console.log(res.data.accessTokenData, "accessToken");
+        this.setState({
+          email: res.data.accessTokenData.email,
+          toTokenNickname: res.data.accessTokenData.nickname,
+          toTokenPassword: res.data.accessTokenData.password,
+        });
+      })
+      .catch((err) => console.log("im ERA"));
   }
 
   inputHandler(e) {
+    console.log(e.target.name);
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.name === "nickname") {
       setTimeout(this.isNickChecking, 100);
+      setTimeout(this.isCurrentNicknameToTokenNickname, 200);
     } else if (e.target.name === "password2") {
       setTimeout(this.passwordChecking, 100);
     } else if (e.target.name === "password1") {
       setTimeout(this.isPasswordChecking, 200);
+    } else if (e.target.name === "currentPassword") {
+      setTimeout(this.isCurrentPasswordToTokenPassword, 100);
     }
   }
+
+  eduitUserInfo() {
+    const {
+      isNicknameNull,
+      isCurrentNickanmeChecked,
+      isNick,
+      isCurrentPasswordToTokenPassword,
+      isPassword,
+    } = this.state;
+    if (isCurrentPasswordToTokenPassword && isPassword) {
+      axios
+        .patch(
+          "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/user/passwordedit",
+          {
+            newPassword: this.state.password1,
+          },
+          {
+            headers: {
+              Authorization: localStorage.getItem("accessToken"),
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          this.setState({ toTokenPassword: this.state.password1 });
+          localStorage.clear("accessToken");
+          window.location.href = "/";
+        });
+    }
+    if (isNick && !isNicknameNull && !isCurrentNickanmeChecked) {
+      axios
+        .patch(
+          "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/user/useredit",
+          {
+            newNickName: this.state.nickname,
+          },
+          {
+            headers: {
+              Authorization: localStorage.getItem("accessToken"),
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          this.setState({ toTokenNickname: this.state.nickname });
+          localStorage.clear("accessToken");
+          window.location.href = "/";
+        });
+    }
+
+    console.log("editUserNickname");
+    if (this.state.nickname) {
+      console.log("nicknameNull", this.state.nickname, true);
+    }
+    if (this.state.isCurrentNickanmeChecked) {
+      console.log("nicknameCurrent", true);
+    }
+    if (this.state.isCurrentPasswordToTokenPassword) {
+      console.log("isCurrentPasswordToTokenPassword", true);
+    }
+    if (this.state.isPasswordChecked) {
+      console.log("isPasswordChecked", true);
+    }
+  }
+
+  isCurrentNicknameToTokenNickname = () => {
+    const { toTokenNickname, nickname } = this.state;
+    if (toTokenNickname === nickname) {
+      this.setState({
+        isCurrentNickanmeChecked: true,
+      });
+    } else {
+      this.setState({
+        isCurrentNickanmeChecked: false,
+      });
+    }
+  };
+
+  isCurrentPasswordToTokenPassword = () => {
+    const { toTokenPassword, currentPassword } = this.state;
+    console.log(toTokenPassword, currentPassword);
+    if (toTokenPassword === currentPassword) {
+      this.setState({
+        isCurrentPasswordToTokenPassword: true,
+        editPasswordCheckText: "",
+      });
+    } else {
+      this.setState({
+        isCurrentPasswordToTokenPassword: false,
+        editPasswordCheckText: "현재 비밀번호가 틀렸습니다.",
+      });
+    }
+  };
 
   passwordChecking = () => {
     const { password1, password2 } = this.state;
@@ -85,9 +219,12 @@ class UserEdit extends Component {
     const { nickname, isNick } = this.state;
     if (isNick) {
       axios
-        .post("http://localhost:8080/auth/nick", {
-          nickname: nickname,
-        })
+        .post(
+          "http://ec2-52-79-201-60.ap-northeast-2.compute.amazonaws.com:8080/auth/nick",
+          {
+            nickname: nickname,
+          }
+        )
         .then((res) => {
           if (res.status === 200 && nickname) {
             this.setState({
@@ -122,7 +259,7 @@ class UserEdit extends Component {
     return (
       <>
         {isUserEditModalOpen ? (
-          <div className="modal" onClick={close}>
+          <div className="modal">
             <div className="userEditModal" onClick={(e) => e.stopPropagation()}>
               <span className="close" onClick={close}>
                 &times;
@@ -131,16 +268,14 @@ class UserEdit extends Component {
                 className="modalContents"
                 onClick={() => isUserEditModalOpen}
               >
-                <span className="userEditId">
-                  아이디 : kimcoding@petdetectives.com
-                </span>
+                <span className="userEditId">아이디 : {this.state.email}</span>
                 <input
                   className="userEditNickName"
                   name="nickname"
                   onChange={(e) => this.inputHandler(e)}
                   type="text"
                   value={this.state.nickname}
-                  placeholder="닉네임"
+                  placeholder={`현재 닉네임 : ${this.state.toTokenNickname}`}
                 />
                 <div class="userEditTry">
                   <span class="userEditTry_span">
@@ -187,10 +322,15 @@ class UserEdit extends Component {
                   ></div>
                 </div>
                 <div className="userEditBtn_box">
-                  <Link className="userEditBtn" to="/my_page">
+                  <div
+                    className="userEditBtn"
+                    onClick={() => {
+                      this.eduitUserInfo();
+                    }}
+                  >
                     회원정보 수정하기
-                    {/* <button className="loginBtn"> 로그인 </button> */}
-                  </Link>
+                  </div>
+                  {/* <button className="loginBtn"> 로그인 </button> */}
                   <button className="userExit" onClick={this.openResignModal}>
                     회원탈퇴
                   </button>
