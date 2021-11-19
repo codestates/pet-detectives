@@ -43,15 +43,20 @@ module.exports = {
     const { comment, id } = req.body;
 
     const accessTokenData = authorized(authorization);
+    if (!comment || !id || !accessTokenData.email) {
+      return res.status(400).send({ message: "댓글을 달아주세요" });
+    }
 
     const userComment = await user.findOne({
       where: { email: accessTokenData.email },
     }); // id, emial pas, nick
-    console.log(userComment.id);
-
+    // console.log(userComment.id);
+    console.log(id, userComment.id);
     const postComment = await post.findOne({
       where: { user_id: userComment.id, id: id },
     });
+
+    console.log(postComment);
     //post 1 2 3 4 5 6 .. user_id =1
 
     //post cooment user_id , post_id  1 1 1번 유저가 포스트를 2개  1 2 ,  user_id =1
@@ -87,7 +92,9 @@ module.exports = {
       where: { email: accessTokenData.email },
     });
     console.log(userComment.id);
-    const postComment = await post.findOne({ where: { id: id } });
+    const postComment = await post.findOne({
+      where: { user_id: userComment.id, id: id },
+    });
 
     post_comment
       .update(
@@ -123,7 +130,9 @@ module.exports = {
       where: { email: accessTokenData.email },
     });
     console.log(userComment.id);
-    const postComment = await post.findOne({ id: id });
+    const postComment = await post.findOne({
+      where: { user_id: userComment.id, id: id },
+    });
 
     post_comment
       .destroy({ where: { user_id: userComment.id, post_id: postComment.id } })

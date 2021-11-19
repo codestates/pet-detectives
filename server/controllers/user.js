@@ -12,7 +12,6 @@ const axios = require("axios");
 //!header 로 accesstoken못받아서 임시로 쿠키로 access만 보내서 작업 ( 추후 수정항 생길시 수정)
 module.exports = {
   userinfoController: async (req, res) => {
-    // console.log(req.cookies.access)
     const token = req.headers.authorization; //!헤더로 토큰 받은경우
     // const cookie = req.cookies.access
 
@@ -42,7 +41,6 @@ module.exports = {
   },
   usereditController: async (req, res) => {
     console.log(req.body);
-    console.log(req.body.newNickName);
     const { newNickName } = req.body;
     // const cookie = req.cookies.access
 

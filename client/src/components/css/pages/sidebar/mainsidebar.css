@@ -1,17 +1,19 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  min-width: 300px;
   height: "100vh";
 }
 .sidebar_category_box {
-  background-color: #2a3b54;
+  background-color: rgb(42, 59, 84, 0.95);
   color: white;
   font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 10%;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 34px;
 }
 .sideber_row_box {
   display: flex;
@@ -25,14 +27,16 @@
   height: 100%;
 }
 .sidebar_district_box {
-  border: solid 0.1px black;
-  background-color: #3b567b;
+  border: solid 0.1px rgba(0, 0, 0, 0.4);
+  background-color: rgb(59, 86, 123, 0.7);
   color: white;
   font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 10%;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 24px;
   /* display: inline-grid; */
   /* grid-template-rows: 50% 50%; */
   /* grid-template-columns: 50% 50%; */

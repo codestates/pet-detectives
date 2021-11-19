@@ -1,10 +1,14 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+
 .mypage_middleSpace_myRegisteredInfo {
   padding: 30px;
 }
 
 .mypage_middleSpace_myRegisteredInfo:hover {
   background-color: rgba(211, 183, 156, 0.4);
-
+/* color : yellow; */
   transition: 1s;
 }
 
@@ -13,13 +17,16 @@
   justify-content: flex-start;
   height: 30px;
 }
+/* !변경사항 */
 .mypage_pet_name {
+  
   width: 10%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   font-weight: 550;
+
 }
 .mypage_pet_name_value {
   width: 10%;
@@ -70,12 +77,15 @@
   width: 12.5%;
   height: 100%;
   display: flex;
+
   justify-content: flex-start;
   align-items: center;
   font-weight: 550;
   padding-left: 10px;
 }
 .mypage_pet_location_value {
+  font-size:25px;
+
   width: 12.5%;
   margin-left: 4px;
   height: 100%;
@@ -104,9 +114,17 @@
   justify-content: flex-start;
   height: 80%;
 }
+/*! 변경사항 */
 .mypage_pet_image {
-  width: 20%;
-  height: 100%;
+  position: relative;
+  right:2%;
+  /* display: inline-block; */
+  /* background-size: cover; */
+  object-fit: fill;
+  width: 23%;
+  height: 150px;
+  /* width: 20%;
+  height: 100%; */
 }
 .mypage_pet_image_box {
   margin-left: 15px;
@@ -114,27 +132,34 @@
   height: 100%;
 }
 .mypage_pet_describe {
-  width: 50%;
+  width: 40%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.mypage_pet_describe_text {
-  height: 70%;
-}
-
-.mypage_pet_describe_tags {
-  border-top: solid 1px black;
+/* !변경사항 */
+/* .mypage_pet_describe_text {
   height: 30%;
-  text-align: end;
-}
+} */
+
+/* .mypage_pet_describe_tags {
+  border-top: solid 1px black;
+   */
+
+/* } */
+
+/* !변경사항 */
 .mypage_pet_toggle_and_revise {
+  position: relative;
+  left:9.7%;
+
   width: 30%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-left: black solid 1px;
 }
 
 .mypage_pet_toggle_switch {

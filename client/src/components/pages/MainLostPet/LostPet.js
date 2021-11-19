@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tag from "../Tag/tag";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 class LostPet extends Component {
   render() {
@@ -59,79 +61,77 @@ class LostPet extends Component {
       <>
         <div className="showing_lost_pet">
           <div className="showing_lost_pet_space"></div>
-          <div className="showing_lost_pet_header">
-            <div className="showing_lost_pet_header_information">
-              <div className="showing_lost_pet_header_information_row">
-                <div className="showing_lost_pet_header_information_box_menu">
-                  이름
+          <div className="showing_lost_pet_space_box">
+            <div className="showing_lost_pet_header">
+              <div className="showing_lost_pet_header_information">
+                <div className="showing_lost_pet_header_information_row">
+                  <div className="showing_lost_pet_header_information_box_menu">
+                    이름
+                  </div>
+                  <div className="showing_lost_pet_header_information_box">
+                    {petinfo.pet_name}
+                  </div>
+                  <div className="showing_lost_pet_header_information_box_menu">
+                    성별
+                  </div>
+                  <div className="showing_lost_pet_header_information_box">
+                    {petinfo.pet_sex}
+                  </div>
                 </div>
-                <div className="showing_lost_pet_header_information_box">
-                  {petinfo.pet_name}
-                </div>
-                <div className="showing_lost_pet_header_information_box_menu">
-                  성별
-                </div>
-                <div className="showing_lost_pet_header_information_box">
-                  {petinfo.pet_sex}
+                <div className="showing_lost_pet_header_information_row">
+                  <div className="showing_lost_pet_header_information_box_menu">
+                    나이
+                  </div>
+                  <div className="showing_lost_pet_header_information_box">
+                    {petinfo.pet_age}
+                  </div>
+                  <div className="showing_lost_pet_header_information_box_menu">
+                    종류
+                  </div>
+                  <div className="showing_lost_pet_header_information_box">
+                    {petinfo.pet_category}
+                  </div>
                 </div>
               </div>
-              <div className="showing_lost_pet_header_information_row">
-                <div className="showing_lost_pet_header_information_box_menu">
-                  나이
+
+              <div className="showing_lost_pet_header_location_info">
+                <div className="showing_lost_pet_header_location_info_row">
+                  <div className="showing_lost_pet_header_location_info_box_menu">
+                    지역명
+                  </div>
+                  <div className="showing_lost_pet_header_location_info_box">
+                    {region}
+                  </div>
                 </div>
-                <div className="showing_lost_pet_header_information_box">
-                  {petinfo.pet_age}
+                <div className="showing_lost_pet_header_location_info_row">
+                  <div className="showing_lost_pet_header_location_info_box_menu">
+                    실종 날짜
+                  </div>
+                  <div className="showing_lost_pet_header_location_info_box">
+                    {petinfo.pet_lost_date.slice(0, 10)}
+                  </div>
                 </div>
-                <div className="showing_lost_pet_header_information_box_menu">
-                  종류
-                </div>
-                <div className="showing_lost_pet_header_information_box">
-                  {petinfo.pet_category}
-                </div>
+              </div>
+              <div className="showing_lost_pet_header_location">
+                <Link
+                  to={"/map"}
+                  className="showing_lost_pet_header_location_btn"
+                >
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                </Link>
               </div>
             </div>
-            <div className="showing_lost_pet_header_location">
-              <Link
-                to={"/map"}
-                className="showing_lost_pet_header_location_btn"
-              >
-                실 종 <br />
-                map
-              </Link>
+            <div className="showing_lost_pet_body">
+              <img
+                className="showing_lost_pet_body_image"
+                src={petinfo.image}
+              />
             </div>
-            <div className="showing_lost_pet_header_location_info">
-              <div className="showing_lost_pet_header_location_info_row">
-                <div className="showing_lost_pet_header_location_info_box_menu">
-                  지역명
-                </div>
-                <div className="showing_lost_pet_header_location_info_box">
-                  {region}
-                </div>
-              </div>
-              <div className="showing_lost_pet_header_location_info_row">
-                <div className="showing_lost_pet_header_location_info_box_menu">
-                  실종 날짜
-                </div>
-                <div className="showing_lost_pet_header_location_info_box">
-                  {petinfo.pet_lost_date.slice(0, 10)}
-                </div>
-              </div>
+            <div className="showing_lost_pet_describe">
+              {petinfo.description}
             </div>
           </div>
-          <div className="showing_lost_pet_body">
-            <img
-            className="showing_lost_pet_body_image"
-            src={petinfo.image}
-            ></img>
-          </div>
-          <div className="showing_lost_pet_describe">
-            <div className="showing_lost_pet_describe_contents_box">
-              <div className="showing_lost_pet_describe_contents">
-                {petinfo.description}
-              </div>
-            </div>
-            <div className="showing_lost_pet_describe_tag_box"></div>
-          </div>
+
           <div className="showing_lost_pet_comment"></div>
         </div>
       </>

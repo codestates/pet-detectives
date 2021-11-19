@@ -161,7 +161,7 @@ class SignUpModal extends Component {
     return (
       <>
         {isSignUpModalOpen && this.state.isSignUpModalClose ? (
-          <div className="modal" onClick={close}>
+          <div className="modal">
             <div className="SignUpModal" onClick={(e) => e.stopPropagation()}>
               <span className="close" onClick={close}>
                 &times;

@@ -11,18 +11,14 @@ const {
 } = require("../middleware/tokenfunction");
 const axios = require("axios");
 
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+// const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+// const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 
-const redirectURI = "http://localhost:8080/auth/googlesignin/callback";
-const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
-const GOOGLE_AUTH_TOKEN_URL = "https://oauth2.googleapis.com/token";
-//http://localhost:8080/auth/googlesignin/callback?code=4/0AX4XfWjwI5C8uvI5LPyYkOsZRyxLqQ-L4k4EiL2luhP5h7ZVNRipCQjKUFvVTfulEBW_4A
-const code =
-  "4/0AX4XfWhGZIcmaQNI_JKhliDmcasWY3kMnuVqbw-jUJcdU3ZJojgdP2SM6yYKI7TFvnbJKw";
+// const redirectURI = "http://localhost:8080/auth/googlesignin/callback";
+// const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
+// const GOOGLE_AUTH_TOKEN_URL = "https://oauth2.googleapis.com/token";
+
 module.exports = {
-  googlePost: (req, res) => {},
-
   googleSigninControl: (req, res) => {
     //access token 얻는다
 
@@ -113,13 +109,13 @@ module.exports = {
 
         const accessToken = generateAccessToken(data.dataValues);
         console.log(accessToken);
-        const refreshToken = generateRefreshToken(data.dataValues);
+      
         // sendToken(res,accessToken)
         res.setHeader("authorization", accessToken);
         //! 긴급조치 토큰 쿠키로 보내기
 
         // sendAccessToken(res, accessToken);
-        sendRefreshToken(res, refreshToken);
+   
 
         return res
           .status(200)
