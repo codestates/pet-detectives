@@ -39,6 +39,9 @@ module.exports = {
     // })
     //!생성된 코드로, 사용자가 client로 진입, client 는 승인코드로 access token을 구글로부터 얻는다.
   },
+  TestControl: (req, res) => {
+    return res.status(200).send({ message: "helloword" });
+  },
   //
 
   signupController: (req, res) => {
